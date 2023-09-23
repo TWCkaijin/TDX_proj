@@ -3,9 +3,12 @@ import requests
 from pprint import pprint
 import json
 import os
+import time 
 
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
+
+dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
 url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?%24top=100&%24count=true&%24format=JSON"
@@ -42,17 +45,19 @@ class data():
             'authorization': 'Bearer '+access_token
         }
     
-def data_storage(data):
+def data_storage(ds):
     file_num = 0
     file_uncomplete = False
-    dir_path = ''  
+    f_time = time.strftime("%Y_%m_%d", time.localtime())
     while (not file_uncomplete):
         file_num += 1
         try:
             os.listdir(dir_path).index(file_num.txt)
         except:
-            open(file = f'{dir_path}{file_num}.txt',mode = 'r',encoding = 'utf-8')
-            open(file = f'{dir_path}{file_num}.txt',mode = 'w',encoding = 'utf-8').write(data)     
+            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'a+',encoding = 'utf-8')
+            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'w',encoding = 'utf-8').write(ds)
+            
+            break
 
 if __name__ == '__main__':
     try:
@@ -67,7 +72,7 @@ if __name__ == '__main__':
     #pprint(auth_response.text)
     print(data_response)
     pprint(data_response.text)
-    data_storage(data_response)
+    data_storage(data_response.text)
     
 
 
