@@ -1,12 +1,14 @@
+from stat import FILE_ATTRIBUTE_COMPRESSED
 import requests
 from pprint import pprint
 import json
+import os
 
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
-url = "https://tdx.transportdata.tw/api/basic/v2/Rail/TRA/LiveTrainDelay?$top=30&$format=JSON"
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?%24top=100&%24count=true&%24format=JSON"
 
 class Auth():
 
@@ -39,6 +41,18 @@ class data():
         return{
             'authorization': 'Bearer '+access_token
         }
+    
+def data_storage(data):
+    file_num = 0
+    file_uncomplete = False
+    dir_path = ''  
+    while (not file_uncomplete):
+        file_num += 1
+        try:
+            os.listdir(dir_path).index(file_num.txt)
+        except:
+            open(file = f'{dir_path}{file_num}.txt',mode = 'r',encoding = 'utf-8')
+            open(file = f'{dir_path}{file_num}.txt',mode = 'w',encoding = 'utf-8').write(data)     
 
 if __name__ == '__main__':
     try:
@@ -49,9 +63,19 @@ if __name__ == '__main__':
         auth_response = requests.post(auth_url, a.get_auth_header())
         d = data(app_id, app_key, auth_response)
         data_response = requests.get(url, headers=d.get_data_header())    
-    print(auth_response)
-    pprint(auth_response.text)
+    #print(auth_response)
+    #pprint(auth_response.text)
     print(data_response)
     pprint(data_response.text)
+    data_storage(data_response)
+    
+
+
+    
+            
+        
+            
+
+
 
 
