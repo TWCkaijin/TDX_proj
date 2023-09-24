@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\code_storge"
+    "\\code_storage",
+    "\\data_storage"
   ],
-  "SelectedNode": "\\code_storge",
+  "SelectedNode": "\\code_storage\\get_data.py",
   "PreviewInSolutionExplorer": false
 }

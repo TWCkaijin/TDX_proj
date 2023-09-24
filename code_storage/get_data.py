@@ -19,7 +19,7 @@ class Auth():
         self.app_id = app_id
         self.app_key = app_key
 
-    def get_auth_header(self):
+    def get_auth_header(self): #auth = athorized
         content_type = 'application/x-www-form-urlencoded'
         grant_type = 'client_credentials'
 
@@ -45,18 +45,21 @@ class data():
             'authorization': 'Bearer '+access_token
         }
     
-def data_storage(rd): #rd = RAaw Data
+class data_attributes():
     
-    file_num = 0
-    f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
-    while (True):
-        file_num += 1
-        try:
-            os.listdir(dir_path).index(f'{f_time}_{file_num}.txt')
-        except:
-            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
-            break
+    def __init__(self):
+        self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
+        self.file_num = 0
+    def data_storage(self,rd): #rd = RAaw Data
+        while (True):
+            self.file_num += 1
+            try:
+                os.listdir(dir_path).index(f'{self.f_time}_{self.file_num}.txt')
+            except:
+                open(file = f'{dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
+                break
      
+
 
 if __name__ == '__main__':
     try:
@@ -71,7 +74,8 @@ if __name__ == '__main__':
     #pprint(auth_response.text)
     #print(data_response)
     pprint(data_response.text)
-    data_storage(data_response.text)
+    da = data_attributes()
+    da.data_storage(data_response.text)
     
 
 
