@@ -11,7 +11,7 @@ app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?%24top=100&%24count=true&%24format=JSON"
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?%24top=2&%24format=JSON"
 
 class Auth():
 
@@ -45,19 +45,18 @@ class data():
             'authorization': 'Bearer '+access_token
         }
     
-def data_storage(ds):
+def data_storage(rd): #rd = RAaw Data
+    
     file_num = 0
-    file_uncomplete = False
-    f_time = time.strftime("%Y_%m_%d", time.localtime())
-    while (not file_uncomplete):
+    f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
+    while (True):
         file_num += 1
         try:
-            os.listdir(dir_path).index(file_num.txt)
+            os.listdir(dir_path).index(f'{f_time}_{file_num}.txt')
         except:
-            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'a+',encoding = 'utf-8')
-            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'w',encoding = 'utf-8').write(ds)
-            
+            open(file = f'{dir_path}/{f_time}_{file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
             break
+     
 
 if __name__ == '__main__':
     try:
@@ -70,7 +69,7 @@ if __name__ == '__main__':
         data_response = requests.get(url, headers=d.get_data_header())    
     #print(auth_response)
     #pprint(auth_response.text)
-    print(data_response)
+    #print(data_response)
     pprint(data_response.text)
     data_storage(data_response.text)
     
