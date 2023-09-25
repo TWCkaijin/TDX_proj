@@ -50,7 +50,7 @@ class data_attributes():
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
-    def data_storage(self,rd): #rd = RAaw Data
+    def data_storage(self,rd): #rd = Raw Data
         while (True):
             self.file_num += 1
             try:
