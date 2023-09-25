@@ -8,10 +8,10 @@ import time
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
-dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
+
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?%24top=2&%24format=JSON"
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?&%24top=2&%24format=JSON"
 
 class Auth():
 
@@ -46,19 +46,27 @@ class data():
         }
     
 class data_attributes():
-    
+    dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
+        
+       
     def data_storage(self,rd): #rd = RAaw Data
         while (True):
             self.file_num += 1
+            
             try:
-                os.listdir(dir_path).index(f'{self.f_time}_{self.file_num}.txt')
+                #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  #必要時開啟
+                t = open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split("\n")
+                q = t.index(f'{self.f_time}_{self.file_num}.txt')
             except:
-                open(file = f'{dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
-                break
+                open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
+                break  
+               
      
+    def storage_list(self):
+         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
 
 
 if __name__ == '__main__':
@@ -76,6 +84,8 @@ if __name__ == '__main__':
     pprint(data_response.text)
     da = data_attributes()
     da.data_storage(data_response.text)
+    da.storage_list()
+   
     
 
 
