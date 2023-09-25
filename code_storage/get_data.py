@@ -11,7 +11,7 @@ app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?&%24top=2&%24format=JSON"
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?&%24top=50&%24format=JSON"
 
 class Auth():
 
@@ -66,7 +66,7 @@ class data_attributes():
                
      
     def storage_list(self):
-         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
+         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt')
 
 
 if __name__ == '__main__':
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     #print(auth_response)
     #pprint(auth_response.text)
     #print(data_response)
-    pprint(data_response.text)
+    #pprint(data_response.text)
     da = data_attributes()
     da.data_storage(data_response.text)
     da.storage_list()
