@@ -19,6 +19,6 @@
 <br/>
 -----------------------------<br/>
 Program Director Kaijin, Taick 
-    students from Nsysu CSE F.E.C 
+    <br/>students from Nsysu CSE F.E.C 
 
-Ecperience presents
+ 
