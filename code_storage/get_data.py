@@ -95,7 +95,7 @@ def late_preprocess():
 if __name__ == '__main__':
     exe_quan = int(input('How many times to process: '))
     url = make_url(url)
-    print(f'main<locate>:{os.getcwd()}\nGetting data from {url}')
+    print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
     for i in range (exe_quan):
         try:
             d = data(app_id, app_key, auth_response)
