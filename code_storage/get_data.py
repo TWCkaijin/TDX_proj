@@ -1,4 +1,3 @@
-from stat import FILE_ATTRIBUTE_COMPRESSED
 import requests
 from pprint import pprint
 import json
@@ -9,9 +8,10 @@ app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
 
+global url 
+auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"  #Paste the authorize key here
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here 
 
-auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingSpace/City/Kaohsiung?&%24top=50&%24format=JSON"
 
 class Auth():
 
@@ -30,6 +30,7 @@ class Auth():
             'client_secret' : self.app_key
         }
 
+
 class data():
 
     def __init__(self, app_id, app_key, auth_response):
@@ -44,7 +45,8 @@ class data():
         return{
             'authorization': 'Bearer '+access_token
         }
-    
+
+
 class data_attributes():
     dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
     def __init__(self):
@@ -63,28 +65,57 @@ class data_attributes():
             except:
                 open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
                 break  
-               
-     
+
     def storage_list(self):
-         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt')
+         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
+
+
+def make_url(A): #simple function for arguememts that we need to collect for the urls
+    q_set = ['Top=']
+    q_args = []
+    guid = ['Enter any Quantity for data (NULL for all)']
+    eurl = A
+    for i in q_set:
+        INDEX = q_set.index(i)
+        q_args.append(input(f'Please enter the arguments that asks as follows:\n{i}({guid[INDEX-1]}):'))
+            
+    for i in q_set:
+        if q_args[q_set.index(i)-1]!='':
+            eurl = eurl+f'&%24{i}{q_args[q_set.index(i)-1]}'
+        
+    return eurl +f'&%24format=JSON'
+
+
+def late_preprocess():
+    
+    exec(open(file = os.getcwd()+'/code_storage/data_management.py').read())
+    
 
 
 if __name__ == '__main__':
-    try:
-        d = data(app_id, app_key, auth_response)
-        data_response = requests.get(url, headers=d.get_data_header())
-    except:
-        a = Auth(app_id, app_key)
-        auth_response = requests.post(auth_url, a.get_auth_header())
-        d = data(app_id, app_key, auth_response)
-        data_response = requests.get(url, headers=d.get_data_header())    
-    #print(auth_response)
-    #pprint(auth_response.text)
-    #print(data_response)
-    #pprint(data_response.text)
-    da = data_attributes()
-    da.data_storage(data_response.text)
-    da.storage_list()
+    exe_quan = int(input('How many times to process: '))
+    url = make_url(url)
+    print(f'main<locate>:{os.getcwd()}\nGetting data from {url}')
+    for i in range (exe_quan):
+        try:
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())
+        except:
+            a = Auth(app_id, app_key)
+            auth_response = requests.post(auth_url, a.get_auth_header())
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())    
+        #print(auth_response)
+        #pprint(auth_response.text)
+        #print(data_response)
+        #pprint(data_response.text)
+        da = data_attributes()
+        da.data_storage(data_response.text)
+        da.storage_list()
+    
+    late_preprocess()
+    
+    
    
     
 
