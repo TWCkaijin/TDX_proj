@@ -10,7 +10,7 @@ app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
 global url 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"  #Paste the authorize key here
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here 
+url = "https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/Kaohsiung?%24top=30&%24format=JSON" #&%24top=50&%24format=JSON #Paste the target URL here 
 
 
 class Auth():
@@ -49,6 +49,7 @@ class data():
 
 class data_attributes():
     dir_path = 'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage'
+    
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
@@ -69,7 +70,7 @@ class data_attributes():
     def storage_list(self):
          open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
 
-
+'''
 def make_url(A): #simple function for arguememts that we need to collect for the urls
     q_set = ['Top=']
     q_args = []
@@ -84,39 +85,36 @@ def make_url(A): #simple function for arguememts that we need to collect for the
             eurl = eurl+f'&%24{i}{q_args[q_set.index(i)-1]}'
         
     return eurl +f'&%24format=JSON'
-
+'''
 
 def late_preprocess():
     
-    exec(open(file = os.getcwd()+'/code_storage/DM/Parklot_Avaliable.py').read())
+    exec(open(file = os.getcwd()+'/code_storage/data_management.py').read())
     
 
 
 if __name__ == '__main__':
     exe_quan = int(input('How many times to process: '))
-    start_sever_time = time.time()
-    time_loop = time.time()
-    while (True):
-        if time.time()-time_loop >=5:
-            print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
-            for i in range (exe_quan):
-                try:
-                    d = data(app_id, app_key, auth_response)
-                    data_response = requests.get(url, headers=d.get_data_header())
-                except:
-                    a = Auth(app_id, app_key)
-                    auth_response = requests.post(auth_url, a.get_auth_header())
-                    d = data(app_id, app_key, auth_response)
-                    data_response = requests.get(url, headers=d.get_data_header())    
-                #print(auth_response)
-                #pprint(auth_response.text)
-                #print(data_response)
-                #pprint(data_response.text)
-                da = data_attributes()
-                da.data_storage(data_response.text)
-                da.storage_list()
-                time_loop = time.time()
-                late_preprocess()
+    
+    print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
+    for i in range (exe_quan):
+        try:
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())
+        except:
+            a = Auth(app_id, app_key)
+            auth_response = requests.post(auth_url, a.get_auth_header())
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())    
+        #print(auth_response)
+        #pprint(auth_response.text)
+        #print(data_response)
+        pprint(data_response.text)
+        #da = data_attributes()
+        #da.data_storage(data_response.text)
+        #da.storage_list()
+        
+        #late_preprocess()
             
     
     

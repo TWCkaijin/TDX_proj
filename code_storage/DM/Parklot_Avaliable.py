@@ -14,7 +14,7 @@ for data_num in num_list:
         raw = open(f'{gd.data_attributes.dir_path}/{data_num}',mode = 'r',encoding = 'utf-8').read()
         #print(raw)
         raw = json.loads(raw)
-        for park_lot in raw['ParkingSpaces']:
+        for park_lot in raw['ParkingAvailabilities']:
             #print(f'{park_lot["CarParkName"]["Zh_tw"]}-剩餘停車位 : {str(park_lot["TotalSpaces"])}')  #Printing all the proceeded data on the prompt
             proceeded_data.append([f'{park_lot["CarParkName"]["Zh_tw"]}',f'Total space :{str(park_lot["TotalSpaces"])}',])
     

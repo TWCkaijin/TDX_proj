@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "工作-TDK_proj",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "工作-TDK_proj",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
