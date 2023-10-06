@@ -8,7 +8,7 @@ import time
 proceeded_data = []
 num_list = open(f'{gd.data_attributes.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
-
+'''
 for data_num in num_list:
     try :
         raw = open(f'{gd.data_attributes.dir_path}/{data_num}',mode = 'r',encoding = 'utf-8').read()
@@ -26,3 +26,6 @@ for data_num in num_list:
     
     
         print("Error with finding the data with data_name in the '_0.txt'")
+        
+        
+        '''

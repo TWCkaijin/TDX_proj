@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\code_storage",
-    "\\data_storage"
+    "\\code_storage\\DM",
+    "\\data_storage",
+    "\\data_storage\\Parklot_Avaliable",
+    "\\data_storage\\Parklot_Avaliable\\proceeded_data"
   ],
-  "SelectedNode": "\\code_storage\\get_data.py",
+  "SelectedNode": "\\data_storage\\Parklot_Avaliable\\_0.txt",
   "PreviewInSolutionExplorer": false
 }
