@@ -1,15 +1,14 @@
-from msilib.schema import Property
 import requests
 from pprint import pprint
 import json
 import os
-import time 
+import time
 
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
 
-global url 
+global url
 global model_name
 auth_url= "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"  #Paste the authorize key here
 url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here 
@@ -56,7 +55,6 @@ class data_attributes():
         self.file_num = 0
         self.MODEL_NAME = model_name
     
-
 
     def data_storage(self,rd): #rd = RAaw Data
         while (True):
@@ -121,17 +119,4 @@ if __name__ == '__main__':
             time_loop = time.time()
             late_preprocess()
             
-    
-    
-   
-    
-
-
-    
             
-        
-            
-
-
-
-

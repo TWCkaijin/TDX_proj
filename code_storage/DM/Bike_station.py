@@ -1,5 +1,4 @@
 import get_data as gd
-#import subprocess
 import json 
 import os
 import time
