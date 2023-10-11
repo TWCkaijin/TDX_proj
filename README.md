@@ -18,7 +18,6 @@
 
 <br/>
 -----------------------------<br/>
-Program Director Kaijin, Taick 
-    <br/>students from Nsysu CSE F.E.C 
+Kaijin, Taick, Welly, Dylan, Nroy(LJK), vic(vicky), Juila
 
  
