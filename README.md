@@ -19,6 +19,6 @@
 <br/>
 -----------------------------<br/>
 Program Director Kaijin, Taick, Welly, Dylan, Nroy(LJK), vic(vicky), Juila
-    <br/>students from Nsysu GDSC program community 
+    <br/>students from Nsysu GDSC program group
 
  
