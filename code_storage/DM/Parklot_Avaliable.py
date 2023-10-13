@@ -1,7 +1,15 @@
+'''
+This program can only be used with get_data.py  
+
+
+
+'''
 import get_data as gd
 import json 
 import os
 import time
+
+ 
 
 
 proceeded_data = []
