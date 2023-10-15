@@ -1,4 +1,4 @@
 {
-  "Interpreter": "CondaEnv|CondaEnv|TDX_proj",
-  "TestFramework": "Pytest"
+  "TestFramework": "Pytest",
+  "Interpreter": "CondaEnv|CondaEnv|TDX_proj"
 }

@@ -49,7 +49,7 @@ class data():
 
 
 class data_attributes():   
-    dir_path = f'C:/Users/sylim/Source/Repos/TWCkaijin/TDK_proj/data_storage/{model_name}'
+    dir_path = f'{os.getcwd()}/data_storage/{model_name}'
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
@@ -90,7 +90,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     
-    exec(open(file = os.getcwd()+f'/code_storage/DM/{model_name}.py').read())
+    exec(open(file = f'{os.getcwd()}/code_storage/DM/{model_name}.py',encoding='utf-8').read())
     
 
 if __name__ == '__main__':
