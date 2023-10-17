@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\code_storage",
+    "\\code_storage\\DM",
+    "\\code_storage\\__pycache__",
+    "\\data_storage"
   ],
+  "SelectedNode": "\\code_storage\\get_data.py",
   "PreviewInSolutionExplorer": false
 }

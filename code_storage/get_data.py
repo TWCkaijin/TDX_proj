@@ -66,7 +66,7 @@ class data_attributes():
                 q = t.index(f'{self.f_time}_{self.file_num}.txt')
             except:
                 open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
-                break  
+                break
 
     def storage_list(self):
          open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
@@ -98,25 +98,24 @@ if __name__ == '__main__':
     start_sever_time = time.time()
     time_loop = time.time()
     while (True):
-        if time.time()-time_loop >=5:
-            print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
+        print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
             
-            try:
-                d = data(app_id, app_key, auth_response)
-                data_response = requests.get(url, headers=d.get_data_header())
-            except:
-                a = Auth(app_id, app_key)
-                auth_response = requests.post(auth_url, a.get_auth_header())
-                d = data(app_id, app_key, auth_response)
-                data_response = requests.get(url, headers=d.get_data_header())    
-            #print(auth_response)
-            #pprint(auth_response.text)
-            #print(data_response)
-            #pprint(data_response.text)
-            da = data_attributes()
-            da.data_storage(data_response.text)
-            da.storage_list()
-            time_loop = time.time()
-            late_preprocess()
+        try:
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())
+        except:
+            a = Auth(app_id, app_key)
+            auth_response = requests.post(auth_url, a.get_auth_header())
+            d = data(app_id, app_key, auth_response)
+            data_response = requests.get(url, headers=d.get_data_header())    
+        #print(auth_response)
+        #pprint(auth_response.text)
+        #print(data_response)
+        #pprint(data_response.text)
+        da = data_attributes()
+        da.data_storage(data_response.text)
+        da.storage_list()
+        time_loop = time.time()
+        late_preprocess()
 
             
