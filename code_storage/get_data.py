@@ -99,7 +99,7 @@ if __name__ == '__main__':
     time_loop = time.time()
     while (True):
         print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
-            
+        
         try:
             d = data(app_id, app_key, auth_response)
             data_response = requests.get(url, headers=d.get_data_header())
@@ -117,5 +117,5 @@ if __name__ == '__main__':
         da.storage_list()
         time_loop = time.time()
         late_preprocess()
-
-            
+        time.sleep(1800)
+        
