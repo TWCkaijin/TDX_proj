@@ -61,7 +61,7 @@ class data_attributes():
             self.file_num += 1
             
             try:
-                #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  #必要時開啟
+                #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  # 必要時開啟
                 t = open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split("\n")
                 q = t.index(f'{self.f_time}_{self.file_num}.txt')
             except:
@@ -119,3 +119,5 @@ if __name__ == '__main__':
         late_preprocess()
         time.sleep(1800)
         
+
+#資料初始時間2023/10/17_21:00 + 00:18

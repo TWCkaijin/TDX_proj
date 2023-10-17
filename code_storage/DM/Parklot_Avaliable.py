@@ -29,7 +29,4 @@ try :
     open(f'{gd.data_attributes.dir_path}/proceeded_data/{num_list[-1]}',mode = 'w',encoding = 'utf-8').write(str(proceeded_data))
     print(f'data {num_list[-1]} successfully loaded')
 except:
-        
-    
-    
     print("Error with finding the data with data_name in the '_0.txt'")
