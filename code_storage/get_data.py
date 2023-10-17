@@ -98,7 +98,7 @@ if __name__ == '__main__':
     start_sever_time = time.time()
     time_loop = time.time()
     while (True):
-        if time.time()-time_loop >=5:
+        if time.time()-time_loop >=1800:
             print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
             
             try:
