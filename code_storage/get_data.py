@@ -3,6 +3,7 @@ from pprint import pprint
 import json
 import os
 import time
+import threading
 
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
@@ -89,11 +90,12 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
-    
+    print('1')
     exec(open(file = f'{os.getcwd()}/code_storage/DM/{model_name}.py',encoding='utf-8').read())
     
 
 if __name__ == '__main__':
+    LP = threading.Thread(target = 'late_process')
     make_url(url)
     start_sever_time = time.time()
     time_loop = time.time()
@@ -107,16 +109,29 @@ if __name__ == '__main__':
             a = Auth(app_id, app_key)
             auth_response = requests.post(auth_url, a.get_auth_header())
             d = data(app_id, app_key, auth_response)
-            data_response = requests.get(url, headers=d.get_data_header())    
-        #print(auth_response)
-        #pprint(auth_response.text)
-        #print(data_response)
-        #pprint(data_response.text)
+            data_response = requests.get(url, headers=d.get_data_header())
+        '''
+        print(auth_response)
+        pprint(auth_response.text)
+        print(data_response)
+        pprint(data_response.text)
+        '''
         da = data_attributes()
         da.data_storage(data_response.text)
         da.storage_list()
         time_loop = time.time()
-        late_preprocess()
+        
+
+        #Thread start zone
+        LP.start()
+        print(f'executing {LP.native_id}')
+
+        #Thread join zone
+        LP.join()
+
+
+        #Wait zone
+        print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
         time.sleep(1800)
         
 

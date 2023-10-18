@@ -3,9 +3,9 @@
     "",
     "\\code_storage",
     "\\code_storage\\DM",
-    "\\code_storage\\__pycache__",
-    "\\data_storage"
+    "\\data_storage",
+    "\\data_storage\\Parklot_Avaliable"
   ],
-  "SelectedNode": "\\code_storage\\get_data.py",
+  "SelectedNode": "\\data_storage\\Parklot_Avaliable\\_0.txt",
   "PreviewInSolutionExplorer": false
 }
