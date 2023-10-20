@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\data_storage\\Parklot_Avaliable",
-    "\\data_storage\\Parklot_Avaliable\\proceeded_data",
-    "\\modestmaps"
+    "\\data_storage\\Parklot_Avaliable\\proceeded_data"
   ],
-  "SelectedNode": "\\modestmaps\\build",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
