@@ -90,12 +90,11 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
-    print('1')
     exec(open(file = f'{os.getcwd()}/code_storage/DM/{model_name}.py',encoding='utf-8').read())
     
 
 if __name__ == '__main__':
-    LP = threading.Thread(target = 'late_process')
+    LP = threading.Thread(target = late_preprocess)
     make_url(url)
     start_sever_time = time.time()
     time_loop = time.time()
