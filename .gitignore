@@ -2,3 +2,5 @@
 *.pyc
 tags
 *.opendb
+/.vs/TDX_proj/v17/Browse.VC.db-shm
+/.vs/TDX_proj/v17/Browse.VC.db-wal
