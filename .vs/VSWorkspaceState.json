@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data_storage\\Parklot_Avaliable",
-    "\\data_storage\\Parklot_Avaliable\\proceeded_data"
+    "\\.github\\workflows",
+    "\\code_storage",
+    "\\data_storage"
   ],
   "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
