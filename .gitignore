@@ -5,6 +5,10 @@ tags
 *.vs
 *.db
 *.vs
-
-.vs/TDX_proj/v17/Browse.VC.db
-
+/.vs/
+/.vs/TDX_proj/v17/Browse.VC.db
+/.vs/TDX_proj/v17/Browse.VC.opendb
+/.vs/TDX_proj/v17/Browse.VC.db
+/.vs/TDX_proj/v17/Browse.VC.db-shm
+/.vs/TDX_proj/v17
+/.vs/TDX_proj/FileContentIndex
