@@ -6,3 +6,5 @@ tags
 *.db
 *.vs/
 
+.vs/TDX_proj/v17/Browse.VC.db
+
