@@ -50,7 +50,7 @@ class data():
 
 
 class data_attributes():   
-    dir_path = f'{os.getcwd()}/data_storage/{model_name}'
+    dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
@@ -90,11 +90,10 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
-    exec(open(file = f'{os.getcwd()}/code_storage/DM/{model_name}.py',encoding='utf-8').read())
+    exec(open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8').read())
     
 
 if __name__ == '__main__':
-    
     make_url(url)
     start_sever_time = time.time()
     time_loop = time.time()
@@ -120,8 +119,8 @@ if __name__ == '__main__':
         da.storage_list()
         time_loop = time.time()
         
+       
         LP = threading.Thread(target = late_preprocess)
-
         #Thread start zone
         LP.start()
         print(f'executing {LP.native_id}')
