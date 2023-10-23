@@ -94,7 +94,7 @@ def late_preprocess():
     
 
 if __name__ == '__main__':
-    LP = threading.Thread(target = late_preprocess)
+    
     make_url(url)
     start_sever_time = time.time()
     time_loop = time.time()
@@ -120,6 +120,7 @@ if __name__ == '__main__':
         da.storage_list()
         time_loop = time.time()
         
+        LP = threading.Thread(target = late_preprocess)
 
         #Thread start zone
         LP.start()
@@ -131,7 +132,7 @@ if __name__ == '__main__':
 
         #Wait zone
         print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-        time.sleep(1800)
+        time.sleep(3)
         
 
 #資料初始時間2023/10/17_21:00 + 00:18
