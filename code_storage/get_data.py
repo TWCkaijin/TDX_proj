@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
         #Wait zone
         print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-        time.sleep(1800)
+        time.sleep(600)
         
 
-#資料初始時間2023/10/17_21:00 + 00:18
+#資料初始時間2023_10_20,17:30 -00:00:12
