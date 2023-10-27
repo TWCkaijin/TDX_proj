@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\cache",
+    "\\data_storage\\Parklot_Avaliable"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\cache",
   "PreviewInSolutionExplorer": false
 }
