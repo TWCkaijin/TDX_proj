@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cache",
-    "\\data_storage\\Parklot_Avaliable"
+    "\\cache"
   ],
-  "SelectedNode": "\\cache",
+  "SelectedNode": "\\map_visualize.py",
   "PreviewInSolutionExplorer": false
 }

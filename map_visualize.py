@@ -5,7 +5,7 @@ import os
 
 place_name = "Gushan District, Kaohsiung, Taiwan"
 graph = ox.graph_from_place(place_name)
-fig,ax = ox.plot_graph(graph)
+#fig,ax = ox.plot_graph(graph)
 
 area = ox.gdf_from_place(place_name)
 area.plot()
