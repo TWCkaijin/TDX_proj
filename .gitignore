@@ -1,9 +1,9 @@
-﻿################################################################################
-# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
-################################################################################
-
-/.vs/TDX_proj/v17/Browse.VC.opendb
-/.vs/TDX_proj/v17/Browse.VC.db
-/.vs/TDX_proj/v17/Browse.VC.db-shm
-/.vs/TDX_proj/v17
-/.vs/TDX_proj/FileContentIndex
+﻿*~
+*.pyc
+tags
+*.opendb
+*.vs
+*.db
+*.vs
+/.vs/TDX_proj/v17/
+/.vs/slnx.sqlite
