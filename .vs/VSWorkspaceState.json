@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data_storage",
-    "\\data_storage\\Parklot_Avaliable",
-    "\\data_storage\\Parklot_Avaliable\\proceeded_data"
+    "\\cache",
+    "\\data_storage\\Parklot_Avaliable"
   ],
-  "SelectedNode": "\\data_storage\\Parklot_Avaliable\\_0.txt",
+  "SelectedNode": "\\cache",
   "PreviewInSolutionExplorer": false
 }
