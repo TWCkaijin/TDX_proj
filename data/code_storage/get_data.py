@@ -125,7 +125,7 @@ if __name__ == '__main__':
         LP = threading.Thread(target = late_preprocess)
         #Thread start zone
         LP.start()
-        print(f'executing {LP.native_id}')
+        #print(f'executing {LP.native_id}')
 
         #Thread join zone
         LP.join()
@@ -133,7 +133,7 @@ if __name__ == '__main__':
 
         #Wait zone
         print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-        time.sleep(3)
+        time.sleep(1800)
         
 
 #資料初始時間2023/10/17_21:00 + 00:18
