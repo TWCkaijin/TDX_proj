@@ -21,15 +21,17 @@ def read_file():
         try: #read json as default 
             data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/proceeded_data/{i}.json')
             # Writ down the read logic below 
+            print(data.iloc[1,:])
+            
 
             print(f'{Colorfill.OK}Data {i}.json successfully loaded{Colorfill.RESET}')
-        
 
         except: # If json file not found , then try to read txt files
+        
             try:    
                 print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read .txt instead...{Colorfill.RESET}") #warning
                 
-                data_dict = {}
+                data_dict = dict()
                 with open(f'{os.getcwd()}/data/data_storage/Parklot_Avaliable/proceeded_data/{i}.txt', encoding = 'utf-8', mode = 'r' ) as f:
                     data = f.read()
                     spdata = data.split( '\'], [\'' )
@@ -45,12 +47,15 @@ def read_file():
                         # index : value
                         # data_dict[ index ] = value
                         data_dict[temp[0]] = temp[1]
+                print("1")
+                print(data_dict)
                
             except :
+                None
                 print(f"{Colorfill.FAIL}Errors with reading the data {Colorfill.WARNING}{i}{Colorfill.FAIL} with .txt and .json, please check the the file.{Colorfill.RESET}")
         
 
-def dataset_construct():
+def dataset_append():
     None #begins here 
     
 
