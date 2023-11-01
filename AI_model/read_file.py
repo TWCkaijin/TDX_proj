@@ -56,8 +56,5 @@ def dataset_construct():
 
 
 
-
-
-
 if __name__ == '__main__':
     read_file()
