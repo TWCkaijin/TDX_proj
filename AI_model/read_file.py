@@ -1,4 +1,5 @@
 import os
+from turtle import goto
 import pandas as pd 
 #48 datas each day
 
@@ -15,18 +16,18 @@ def read_file():
     index_list = []
     with open(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/_0.txt', encoding = 'utf-8', mode = 'r' ) as index:
          index_list = index.read().split()  #read 
-
+         
     for i in index_list:
         try: #read json as default 
             data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/proceeded_data/{i}.json')
             # Writ down the read logic below 
 
             print(f'{Colorfill.OK}Data {i}.json successfully loaded{Colorfill.RESET}')
-            
+        
 
         except: # If json file not found , then try to read txt files
             try:    
-                print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read txt instead...{Colorfill.RESET}") #warning
+                print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read .txt instead...{Colorfill.RESET}") #warning
                 
                 data_dict = {}
                 with open(f'{os.getcwd()}/data/data_storage/Parklot_Avaliable/proceeded_data/{i}.txt', encoding = 'utf-8', mode = 'r' ) as f:
@@ -46,7 +47,7 @@ def read_file():
                         data_dict[temp[0]] = temp[1]
                
             except :
-                print(f"{Colorfill.FAIL}Errors with reading the data {Colorfill.WARNING}{i}{Colorfill.FAIL} with txt and json, please check the execution log.{Colorfill.RESET}")
+                print(f"{Colorfill.FAIL}Errors with reading the data {Colorfill.WARNING}{i}{Colorfill.FAIL} with .txt and .json, please check the the file.{Colorfill.RESET}")
         
 
 def dataset_construct():
