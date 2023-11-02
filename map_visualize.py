@@ -10,13 +10,14 @@ graph = ox.graph_from_place(place_name)
 
 
 G = ox.graph_from_place(place_name, network_type="drive")
-ox.save_graph_hml(G, filepath="./data/piedmont.osm")
-ox.load_graphml("./data/piedmont.osm")
+ox.save_graph_xml(G, filepath="./data/piedmont.osm")
+
+#ox.load_graphml("./data/piedmont.osm")
 
 
 
-# area = ox.gdf_from_place(place_name)
-# area.plot()
+area = ox.gdf_from_place(place_name)
+area.plot()
 
 # buildings = ox.buildings_from_place(place_name)
 
