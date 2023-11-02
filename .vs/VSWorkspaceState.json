@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cache"
+    "\\cache",
+    "\\data"
   ],
   "SelectedNode": "\\map_visualize.py",
   "PreviewInSolutionExplorer": false
