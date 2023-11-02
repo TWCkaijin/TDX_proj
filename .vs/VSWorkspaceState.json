@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\data\\code_storage",
+    "\\data\\code_storage\\DM",
+    "\\data\\code_storage\\__pycache__",
+    "\\data\\data_storage\\Parklot_Avaliable",
+    "\\map"
   ],
-  "SelectedNode": "\\data",
+  "SelectedNode": "\\map\\README.md",
   "PreviewInSolutionExplorer": false
 }
