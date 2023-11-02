@@ -10,6 +10,11 @@
       "taskLabel": "工作-TDK_proj",
       "appliesTo": "/",
       "type": "launch"
+    },
+    {
+      "taskLabel": "工作-TDX_proj",
+      "appliesTo": "/",
+      "type": "launch"
     }
   ]
 }

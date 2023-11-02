@@ -38,7 +38,7 @@ try:#Datatype = .json
 
     for i in range(len(df['ParkingAvailabilities'])):
             name.append(df['ParkingAvailabilities'][i]['CarParkName']['Zh_tw'].strip())
-            spaces.append(df['ParkingAvailabilities'][i]['AvailableSpaces'])
+            spaces.append([df['ParkingAvailabilities'][i]['AvailableSpaces']])
 
     for i in range(len(df['UpdateTime'])):
         k = re.split('[T/+]',df.loc[i,'UpdateTime'])
