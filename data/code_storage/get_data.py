@@ -64,13 +64,13 @@ class data_attributes():
             try:
                 #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  # 必要時開啟
                 t = open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split("\n")
-                q = t.index(f'{self.f_time}_{self.file_num}.txt')
+                q = t.index(f'{self.f_time}_{self.file_num}')
             except:
-                open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.txt',mode = 'a+',encoding = 'utf-8').write(rd)
+                open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.json',mode = 'a+',encoding = 'utf-8').write(rd)
                 break
 
     def storage_list(self):
-         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}.txt\n')
+         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}\n')
 
 
 def make_url(A): #simple function for arguememts that we need to collect for the urls
@@ -90,7 +90,9 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
-    exec(open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8').read())
+    process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
+    exec(process.read())
+    process.close()
     
 
 if __name__ == '__main__':
@@ -123,7 +125,7 @@ if __name__ == '__main__':
         LP = threading.Thread(target = late_preprocess)
         #Thread start zone
         LP.start()
-        print(f'executing {LP.native_id}')
+        #print(f'executing {LP.native_id}')
 
         #Thread join zone
         LP.join()
@@ -131,7 +133,7 @@ if __name__ == '__main__':
 
         #Wait zone
         print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-        time.sleep(3)
+        time.sleep(1800)
         
 
 #資料初始時間2023/10/17_21:00 + 00:18
