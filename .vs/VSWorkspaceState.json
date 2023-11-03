@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cache",
-    "\\data"
+    "\\data",
+    "\\data\\data_storage",
+    "\\data\\data_storage\\Parklot_Avaliable\\proceeded_data"
   ],
-  "SelectedNode": "\\map_visualize.py",
+  "SelectedNode": "\\gptscript.py",
   "PreviewInSolutionExplorer": false
 }
