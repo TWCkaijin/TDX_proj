@@ -25,6 +25,7 @@ def read_file():
         except Exception as e: # If json file not found , then try to read txt files
             txt_append(data_name)
             print('\n')
+    print(f"ALl execution are done")
             
          
 
