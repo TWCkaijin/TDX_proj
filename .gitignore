@@ -6,6 +6,6 @@ tags
 *.db
 *.vs
 
-.vs\TDX_proj\v17\
-.vs\slnx.sqlite
-data\data_storage\
+/.vs
+/.vs/slnx.sqlite
+\TDX_proj\data\data_storage\
