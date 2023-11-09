@@ -106,7 +106,7 @@ if __name__ == '__main__':
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        print(f'{minute}/{hour}')
+        #print(f'{minute}/{hour}')
         LP = threading.Thread(target = late_preprocess)
         if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
             try:
@@ -116,6 +116,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
+                LP.start()
                 LP.join()
             except Exception as e:
                 raise RuntimeError(e)
@@ -126,6 +127,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
+                LP.start()
                 LP.join()
             except Exception as e:
                 print(e)
@@ -135,6 +137,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
+                LP.start()
                 LP.join()
                 
         
