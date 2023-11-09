@@ -80,8 +80,8 @@ def make_url(A): #simple function for arguememts that we need to collect for the
     eurl = A
     for i in q_set:
         INDEX = q_set.index(i)
-        q_args.append(input(f'Please enter the arguments that asks as follows:\n{i}({guid[INDEX-1]}):'))
-
+        # q_args.append(input(f'Please enter the arguments that asks as follows:\n{i}({guid[INDEX-1]}):'))
+        q_args.append("")
     for i in q_set:
         if q_args[q_set.index(i)-1]!='':
             eurl = eurl+f'&%24{i}{q_args[q_set.index(i)-1]}'
