@@ -43,9 +43,9 @@ class data():
     def get_data_header(self):
         auth_JSON = json.loads(self.auth_response.text)
         access_token = auth_JSON.get('access_token')
-
+        #print(access_token)
         return{
-            'authorization': 'Bearer '+access_token
+            'authorization': 'Bearer ' + access_token
         }
 
 
@@ -90,8 +90,11 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
+    print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
+    print(f'executing {LP.native_id}')
     process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
     exec(process.read())
+    print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     process.close()
     
 
@@ -99,41 +102,52 @@ if __name__ == '__main__':
     make_url(url)
     start_sever_time = time.time()
     time_loop = time.time()
+    da = data_attributes()
     while (True):
-        print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
-        
-        try:
-            d = data(app_id, app_key, auth_response)
-            data_response = requests.get(url, headers=d.get_data_header())
-        except:
-            a = Auth(app_id, app_key)
-            auth_response = requests.post(auth_url, a.get_auth_header())
-            d = data(app_id, app_key, auth_response)
-            data_response = requests.get(url, headers=d.get_data_header())
-        '''
-        print(auth_response)
-        pprint(auth_response.text)
-        print(data_response)
-        pprint(data_response.text)
-        '''
-        da = data_attributes()
-        da.data_storage(data_response.text)
-        da.storage_list()
-        time_loop = time.time()
-        
-       
+        minute = time.strftime("%M", time.localtime())
+        hour = time.strftime("%H", time.localtime())
+        print(f'{minute}/{hour}')
         LP = threading.Thread(target = late_preprocess)
-        #Thread start zone
-        LP.start()
-        #print(f'executing {LP.native_id}')
+        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
+            try:
+                a = Auth(app_id, app_key)
+                auth_response = requests.post(auth_url, a.get_auth_header())
+                d = data(app_id, app_key, auth_response)
+                data_response = requests.get(url, headers=d.get_data_header())
+                da.data_storage(data_response.text)
+                da.storage_list()
+                LP.join()
+            except Exception as e:
+                raise RuntimeError(e)
+                print(e)
+        elif(int(minute)%30==0):
+            try:
+                d = data(app_id, app_key, auth_response)
+                data_response = requests.get(url, headers=d.get_data_header())
+                da.data_storage(data_response.text)
+                da.storage_list()
+                LP.join()
+            except Exception as e:
+                print(e)
+                a = Auth(app_id, app_key)
+                auth_response = requests.post(auth_url, a.get_auth_header())
+                d = data(app_id, app_key, auth_response)
+                data_response = requests.get(url, headers=d.get_data_header())
+                da.data_storage(data_response.text)
+                da.storage_list()
+                LP.join()
+                
+        
+        
 
         #Thread join zone
-        LP.join()
+        
+       
 
 
-        #Wait zone
-        print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-        time.sleep(1800)
+
+        
+        
         
 
 #資料初始時間2023/10/17_21:00 + 00:18
