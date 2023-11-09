@@ -108,7 +108,7 @@ if __name__ == '__main__':
         hour = time.strftime("%H", time.localtime())
         #print(f'{minute}/{hour}')
         LP = threading.Thread(target = late_preprocess)
-        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
+        if(True):
             try:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
