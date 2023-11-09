@@ -53,10 +53,11 @@ def json_append(i):
            generate = True
         finally:
            if (int(len(data) - len(data)/(row+1))/(len(data)/80)>exe_time) and not(generate):
-               print('#',end='')
+               #print('#',end='')
                exe_time += 1
     if not (generate) :
-        print("|")
+        #print("|")
+        None
     print(f'{Colorfill.OK}Data {i}.json have successfully loaded{Colorfill.RESET}')
      
 def txt_append(i):
