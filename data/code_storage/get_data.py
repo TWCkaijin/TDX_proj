@@ -106,9 +106,9 @@ if __name__ == '__main__':
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        print(f'{minute}/{hour}')
+        # print(f'{minute}/{hour}')
         LP = threading.Thread(target = late_preprocess)
-        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
+        if(((int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0))|1):
             try:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
@@ -136,10 +136,8 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 LP.join()
-                
-        
-        
 
+        time.sleep(30)
         #Thread join zone
         
        
