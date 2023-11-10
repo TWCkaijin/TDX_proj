@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AI_model\\source",
-    "\\data",
     "\\data\\code_storage",
     "\\data\\data_storage"
   ],
-  "SelectedNode": "\\data\\code_storage\\get_data.py",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

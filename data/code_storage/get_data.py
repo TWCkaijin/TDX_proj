@@ -96,6 +96,7 @@ def late_preprocess():
     exec(process.read())
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     process.close()
+    time.sleep(61)
     
 
 if __name__ == '__main__':
@@ -118,9 +119,11 @@ if __name__ == '__main__':
                 da.storage_list()
                 LP.start()
                 LP.join()
+                
             except Exception as e:
                 raise RuntimeError(e)
                 print(e)
+                
         elif(int(minute)%30==0):
             try:
                 d = data(app_id, app_key, auth_response)
@@ -128,7 +131,8 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 LP.start()
-                LP.join()
+                LP.join
+                
             except Exception as e:
                 print(e)
                 a = Auth(app_id, app_key)
@@ -139,6 +143,7 @@ if __name__ == '__main__':
                 da.storage_list()
                 LP.start()
                 LP.join()
+                
 
 
 
