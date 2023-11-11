@@ -90,7 +90,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 
 def late_preprocess():
-    print(f'main<location>:{os.getcwd()}\nGetting data from {url}')
+    print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
     print(f'executing {LP.native_id}')
     process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
     exec(process.read())
@@ -100,15 +100,12 @@ def late_preprocess():
     
 
 if __name__ == '__main__':
-    make_url(url)
-    start_sever_time = time.time()
-    time_loop = time.time()
+    print(f'Start sever time {time.time()}')
     da = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
         #print(f'{minute}/{hour}')
-        LP = threading.Thread(target = late_preprocess)
         if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30):
             try:
                 a = Auth(app_id, app_key)
@@ -117,8 +114,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
-                LP.start()
-                LP.join()
+                late_preprocess()
                 
             except Exception as e:
                 raise RuntimeError(e)
@@ -130,8 +126,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
-                LP.start()
-                LP.join
+                late_preprocess()
                 
             except Exception as e:
                 print(e)
@@ -141,9 +136,9 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 da.storage_list()
-                LP.start()
-                LP.join()
+                late_preprocess()
                 
+        time.sleep(1500)
 
 
 
