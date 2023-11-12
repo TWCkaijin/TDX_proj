@@ -93,7 +93,6 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    print(f'executing {LP.native_id}')
     process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
     exec(process.read())
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
@@ -107,8 +106,7 @@ if __name__ == '__main__':
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        #print(f'{minute}/{hour}')
-        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30):
+        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
             try:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
@@ -120,7 +118,6 @@ if __name__ == '__main__':
                 
             except Exception as e:
                 print(e)
-                
         elif(int(minute)%30==0):
             try:
                 d = data(app_id, app_key, auth_response)
