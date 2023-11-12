@@ -6,8 +6,8 @@ tags
 *.db
 *.vs
 
-data\data_storage\
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
+data_storage/
+slnx.sqlite
+VSWorkspaceState.json
 .vs/TDX_proj/v17/.wsuo
 
