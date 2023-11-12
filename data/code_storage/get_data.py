@@ -15,6 +15,13 @@ auth_url= "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-c
 url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here 
 model_name = 'Parklot_Avaliable'
 
+
+class Colorfill:
+    OK = "\033[92m"  # GREEN
+    WARNING = "\033[93m"  # YELLOW
+    FAIL = "\033[91m"  # RED
+    RESET = "\033[0m"  # RESET COLOR
+
 class Auth():
 
     def __init__(self, app_id, app_key):
@@ -117,7 +124,7 @@ if __name__ == '__main__':
                 late_preprocess()
                 
             except Exception as e:
-                print(e)
+                print(f'{Colorfill.FAIL}Hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
             try:
                 d = data(app_id, app_key, auth_response)
@@ -127,7 +134,7 @@ if __name__ == '__main__':
                 late_preprocess()
                 
             except Exception as e:
-                print(e)
+                print(f'{Colorfill.FAIL}Runtime error:{Colorfill.RESET}{e}')
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
                 d = data(app_id, app_key, auth_response)
