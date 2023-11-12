@@ -33,6 +33,7 @@ class Auth():
         }
 
 
+
 class data():
 
     def __init__(self, app_id, app_key, auth_response):
@@ -47,6 +48,7 @@ class data():
         return{
             'authorization': 'Bearer ' + access_token
         }
+
 
 
 class data_attributes():   
@@ -100,7 +102,7 @@ def late_preprocess():
     
 
 if __name__ == '__main__':
-    print(f'Start sever time {time.time()}')
+    print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
     da = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
@@ -117,7 +119,6 @@ if __name__ == '__main__':
                 late_preprocess()
                 
             except Exception as e:
-                raise RuntimeError(e)
                 print(e)
                 
         elif(int(minute)%30==0):
