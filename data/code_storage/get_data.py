@@ -12,7 +12,7 @@ app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 global url
 global model_name
 auth_url= "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"  #Paste the authorize key here
-url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here 
+url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here
 model_name = 'Parklot_Avaliable'
 
 
@@ -58,18 +58,18 @@ class data():
 
 
 
-class data_attributes():   
+class data_attributes():
     dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.file_num = 0
         self.MODEL_NAME = model_name
-    
+
 
     def data_storage(self,rd): #rd = RAaw Data
         while (True):
             self.file_num += 1
-            
+
             try:
                 #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  # 必要時開啟
                 t = open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split("\n")
@@ -105,7 +105,7 @@ def late_preprocess():
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     process.close()
     time.sleep(61)
-    
+
 
 if __name__ == '__main__':
     print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        if(int(hour)%4==0)and(int(hour)!=0)and(int(minute)%30==0):
+        if(int(hour)%4==0)and(int(minute)==0):
             try:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
@@ -122,7 +122,7 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 late_preprocess()
-                
+
             except Exception as e:
                 print(f'{Colorfill.FAIL}Hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
@@ -132,7 +132,7 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 late_preprocess()
-                
+
             except Exception as e:
                 print(f'{Colorfill.FAIL}Runtime error:{Colorfill.RESET}{e}')
                 a = Auth(app_id, app_key)
@@ -142,13 +142,13 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 late_preprocess()
-                
+
         time.sleep(1500)
 
 
 
-        
-        
-        
+
+
+
 
 #資料初始時間2023/10/17_21:00 + 00:18

@@ -1,13 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AI_model",
-    "\\AI_model\\source",
     "\\data",
-    "\\data\\code_storage",
-    "\\data\\data_storage",
-    "\\data\\data_storage\\Parklot_Avaliable"
+    "\\data\\code_storage"
   ],
-  "SelectedNode": "\\AI_model\\source\\_0.txt",
+  "SelectedNode": "\\data\\code_storage\\get_data.py",
   "PreviewInSolutionExplorer": false
 }
