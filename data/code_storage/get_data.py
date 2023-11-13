@@ -108,7 +108,7 @@ def late_preprocess():
 
 
 if __name__ == '__main__':
-    print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
+    pprint(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
     da = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
@@ -143,7 +143,7 @@ if __name__ == '__main__':
                 da.storage_list()
                 late_preprocess()
 
-        time.sleep(1500)
+        
 
 
 
