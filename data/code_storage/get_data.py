@@ -142,8 +142,8 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 late_preprocess()
+    time.sleep(30)
 
-        
 
 
 
