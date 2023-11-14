@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\data",
-    "\\data\\data_storage"
+    "\\data\\code_storage"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\data\\code_storage\\get_data.py",
   "PreviewInSolutionExplorer": false
 }

@@ -1,7 +1,7 @@
 import os
-from turtle import goto
 import pandas as pd 
-#48 datas each day
+import time 
+import threading as t
 
 
 class Colorfill:
@@ -14,54 +14,54 @@ class Colorfill:
     
 def read_file():
     index_list = []
+    thread_list = []
     with open(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/_0.txt', encoding = 'utf-8', mode = 'r' ) as index:
          index_list = index.read().split()  #read 
 #### begin read data with line to line 
     for data_name  in index_list:
+        AP = t.Thread(target=json_append,args=(data_name,))
+        thread_list.append(AP)
         try: #read json as default 
+            print(f'Data {data_name:14} executing...')
+            AP.start()
             
-            json_append(data_name)
-            print('\n')
         except Exception as e: # If json file not found , then try to read txt files
             txt_append(data_name)
-            print('\n')
-    print(f"ALl execution are done")
+        
+    for i in thread_list:
+        i.join()
+        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have successfully loaded{Colorfill.RESET}')
+            
+    print(f"ALL execution are done")
             
          
 
 def json_append(i):
-    data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/proceeded_data/{i}.json')
-    # Writ down the read logic below
-    print(f'Data {i} executing: ',end = '')
-    exe_time = 0
-    generate = False
-    for row in range(len(data)):
-        generate = False 
-        try : 
-           f = pd.DataFrame(pd.read_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json'))
-           k = pd.DataFrame(data.iloc[row,:]).T
-           result = pd.concat([f,k],axis=0,ignore_index=True)
-           result.to_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json')
-           #print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} reconstruct complete{Colorfill.RESET}')         
-        except Exception as e:
-           print(f'{Colorfill.FAIL} {e} {Colorfill.RESET}')
-           f = pd.DataFrame()
-           f = data.iloc[row,:]
-           #f = pd.concat([f,f],axis=0,ignore_index=True)
-           f.to_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json',index = [0])
-           print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} generate complete{Colorfill.RESET}')
-           generate = True
-        finally:
-           if (int(len(data) - len(data)/(row+1))/(len(data)/80)>exe_time) and not(generate):
-               print('#',end='')
-               exe_time += 1
-    if not (generate) :
-        print("|")
-    print(f'{Colorfill.OK}Data {i}.json have successfully loaded{Colorfill.RESET}')
-     
+    try:
+        data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/proceeded_data/{i}.json')
+        # Writ down the read logic below
+        
+        for row in range(len(data)):
+            try : 
+               f = pd.DataFrame(pd.read_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json'))
+               k = pd.DataFrame(data.iloc[row,:]).T
+               result = pd.concat([f,k],axis=0,ignore_index=True)
+               result.to_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json')
+               #print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} reconstruct complete{Colorfill.RESET}')         
+            except Exception as e:
+               #print(f'{Colorfill.FAIL} {e} {Colorfill.RESET}')
+               f = pd.DataFrame()
+               f = data.iloc[row,:]
+               #f = pd.concat([f,f],axis=0,ignore_index=True)
+               f.to_json(f'{os.getcwd()}/AI_model/source/{data.iloc[row,1]}.json',index = [0])
+               #print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} generate complete{Colorfill.RESET}')
+        #print(f'{Colorfill.OK}Data {i}.json have successfully loaded{Colorfill.RESET}')
+    except Exception as e :
+        print(f'{Colorfill.FAIL}An error occur :{Colorfill.RESET}{e}')
+        None
 def txt_append(i):
     try:    
-        print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read .txt instead...{Colorfill.RESET}") #warning
+        #print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read .txt instead...{Colorfill.RESET}") #warning
                 
         data_dict = dict()
         with open(f'{os.getcwd()}/data/data_storage/Parklot_Avaliable/proceeded_data/{i}.txt', encoding = 'utf-8', mode = 'r' ) as f:
@@ -89,5 +89,6 @@ def txt_append(i):
 
 
 if __name__ == '__main__':
-    
+    T_S = time.time()
     read_file()
+    print(f'time:{time.time()-T_S}')
