@@ -60,26 +60,25 @@ class data():
 
 class data_attributes():
     dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
+
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
-        self.file_num = 0
+        self.hour = lambda x : int(time.strftime("%H",time.localtime())) if int(x)==0 else int(time.strftime("%H",time.localtime()))+1
+
+        self.file_num = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(self.hour(time.strftime("%M",time.localtime())))
         self.MODEL_NAME = model_name
 
 
-    def data_storage(self,rd): #rd = RAaw Data
-        while (True):
-            self.file_num += 1
-
+    def data_storage(self,rd): #rd = Raw Data
             try:
-                #q = os.listdir(self.dir_path).index(f'{self.f_time}_{self.file_num}.txt')  # 必要時開啟
-                t = open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split("\n")
-                q = t.index(f'{self.f_time}_{self.file_num}')
-            except:
-                open(file = f'{self.dir_path}/{self.f_time}_{self.file_num}.json',mode = 'a+',encoding = 'utf-8').write(rd)
-                break
+                open(file = f'{self.dir_path}/{self.file_num}.json',mode = 'a+',encoding = 'utf-8').write(rd)
+                self.storage_list()
+            except Exception as e:
+                print(f"storaging error:{e}")
+
 
     def storage_list(self):
-         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.f_time}_{self.file_num}\n')
+         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.file_num}\n')
 
 
 def make_url(A): #simple function for arguememts that we need to collect for the urls
@@ -108,12 +107,12 @@ def late_preprocess():
 
 
 if __name__ == '__main__':
-    pprint(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
+    print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
     da = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        if(int(hour)%4==0)and(int(minute)==0):
+        if(int(hour)%4==0 and int(minute)%30==0):
             try:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
@@ -142,7 +141,7 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 da.storage_list()
                 late_preprocess()
-    time.sleep(30)
+        time.sleep(30)
 
 
 
