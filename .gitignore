@@ -7,4 +7,5 @@ tags
 *.vs
 /.vs/TDX_proj/v17/
 /.vs/slnx.sqlite
+/flutter_sys/
 
