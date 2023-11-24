@@ -4,8 +4,7 @@
     "\\AI_model",
     "\\data",
     "\\data\\code_storage",
-    "\\data\\data_storage",
-    "\\data\\data_storage\\Parklot_Avaliable"
+    "\\data\\data_storage"
   ],
   "SelectedNode": "\\data\\code_storage\\get_data.py",
   "PreviewInSolutionExplorer": false
