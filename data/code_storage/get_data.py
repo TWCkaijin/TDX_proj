@@ -13,7 +13,7 @@ global url
 global model_name
 auth_url= "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"  #Paste the authorize key here
 url = "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/Kaohsiung?" #&%24top=50&%24format=JSON #Paste the target URL here
-model_name = 'Parklot_Available'
+model_name = 'Parklot_Avaliable'
 
 
 class Colorfill:
