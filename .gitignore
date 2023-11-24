@@ -6,9 +6,8 @@ tags
 *.db
 *.vs
 
-
+data_storage/
 slnx.sqlite
 VSWorkspaceState.json
 .wsuo
-/flutter_sys/
-Parklot_Available/
+
