@@ -44,42 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAQM3kjUOA5G0g44f_zVN2wLf7zc9ojBZg',
-    appId: '1:708070786763:web:4b65ce283ceef73f94bd4e',
-    messagingSenderId: '708070786763',
-    projectId: 'gdsc-406014',
-    authDomain: 'gdsc-406014.firebaseapp.com',
-    databaseURL: 'https://gdsc-406014-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'gdsc-406014.appspot.com',
-    measurementId: 'G-VDT4MDH9Y5',
+    apiKey: 'AIzaSyCBWk800un3-lCU-77R-15MgXEU8PykKic',
+    appId: '1:462186489423:web:01c297525fb6aa847aec3a',
+    messagingSenderId: '462186489423',
+    projectId: 'potent-result-406711',
+    authDomain: 'potent-result-406711.firebaseapp.com',
+    storageBucket: 'potent-result-406711.appspot.com',
+    measurementId: 'G-GP589CPD7T',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA8_jEcsh2jtrnblfnGvw2eG8YuFjVgSp0',
-    appId: '1:708070786763:android:4cc05f0e46fd66b994bd4e',
-    messagingSenderId: '708070786763',
-    projectId: 'gdsc-406014',
-    databaseURL: 'https://gdsc-406014-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'gdsc-406014.appspot.com',
+    apiKey: 'AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0',
+    appId: '1:462186489423:android:1592934c90b57c527aec3a',
+    messagingSenderId: '462186489423',
+    projectId: 'potent-result-406711',
+    storageBucket: 'potent-result-406711.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAbbD07Ffl3xQI0sQWQghDoNj2KiwISVug',
-    appId: '1:708070786763:ios:bdff55644d79933094bd4e',
-    messagingSenderId: '708070786763',
-    projectId: 'gdsc-406014',
-    databaseURL: 'https://gdsc-406014-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'gdsc-406014.appspot.com',
+    apiKey: 'AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY',
+    appId: '1:462186489423:ios:fa94c493c6d244c17aec3a',
+    messagingSenderId: '462186489423',
+    projectId: 'potent-result-406711',
+    storageBucket: 'potent-result-406711.appspot.com',
     iosBundleId: 'com.example.gdsc',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAbbD07Ffl3xQI0sQWQghDoNj2KiwISVug',
-    appId: '1:708070786763:ios:a84ca64a4be3615994bd4e',
-    messagingSenderId: '708070786763',
-    projectId: 'gdsc-406014',
-    databaseURL: 'https://gdsc-406014-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'gdsc-406014.appspot.com',
+    apiKey: 'AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY',
+    appId: '1:462186489423:ios:e14b8ffc111c07817aec3a',
+    messagingSenderId: '462186489423',
+    projectId: 'potent-result-406711',
+    storageBucket: 'potent-result-406711.appspot.com',
     iosBundleId: 'com.example.gdsc.RunnerTests',
   );
 }

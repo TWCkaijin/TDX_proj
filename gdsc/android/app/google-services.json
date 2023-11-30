@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "708070786763",
-    "firebase_url": "https://gdsc-406014-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "gdsc-406014",
-    "storage_bucket": "gdsc-406014.appspot.com"
+    "project_number": "462186489423",
+    "project_id": "potent-result-406711",
+    "storage_bucket": "potent-result-406711.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:708070786763:android:4cc05f0e46fd66b994bd4e",
+        "mobilesdk_app_id": "1:462186489423:android:1592934c90b57c527aec3a",
         "android_client_info": {
           "package_name": "com.example.gdsc"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA8_jEcsh2jtrnblfnGvw2eG8YuFjVgSp0"
+          "current_key": "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0"
         }
       ],
       "services": {

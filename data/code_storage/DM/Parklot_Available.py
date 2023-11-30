@@ -15,7 +15,7 @@ proceeded_data = []
 num_list = open(f'{gd.data_attributes.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
 
-
+'''
 def sql_write(table_name, time, spaces) :
     db = MySQLdb.connect(
         host='webserverdatabase.cmstfznt40ot.ap-southeast-2.rds.amazonaws.com',
@@ -44,7 +44,7 @@ def sql_write(table_name, time, spaces) :
     curs.close()
     db.commit()
     db.close()
-
+'''
 
 
 

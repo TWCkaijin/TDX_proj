@@ -12,16 +12,11 @@ void main() async {
 }
 
 
-
-
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
   State createState() => _MyAppState();
-
-
   
   // This widget is the root of your application.
   
