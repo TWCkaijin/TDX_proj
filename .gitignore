@@ -6,9 +6,7 @@ tags
 *.db
 *.vs
 
-data_storage/
 slnx.sqlite
 VSWorkspaceState.json
 .wsuo
-gdsc/
 
