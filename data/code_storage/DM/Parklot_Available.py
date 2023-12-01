@@ -7,9 +7,9 @@ import os
 import time
 import re
 import pandas as pd
-import MySQLdb
 import sys
-import MySQLdb
+
+#import MySQLdb
 
 proceeded_data = []
 num_list = open(f'{gd.data_attributes.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
@@ -71,8 +71,8 @@ if __name__ == '__main__':
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
 
-        #new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Avaliable/proceeded_data/{num_list[-1]}.json') #write file
-        sql_write(name,time,spaces)
+        new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
+        #sql_write(name,time,spaces)     # SQL command
         print(f"Data {num_list[-1]} reconstruct successfully.")
     except:
         print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")

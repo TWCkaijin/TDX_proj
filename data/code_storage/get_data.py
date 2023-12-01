@@ -63,7 +63,7 @@ class data_attributes():
 
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
-        self.hour = lambda x : int(time.strftime("%H",time.localtime())) if int(x)==0 else int(time.strftime("%H",time.localtime()))+1
+        self.hour = lambda x : (int(time.strftime("%H",time.localtime())))*2 if int(x)==0 or int(x)==59 or int(x)==1 else (int(time.strftime("%H",time.localtime())))*2+1
 
         self.file_num = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(self.hour(time.strftime("%M",time.localtime())))
         self.MODEL_NAME = model_name
@@ -106,6 +106,8 @@ def late_preprocess():
     time.sleep(61)
 
 
+
+
 if __name__ == '__main__':
     print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
     da = data_attributes()
@@ -119,9 +121,7 @@ if __name__ == '__main__':
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
-                da.storage_list()
                 late_preprocess()
-
             except Exception as e:
                 print(f'{Colorfill.FAIL}Hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
@@ -129,19 +129,19 @@ if __name__ == '__main__':
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
-                da.storage_list()
                 late_preprocess()
 
             except Exception as e:
-                print(f'{Colorfill.FAIL}Runtime error:{Colorfill.RESET}{e}')
+                #print(f'{Colorfill.FAIL}Runtime error:{Colorfill.RESET}{e}')
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
-                da.storage_list()
                 late_preprocess()
+        
         time.sleep(30)
+
 
 
 
