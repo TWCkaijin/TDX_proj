@@ -60,14 +60,12 @@ class data():
 
 class data_attributes():
     dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
-
+    
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
-        self.hour = lambda x : (int(time.strftime("%H",time.localtime())))*2 if int(x)==0 or int(x)==59 or int(x)==1 else (int(time.strftime("%H",time.localtime())))*2+1
-
-        self.file_num = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(self.hour(time.strftime("%M",time.localtime())))
         self.MODEL_NAME = model_name
-
+        self.hour = lambda x : (int(time.strftime("%H",time.localtime())))*2 if int(x)==0 or int(x)==59 or int(x)==1 else (int(time.strftime("%H",time.localtime())))*2+1
+        self.file_num = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(self.hour(time.strftime("%M",time.localtime())))
 
     def data_storage(self,rd): #rd = Raw Data
             try:
@@ -109,11 +107,13 @@ def late_preprocess():
 
 
 if __name__ == '__main__':
-    print(f'Start sever time {time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
+    print(f'{Colorfill.FAIL}Start sever time {Colorfill.RESET}{time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
+    print(f'{Colorfill.FAIL}Intepreter Directory: {Colorfill.OK}{os.getcwd()}{Colorfill.RESET}')
     da = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
+        da.file_num  = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(da.hour(minute))
         if(int(hour)%4==0 and int(minute)%30==0):
             try:
                 a = Auth(app_id, app_key)
@@ -139,8 +139,9 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 late_preprocess()
-        
+        #print(da.file_num)
         time.sleep(30)
+        
 
 
 
