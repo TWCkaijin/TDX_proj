@@ -1,7 +1,7 @@
 {
-    "UpdateTime": "2023-12-03T20:00:11+08:00",
+    "UpdateTime": "2023-12-04T00:59:11+08:00",
     "UpdateInterval": -1,
-    "SrcUpdateTime": "2023-12-03T20:00:11+08:00",
+    "SrcUpdateTime": "2023-12-04T00:59:11+08:00",
     "SrcUpdateInterval": 86400,
     "AuthorityCode": "KHH",
     "ParkingAvailabilities": [
@@ -28,7 +28,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "095b",
@@ -53,7 +53,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "100",
@@ -62,23 +62,23 @@
                 "En": ""
             },
             "TotalSpaces": 36,
-            "AvailableSpaces": 7,
+            "AvailableSpaces": 14,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 36,
-                    "AvailableSpaces": 7
+                    "AvailableSpaces": 14
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "103",
@@ -103,7 +103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "105",
@@ -112,12 +112,12 @@
                 "En": ""
             },
             "TotalSpaces": 37,
-            "AvailableSpaces": 19,
+            "AvailableSpaces": 22,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 37,
-                    "AvailableSpaces": 19
+                    "AvailableSpaces": 22
                 }
             ],
             "ServiceStatus": 1,
@@ -128,7 +128,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "106",
@@ -137,12 +137,12 @@
                 "En": ""
             },
             "TotalSpaces": 150,
-            "AvailableSpaces": 87,
+            "AvailableSpaces": 79,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 150,
-                    "AvailableSpaces": 87
+                    "AvailableSpaces": 79
                 }
             ],
             "ServiceStatus": 1,
@@ -153,7 +153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "107",
@@ -162,12 +162,12 @@
                 "En": ""
             },
             "TotalSpaces": 23,
-            "AvailableSpaces": 6,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 23,
-                    "AvailableSpaces": 6
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -178,7 +178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "108",
@@ -187,12 +187,12 @@
                 "En": ""
             },
             "TotalSpaces": 65,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 6,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 65,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 6
                 }
             ],
             "ServiceStatus": 1,
@@ -203,7 +203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "117",
@@ -212,12 +212,12 @@
                 "En": ""
             },
             "TotalSpaces": 54,
-            "AvailableSpaces": 40,
+            "AvailableSpaces": 42,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 54,
-                    "AvailableSpaces": 40
+                    "AvailableSpaces": 42
                 }
             ],
             "ServiceStatus": 1,
@@ -228,7 +228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "118",
@@ -237,12 +237,12 @@
                 "En": ""
             },
             "TotalSpaces": 51,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 4,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 51,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 4
                 }
             ],
             "ServiceStatus": 1,
@@ -253,7 +253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "120",
@@ -262,12 +262,12 @@
                 "En": ""
             },
             "TotalSpaces": 46,
-            "AvailableSpaces": 25,
+            "AvailableSpaces": 31,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 46,
-                    "AvailableSpaces": 25
+                    "AvailableSpaces": 31
                 }
             ],
             "ServiceStatus": 1,
@@ -278,7 +278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "125",
@@ -303,7 +303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "128",
@@ -328,7 +328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "135",
@@ -337,12 +337,12 @@
                 "En": ""
             },
             "TotalSpaces": 12,
-            "AvailableSpaces": 6,
+            "AvailableSpaces": 8,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 12,
-                    "AvailableSpaces": 6
+                    "AvailableSpaces": 8
                 }
             ],
             "ServiceStatus": 1,
@@ -353,7 +353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "150",
@@ -362,12 +362,12 @@
                 "En": ""
             },
             "TotalSpaces": 26,
-            "AvailableSpaces": 16,
+            "AvailableSpaces": 24,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 26,
-                    "AvailableSpaces": 16
+                    "AvailableSpaces": 24
                 }
             ],
             "ServiceStatus": 1,
@@ -378,7 +378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "290",
@@ -387,23 +387,23 @@
                 "En": ""
             },
             "TotalSpaces": 346,
-            "AvailableSpaces": 49,
+            "AvailableSpaces": 257,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 346,
-                    "AvailableSpaces": 49
+                    "AvailableSpaces": 257
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "448",
@@ -412,23 +412,23 @@
                 "En": ""
             },
             "TotalSpaces": 30,
-            "AvailableSpaces": 9,
+            "AvailableSpaces": 17,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 30,
-                    "AvailableSpaces": 9
+                    "AvailableSpaces": 17
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "448a",
@@ -437,12 +437,12 @@
                 "En": ""
             },
             "TotalSpaces": 323,
-            "AvailableSpaces": 138,
+            "AvailableSpaces": 134,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 323,
-                    "AvailableSpaces": 138
+                    "AvailableSpaces": 134
                 }
             ],
             "ServiceStatus": 1,
@@ -453,7 +453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "449",
@@ -462,23 +462,23 @@
                 "En": ""
             },
             "TotalSpaces": 32,
-            "AvailableSpaces": 2,
+            "AvailableSpaces": -1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 32,
-                    "AvailableSpaces": 2
+                    "AvailableSpaces": -1
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": -1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "457",
@@ -503,7 +503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "458",
@@ -512,12 +512,12 @@
                 "En": ""
             },
             "TotalSpaces": 36,
-            "AvailableSpaces": 16,
+            "AvailableSpaces": 14,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 36,
-                    "AvailableSpaces": 16
+                    "AvailableSpaces": 14
                 }
             ],
             "ServiceStatus": 1,
@@ -528,7 +528,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "459",
@@ -537,12 +537,12 @@
                 "En": ""
             },
             "TotalSpaces": 174,
-            "AvailableSpaces": 152,
+            "AvailableSpaces": 145,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 174,
-                    "AvailableSpaces": 152
+                    "AvailableSpaces": 145
                 }
             ],
             "ServiceStatus": 1,
@@ -553,7 +553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "459a",
@@ -578,7 +578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "460",
@@ -587,12 +587,12 @@
                 "En": ""
             },
             "TotalSpaces": 94,
-            "AvailableSpaces": 84,
+            "AvailableSpaces": 90,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 94,
-                    "AvailableSpaces": 84
+                    "AvailableSpaces": 90
                 }
             ],
             "ServiceStatus": 1,
@@ -603,7 +603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "460b",
@@ -628,7 +628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "460c",
@@ -653,7 +653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "465",
@@ -662,12 +662,12 @@
                 "En": ""
             },
             "TotalSpaces": 248,
-            "AvailableSpaces": 68,
+            "AvailableSpaces": 108,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 248,
-                    "AvailableSpaces": 68
+                    "AvailableSpaces": 108
                 }
             ],
             "ServiceStatus": 1,
@@ -678,7 +678,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "466",
@@ -703,7 +703,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "467",
@@ -728,7 +728,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "469",
@@ -737,12 +737,12 @@
                 "En": ""
             },
             "TotalSpaces": 77,
-            "AvailableSpaces": 30,
+            "AvailableSpaces": 31,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 77,
-                    "AvailableSpaces": 30
+                    "AvailableSpaces": 31
                 }
             ],
             "ServiceStatus": 1,
@@ -753,7 +753,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "471",
@@ -778,7 +778,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "475",
@@ -787,12 +787,12 @@
                 "En": ""
             },
             "TotalSpaces": 31,
-            "AvailableSpaces": 19,
+            "AvailableSpaces": 18,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 31,
-                    "AvailableSpaces": 19
+                    "AvailableSpaces": 18
                 }
             ],
             "ServiceStatus": 1,
@@ -803,7 +803,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "476",
@@ -828,7 +828,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "479",
@@ -837,12 +837,12 @@
                 "En": ""
             },
             "TotalSpaces": 106,
-            "AvailableSpaces": 72,
+            "AvailableSpaces": 71,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 106,
-                    "AvailableSpaces": 72
+                    "AvailableSpaces": 71
                 }
             ],
             "ServiceStatus": 1,
@@ -853,7 +853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "481a",
@@ -878,7 +878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "520",
@@ -887,12 +887,12 @@
                 "En": ""
             },
             "TotalSpaces": 28,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 28,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -903,7 +903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "547",
@@ -928,7 +928,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "551",
@@ -953,7 +953,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "560",
@@ -962,12 +962,12 @@
                 "En": ""
             },
             "TotalSpaces": 105,
-            "AvailableSpaces": 74,
+            "AvailableSpaces": 102,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 105,
-                    "AvailableSpaces": 74
+                    "AvailableSpaces": 102
                 }
             ],
             "ServiceStatus": 1,
@@ -978,7 +978,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "590",
@@ -987,23 +987,23 @@
                 "En": ""
             },
             "TotalSpaces": 48,
-            "AvailableSpaces": 22,
+            "AvailableSpaces": 48,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 48,
-                    "AvailableSpaces": 22
+                    "AvailableSpaces": 48
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "595",
@@ -1028,7 +1028,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "596",
@@ -1037,23 +1037,23 @@
                 "En": ""
             },
             "TotalSpaces": 34,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 34,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 1
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 2,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "597",
@@ -1062,23 +1062,23 @@
                 "En": ""
             },
             "TotalSpaces": 23,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 16,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 23,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 16
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "599",
@@ -1103,7 +1103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "695",
@@ -1128,7 +1128,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "716",
@@ -1153,7 +1153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "749",
@@ -1162,12 +1162,12 @@
                 "En": ""
             },
             "TotalSpaces": 57,
-            "AvailableSpaces": 39,
+            "AvailableSpaces": 45,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 57,
-                    "AvailableSpaces": 39
+                    "AvailableSpaces": 45
                 }
             ],
             "ServiceStatus": 1,
@@ -1178,7 +1178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "757",
@@ -1203,7 +1203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "780",
@@ -1212,23 +1212,23 @@
                 "En": ""
             },
             "TotalSpaces": 63,
-            "AvailableSpaces": 26,
+            "AvailableSpaces": 58,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 63,
-                    "AvailableSpaces": 26
+                    "AvailableSpaces": 58
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "780a",
@@ -1253,7 +1253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "811",
@@ -1262,12 +1262,12 @@
                 "En": ""
             },
             "TotalSpaces": 140,
-            "AvailableSpaces": 113,
+            "AvailableSpaces": 139,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 140,
-                    "AvailableSpaces": 113
+                    "AvailableSpaces": 139
                 }
             ],
             "ServiceStatus": 1,
@@ -1278,7 +1278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "812",
@@ -1303,7 +1303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "812a",
@@ -1328,7 +1328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "812b",
@@ -1353,7 +1353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "813",
@@ -1378,7 +1378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "813b",
@@ -1403,7 +1403,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "813c",
@@ -1428,7 +1428,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "814a",
@@ -1453,7 +1453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "814b",
@@ -1478,7 +1478,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "814c",
@@ -1503,7 +1503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "815",
@@ -1528,7 +1528,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "815a",
@@ -1553,7 +1553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "816",
@@ -1562,12 +1562,12 @@
                 "En": ""
             },
             "TotalSpaces": 514,
-            "AvailableSpaces": 506,
+            "AvailableSpaces": 510,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 514,
-                    "AvailableSpaces": 506
+                    "AvailableSpaces": 510
                 }
             ],
             "ServiceStatus": 1,
@@ -1578,7 +1578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "817",
@@ -1587,12 +1587,12 @@
                 "En": ""
             },
             "TotalSpaces": 45,
-            "AvailableSpaces": 9,
+            "AvailableSpaces": 11,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 45,
-                    "AvailableSpaces": 9
+                    "AvailableSpaces": 11
                 }
             ],
             "ServiceStatus": 1,
@@ -1603,7 +1603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "817a",
@@ -1628,7 +1628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "818",
@@ -1653,7 +1653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "818a",
@@ -1678,7 +1678,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "818b",
@@ -1703,7 +1703,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "818c",
@@ -1728,7 +1728,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "818d",
@@ -1753,7 +1753,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "819",
@@ -1762,23 +1762,23 @@
                 "En": ""
             },
             "TotalSpaces": 22,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 11,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 22,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 11
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "820",
@@ -1803,7 +1803,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "821",
@@ -1812,23 +1812,23 @@
                 "En": ""
             },
             "TotalSpaces": 46,
-            "AvailableSpaces": 26,
+            "AvailableSpaces": 18,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 46,
-                    "AvailableSpaces": 26
+                    "AvailableSpaces": 18
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 0,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "822",
@@ -1853,7 +1853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "823",
@@ -1862,12 +1862,12 @@
                 "En": ""
             },
             "TotalSpaces": 47,
-            "AvailableSpaces": 32,
+            "AvailableSpaces": 37,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 47,
-                    "AvailableSpaces": 32
+                    "AvailableSpaces": 37
                 }
             ],
             "ServiceStatus": 1,
@@ -1878,7 +1878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "824",
@@ -1887,12 +1887,12 @@
                 "En": ""
             },
             "TotalSpaces": 20,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 20,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -1903,7 +1903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "825",
@@ -1912,12 +1912,12 @@
                 "En": ""
             },
             "TotalSpaces": 177,
-            "AvailableSpaces": 140,
+            "AvailableSpaces": 177,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 177,
-                    "AvailableSpaces": 140
+                    "AvailableSpaces": 177
                 }
             ],
             "ServiceStatus": 1,
@@ -1928,7 +1928,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "826",
@@ -1953,7 +1953,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "827",
@@ -1962,12 +1962,12 @@
                 "En": ""
             },
             "TotalSpaces": 143,
-            "AvailableSpaces": 54,
+            "AvailableSpaces": 52,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 143,
-                    "AvailableSpaces": 54
+                    "AvailableSpaces": 52
                 }
             ],
             "ServiceStatus": 1,
@@ -1978,7 +1978,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "828",
@@ -1987,12 +1987,12 @@
                 "En": ""
             },
             "TotalSpaces": 78,
-            "AvailableSpaces": 17,
+            "AvailableSpaces": 29,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 78,
-                    "AvailableSpaces": 17
+                    "AvailableSpaces": 29
                 }
             ],
             "ServiceStatus": 1,
@@ -2003,7 +2003,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "830",
@@ -2012,37 +2012,12 @@
                 "En": ""
             },
             "TotalSpaces": 139,
-            "AvailableSpaces": -1,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 139,
-                    "AvailableSpaces": -1
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": -1,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "831",
-            "CarParkName": {
-                "Zh_tw": "竹子腳",
-                "En": ""
-            },
-            "TotalSpaces": 17,
-            "AvailableSpaces": 1,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 17,
-                    "AvailableSpaces": 1
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -2053,7 +2028,32 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "831",
+            "CarParkName": {
+                "Zh_tw": "竹子腳",
+                "En": ""
+            },
+            "TotalSpaces": 17,
+            "AvailableSpaces": 3,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 17,
+                    "AvailableSpaces": 3
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 2,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "832",
@@ -2078,7 +2078,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "833",
@@ -2087,12 +2087,12 @@
                 "En": ""
             },
             "TotalSpaces": 114,
-            "AvailableSpaces": 44,
+            "AvailableSpaces": 42,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 114,
-                    "AvailableSpaces": 44
+                    "AvailableSpaces": 42
                 }
             ],
             "ServiceStatus": 1,
@@ -2103,7 +2103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "834",
@@ -2112,23 +2112,23 @@
                 "En": ""
             },
             "TotalSpaces": 59,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 48,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 59,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 48
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "835",
@@ -2153,7 +2153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "836",
@@ -2178,7 +2178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "837",
@@ -2203,7 +2203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "838",
@@ -2212,12 +2212,12 @@
                 "En": ""
             },
             "TotalSpaces": 66,
-            "AvailableSpaces": 25,
+            "AvailableSpaces": 19,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 66,
-                    "AvailableSpaces": 25
+                    "AvailableSpaces": 19
                 }
             ],
             "ServiceStatus": 1,
@@ -2228,7 +2228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "840",
@@ -2253,7 +2253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "841",
@@ -2278,7 +2278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "843",
@@ -2303,7 +2303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "844",
@@ -2328,7 +2328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "846",
@@ -2353,7 +2353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "848",
@@ -2362,12 +2362,12 @@
                 "En": ""
             },
             "TotalSpaces": 8,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 8,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -2378,7 +2378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "852",
@@ -2387,23 +2387,23 @@
                 "En": ""
             },
             "TotalSpaces": 43,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 18,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 43,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 18
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "853",
@@ -2428,7 +2428,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "854",
@@ -2437,12 +2437,12 @@
                 "En": ""
             },
             "TotalSpaces": 26,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 26,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
@@ -2453,7 +2453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "855",
@@ -2462,12 +2462,12 @@
                 "En": ""
             },
             "TotalSpaces": 111,
-            "AvailableSpaces": 32,
+            "AvailableSpaces": 42,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 111,
-                    "AvailableSpaces": 32
+                    "AvailableSpaces": 42
                 }
             ],
             "ServiceStatus": 1,
@@ -2478,7 +2478,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "856",
@@ -2503,7 +2503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857",
@@ -2512,12 +2512,12 @@
                 "En": ""
             },
             "TotalSpaces": 12,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 9,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 12,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 9
                 }
             ],
             "ServiceStatus": 1,
@@ -2528,7 +2528,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857a",
@@ -2553,7 +2553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857b",
@@ -2578,7 +2578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857c",
@@ -2603,7 +2603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857d",
@@ -2628,7 +2628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "857e",
@@ -2653,7 +2653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "858",
@@ -2662,62 +2662,12 @@
                 "En": ""
             },
             "TotalSpaces": 17,
-            "AvailableSpaces": 1,
+            "AvailableSpaces": 4,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 17,
-                    "AvailableSpaces": 1
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 2,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "859",
-            "CarParkName": {
-                "Zh_tw": "后安",
-                "En": ""
-            },
-            "TotalSpaces": 73,
-            "AvailableSpaces": 3,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 73,
-                    "AvailableSpaces": 3
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 2,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "861",
-            "CarParkName": {
-                "Zh_tw": "君毅",
-                "En": ""
-            },
-            "TotalSpaces": 47,
-            "AvailableSpaces": 10,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 47,
-                    "AvailableSpaces": 10
+                    "AvailableSpaces": 4
                 }
             ],
             "ServiceStatus": 1,
@@ -2728,20 +2678,45 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
-            "CarParkID": "862",
+            "CarParkID": "859",
             "CarParkName": {
-                "Zh_tw": "鼎泰",
+                "Zh_tw": "后安",
                 "En": ""
             },
-            "TotalSpaces": 62,
+            "TotalSpaces": 73,
+            "AvailableSpaces": 7,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 73,
+                    "AvailableSpaces": 7
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 2,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "861",
+            "CarParkName": {
+                "Zh_tw": "君毅",
+                "En": ""
+            },
+            "TotalSpaces": 47,
             "AvailableSpaces": 18,
             "Availabilities": [
                 {
                     "SpaceType": 1,
-                    "NumberOfSpaces": 62,
+                    "NumberOfSpaces": 47,
                     "AvailableSpaces": 18
                 }
             ],
@@ -2753,7 +2728,32 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "862",
+            "CarParkName": {
+                "Zh_tw": "鼎泰",
+                "En": ""
+            },
+            "TotalSpaces": 62,
+            "AvailableSpaces": 24,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 62,
+                    "AvailableSpaces": 24
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 1,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "863",
@@ -2778,7 +2778,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "864",
@@ -2787,23 +2787,23 @@
                 "En": ""
             },
             "TotalSpaces": 21,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 21,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "865",
@@ -2812,23 +2812,23 @@
                 "En": ""
             },
             "TotalSpaces": 25,
-            "AvailableSpaces": -1,
+            "AvailableSpaces": 8,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 25,
-                    "AvailableSpaces": -1
+                    "AvailableSpaces": 8
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": -1,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "867",
@@ -2837,12 +2837,12 @@
                 "En": ""
             },
             "TotalSpaces": 48,
-            "AvailableSpaces": 16,
+            "AvailableSpaces": 14,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 48,
-                    "AvailableSpaces": 16
+                    "AvailableSpaces": 14
                 }
             ],
             "ServiceStatus": 1,
@@ -2853,7 +2853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "868",
@@ -2862,12 +2862,12 @@
                 "En": ""
             },
             "TotalSpaces": 43,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 8,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 43,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 8
                 }
             ],
             "ServiceStatus": 1,
@@ -2878,7 +2878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "869",
@@ -2887,12 +2887,12 @@
                 "En": ""
             },
             "TotalSpaces": 31,
-            "AvailableSpaces": 18,
+            "AvailableSpaces": 17,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 31,
-                    "AvailableSpaces": 18
+                    "AvailableSpaces": 17
                 }
             ],
             "ServiceStatus": 1,
@@ -2903,7 +2903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "874",
@@ -2912,12 +2912,12 @@
                 "En": ""
             },
             "TotalSpaces": 57,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 6,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 57,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 6
                 }
             ],
             "ServiceStatus": 1,
@@ -2928,7 +2928,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "877",
@@ -2937,37 +2937,12 @@
                 "En": ""
             },
             "TotalSpaces": 93,
-            "AvailableSpaces": 19,
+            "AvailableSpaces": 11,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 93,
-                    "AvailableSpaces": 19
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 1,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "878",
-            "CarParkName": {
-                "Zh_tw": "加昌",
-                "En": ""
-            },
-            "TotalSpaces": 96,
-            "AvailableSpaces": 8,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 96,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 11
                 }
             ],
             "ServiceStatus": 1,
@@ -2978,7 +2953,32 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "878",
+            "CarParkName": {
+                "Zh_tw": "加昌",
+                "En": ""
+            },
+            "TotalSpaces": 96,
+            "AvailableSpaces": 12,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 96,
+                    "AvailableSpaces": 12
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 2,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "899",
@@ -2987,12 +2987,12 @@
                 "En": ""
             },
             "TotalSpaces": 73,
-            "AvailableSpaces": 83,
+            "AvailableSpaces": 84,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 73,
-                    "AvailableSpaces": 83
+                    "AvailableSpaces": 84
                 }
             ],
             "ServiceStatus": 1,
@@ -3003,7 +3003,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "908",
@@ -3028,7 +3028,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "913",
@@ -3053,7 +3053,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "914",
@@ -3062,12 +3062,12 @@
                 "En": ""
             },
             "TotalSpaces": 46,
-            "AvailableSpaces": 32,
+            "AvailableSpaces": 34,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 46,
-                    "AvailableSpaces": 32
+                    "AvailableSpaces": 34
                 }
             ],
             "ServiceStatus": 1,
@@ -3078,7 +3078,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "915",
@@ -3103,7 +3103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "916",
@@ -3128,7 +3128,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "917",
@@ -3137,23 +3137,23 @@
                 "En": ""
             },
             "TotalSpaces": 37,
-            "AvailableSpaces": 9,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 37,
-                    "AvailableSpaces": 9
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 2,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "918",
@@ -3178,7 +3178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "919",
@@ -3187,12 +3187,12 @@
                 "En": ""
             },
             "TotalSpaces": 32,
-            "AvailableSpaces": 13,
+            "AvailableSpaces": 10,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 32,
-                    "AvailableSpaces": 13
+                    "AvailableSpaces": 10
                 }
             ],
             "ServiceStatus": 1,
@@ -3203,7 +3203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "920",
@@ -3212,12 +3212,12 @@
                 "En": ""
             },
             "TotalSpaces": 99,
-            "AvailableSpaces": 29,
+            "AvailableSpaces": 21,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 99,
-                    "AvailableSpaces": 29
+                    "AvailableSpaces": 21
                 }
             ],
             "ServiceStatus": 1,
@@ -3228,7 +3228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "923",
@@ -3237,12 +3237,12 @@
                 "En": ""
             },
             "TotalSpaces": 28,
-            "AvailableSpaces": 14,
+            "AvailableSpaces": 24,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 28,
-                    "AvailableSpaces": 14
+                    "AvailableSpaces": 24
                 }
             ],
             "ServiceStatus": 1,
@@ -3253,7 +3253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "924",
@@ -3262,23 +3262,23 @@
                 "En": ""
             },
             "TotalSpaces": 92,
-            "AvailableSpaces": -1,
+            "AvailableSpaces": 20,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 92,
-                    "AvailableSpaces": -1
+                    "AvailableSpaces": 20
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": -1,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "926",
@@ -3303,7 +3303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "930",
@@ -3328,7 +3328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "933",
@@ -3337,12 +3337,12 @@
                 "En": ""
             },
             "TotalSpaces": 228,
-            "AvailableSpaces": 29,
+            "AvailableSpaces": 31,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 228,
-                    "AvailableSpaces": 29
+                    "AvailableSpaces": 31
                 }
             ],
             "ServiceStatus": 1,
@@ -3353,7 +3353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "935",
@@ -3362,23 +3362,23 @@
                 "En": ""
             },
             "TotalSpaces": 35,
-            "AvailableSpaces": 2,
+            "AvailableSpaces": 16,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 35,
-                    "AvailableSpaces": 2
+                    "AvailableSpaces": 16
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "936",
@@ -3403,7 +3403,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "937",
@@ -3412,12 +3412,12 @@
                 "En": ""
             },
             "TotalSpaces": 229,
-            "AvailableSpaces": 116,
+            "AvailableSpaces": 124,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 229,
-                    "AvailableSpaces": 116
+                    "AvailableSpaces": 124
                 }
             ],
             "ServiceStatus": 1,
@@ -3428,7 +3428,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "938",
@@ -3437,12 +3437,12 @@
                 "En": ""
             },
             "TotalSpaces": 212,
-            "AvailableSpaces": 123,
+            "AvailableSpaces": 117,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 212,
-                    "AvailableSpaces": 123
+                    "AvailableSpaces": 117
                 }
             ],
             "ServiceStatus": 1,
@@ -3453,7 +3453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "943",
@@ -3462,23 +3462,23 @@
                 "En": ""
             },
             "TotalSpaces": 89,
-            "AvailableSpaces": 15,
+            "AvailableSpaces": 21,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 89,
-                    "AvailableSpaces": 15
+                    "AvailableSpaces": 21
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "946",
@@ -3487,12 +3487,12 @@
                 "En": ""
             },
             "TotalSpaces": 60,
-            "AvailableSpaces": 7,
+            "AvailableSpaces": 8,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 60,
-                    "AvailableSpaces": 7
+                    "AvailableSpaces": 8
                 }
             ],
             "ServiceStatus": 1,
@@ -3503,7 +3503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "947",
@@ -3512,23 +3512,23 @@
                 "En": ""
             },
             "TotalSpaces": 55,
-            "AvailableSpaces": 2,
+            "AvailableSpaces": 23,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 55,
-                    "AvailableSpaces": 2
+                    "AvailableSpaces": 23
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "949",
@@ -3553,7 +3553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "952",
@@ -3562,12 +3562,12 @@
                 "En": ""
             },
             "TotalSpaces": 39,
-            "AvailableSpaces": 32,
+            "AvailableSpaces": 36,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 39,
-                    "AvailableSpaces": 32
+                    "AvailableSpaces": 36
                 }
             ],
             "ServiceStatus": 1,
@@ -3578,7 +3578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "953",
@@ -3603,7 +3603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "954",
@@ -3628,7 +3628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "955",
@@ -3637,12 +3637,12 @@
                 "En": ""
             },
             "TotalSpaces": 73,
-            "AvailableSpaces": 25,
+            "AvailableSpaces": 23,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 73,
-                    "AvailableSpaces": 25
+                    "AvailableSpaces": 23
                 }
             ],
             "ServiceStatus": 1,
@@ -3653,7 +3653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "956",
@@ -3678,7 +3678,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "957",
@@ -3687,12 +3687,12 @@
                 "En": ""
             },
             "TotalSpaces": 97,
-            "AvailableSpaces": 39,
+            "AvailableSpaces": 38,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 97,
-                    "AvailableSpaces": 39
+                    "AvailableSpaces": 38
                 }
             ],
             "ServiceStatus": 1,
@@ -3703,7 +3703,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "965",
@@ -3712,12 +3712,12 @@
                 "En": ""
             },
             "TotalSpaces": 114,
-            "AvailableSpaces": 12,
+            "AvailableSpaces": 4,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 114,
-                    "AvailableSpaces": 12
+                    "AvailableSpaces": 4
                 }
             ],
             "ServiceStatus": 1,
@@ -3728,7 +3728,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "967",
@@ -3753,7 +3753,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "968",
@@ -3762,62 +3762,12 @@
                 "En": ""
             },
             "TotalSpaces": 22,
-            "AvailableSpaces": 5,
+            "AvailableSpaces": 4,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 22,
-                    "AvailableSpaces": 5
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 1,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "969",
-            "CarParkName": {
-                "Zh_tw": "允文",
-                "En": ""
-            },
-            "TotalSpaces": 13,
-            "AvailableSpaces": -1,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 13,
-                    "AvailableSpaces": -1
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": -1,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "970",
-            "CarParkName": {
-                "Zh_tw": "苓中",
-                "En": ""
-            },
-            "TotalSpaces": 69,
-            "AvailableSpaces": 7,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 69,
-                    "AvailableSpaces": 7
+                    "AvailableSpaces": 4
                 }
             ],
             "ServiceStatus": 1,
@@ -3828,7 +3778,57 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "969",
+            "CarParkName": {
+                "Zh_tw": "允文",
+                "En": ""
+            },
+            "TotalSpaces": 13,
+            "AvailableSpaces": 8,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 13,
+                    "AvailableSpaces": 8
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 0,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "970",
+            "CarParkName": {
+                "Zh_tw": "苓中",
+                "En": ""
+            },
+            "TotalSpaces": 69,
+            "AvailableSpaces": 15,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 69,
+                    "AvailableSpaces": 15
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 1,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "978",
@@ -3853,7 +3853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "982",
@@ -3862,12 +3862,12 @@
                 "En": ""
             },
             "TotalSpaces": 21,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 2,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 21,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 2
                 }
             ],
             "ServiceStatus": 1,
@@ -3878,7 +3878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "983",
@@ -3903,7 +3903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "984",
@@ -3912,23 +3912,23 @@
                 "En": ""
             },
             "TotalSpaces": 145,
-            "AvailableSpaces": 59,
+            "AvailableSpaces": 75,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 145,
-                    "AvailableSpaces": 59
+                    "AvailableSpaces": 75
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 0,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "985",
@@ -3937,12 +3937,12 @@
                 "En": ""
             },
             "TotalSpaces": 96,
-            "AvailableSpaces": 29,
+            "AvailableSpaces": 32,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 96,
-                    "AvailableSpaces": 29
+                    "AvailableSpaces": 32
                 }
             ],
             "ServiceStatus": 1,
@@ -3953,7 +3953,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "987",
@@ -3962,23 +3962,23 @@
                 "En": ""
             },
             "TotalSpaces": 127,
-            "AvailableSpaces": 16,
+            "AvailableSpaces": 55,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 127,
-                    "AvailableSpaces": 16
+                    "AvailableSpaces": 55
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "988",
@@ -4003,7 +4003,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "991",
@@ -4028,7 +4028,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "992",
@@ -4037,12 +4037,12 @@
                 "En": ""
             },
             "TotalSpaces": 35,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 2,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 35,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 2
                 }
             ],
             "ServiceStatus": 1,
@@ -4053,7 +4053,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "993",
@@ -4078,7 +4078,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "995",
@@ -4087,37 +4087,12 @@
                 "En": ""
             },
             "TotalSpaces": 27,
-            "AvailableSpaces": 2,
+            "AvailableSpaces": 8,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 27,
-                    "AvailableSpaces": 2
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 2,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "996",
-            "CarParkName": {
-                "Zh_tw": "前峰",
-                "En": ""
-            },
-            "TotalSpaces": 65,
-            "AvailableSpaces": 13,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 65,
-                    "AvailableSpaces": 13
+                    "AvailableSpaces": 8
                 }
             ],
             "ServiceStatus": 1,
@@ -4128,7 +4103,32 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "996",
+            "CarParkName": {
+                "Zh_tw": "前峰",
+                "En": ""
+            },
+            "TotalSpaces": 65,
+            "AvailableSpaces": 15,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 65,
+                    "AvailableSpaces": 15
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 1,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "997",
@@ -4153,7 +4153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "998",
@@ -4162,23 +4162,23 @@
                 "En": ""
             },
             "TotalSpaces": 13,
-            "AvailableSpaces": 5,
+            "AvailableSpaces": 2,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 13,
-                    "AvailableSpaces": 5
+                    "AvailableSpaces": 2
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 1,
+            "FullStatus": 2,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "999",
@@ -4187,12 +4187,12 @@
                 "En": ""
             },
             "TotalSpaces": 39,
-            "AvailableSpaces": 8,
+            "AvailableSpaces": 14,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 39,
-                    "AvailableSpaces": 8
+                    "AvailableSpaces": 14
                 }
             ],
             "ServiceStatus": 1,
@@ -4203,7 +4203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A01",
@@ -4228,7 +4228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "a126",
@@ -4253,7 +4253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A14",
@@ -4262,12 +4262,12 @@
                 "En": ""
             },
             "TotalSpaces": 28,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 28,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 1
                 }
             ],
             "ServiceStatus": 1,
@@ -4278,7 +4278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A15",
@@ -4287,23 +4287,23 @@
                 "En": ""
             },
             "TotalSpaces": 24,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 5,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 24,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 5
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": 1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A190",
@@ -4312,12 +4312,12 @@
                 "En": ""
             },
             "TotalSpaces": 44,
-            "AvailableSpaces": 3,
+            "AvailableSpaces": 1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 44,
-                    "AvailableSpaces": 3
+                    "AvailableSpaces": 1
                 }
             ],
             "ServiceStatus": 1,
@@ -4328,7 +4328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A22",
@@ -4353,7 +4353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A23",
@@ -4378,7 +4378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A30",
@@ -4403,7 +4403,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A67",
@@ -4412,12 +4412,12 @@
                 "En": ""
             },
             "TotalSpaces": 176,
-            "AvailableSpaces": 16,
+            "AvailableSpaces": 13,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 176,
-                    "AvailableSpaces": 16
+                    "AvailableSpaces": 13
                 }
             ],
             "ServiceStatus": 1,
@@ -4428,7 +4428,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A74",
@@ -4437,12 +4437,12 @@
                 "En": ""
             },
             "TotalSpaces": 24,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 24,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 1
                 }
             ],
             "ServiceStatus": 1,
@@ -4453,7 +4453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A77",
@@ -4478,7 +4478,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "a93",
@@ -4503,7 +4503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "A99",
@@ -4528,7 +4528,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AA23",
@@ -4553,7 +4553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AAA",
@@ -4562,12 +4562,12 @@
                 "En": ""
             },
             "TotalSpaces": 46,
-            "AvailableSpaces": 18,
+            "AvailableSpaces": 12,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 46,
-                    "AvailableSpaces": 18
+                    "AvailableSpaces": 12
                 }
             ],
             "ServiceStatus": 1,
@@ -4578,7 +4578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD04",
@@ -4603,7 +4603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD1",
@@ -4612,12 +4612,12 @@
                 "En": ""
             },
             "TotalSpaces": 836,
-            "AvailableSpaces": 191,
+            "AvailableSpaces": 174,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 836,
-                    "AvailableSpaces": 191
+                    "AvailableSpaces": 174
                 }
             ],
             "ServiceStatus": 1,
@@ -4628,7 +4628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD10",
@@ -4653,7 +4653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD11",
@@ -4662,12 +4662,12 @@
                 "En": ""
             },
             "TotalSpaces": 382,
-            "AvailableSpaces": 18,
+            "AvailableSpaces": 22,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 382,
-                    "AvailableSpaces": 18
+                    "AvailableSpaces": 22
                 }
             ],
             "ServiceStatus": 1,
@@ -4678,7 +4678,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD12",
@@ -4687,23 +4687,23 @@
                 "En": ""
             },
             "TotalSpaces": 459,
-            "AvailableSpaces": 24,
+            "AvailableSpaces": -1,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 459,
-                    "AvailableSpaces": 24
+                    "AvailableSpaces": -1
                 }
             ],
             "ServiceStatus": 1,
-            "FullStatus": 2,
+            "FullStatus": -1,
             "ServiceAvailableLevel": "",
             "AlmostFullLevel": "0",
             "FullLevel": "",
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD13",
@@ -4728,7 +4728,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD15",
@@ -4753,7 +4753,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD15a",
@@ -4778,7 +4778,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD16",
@@ -4803,7 +4803,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD17",
@@ -4828,7 +4828,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD17a",
@@ -4853,7 +4853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD2",
@@ -4878,7 +4878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD20",
@@ -4903,7 +4903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD21",
@@ -4912,62 +4912,12 @@
                 "En": ""
             },
             "TotalSpaces": 121,
-            "AvailableSpaces": 68,
+            "AvailableSpaces": 56,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 121,
-                    "AvailableSpaces": 68
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 0,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "AD24",
-            "CarParkName": {
-                "Zh_tw": "高雄鼓山國小地下停車場",
-                "En": ""
-            },
-            "TotalSpaces": 184,
-            "AvailableSpaces": 17,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 184,
-                    "AvailableSpaces": 17
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 2,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "AD25",
-            "CarParkName": {
-                "Zh_tw": "光武國小地下立體停車場",
-                "En": ""
-            },
-            "TotalSpaces": 128,
-            "AvailableSpaces": 37,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 128,
-                    "AvailableSpaces": 37
+                    "AvailableSpaces": 56
                 }
             ],
             "ServiceStatus": 1,
@@ -4978,7 +4928,57 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "AD24",
+            "CarParkName": {
+                "Zh_tw": "高雄鼓山國小地下停車場",
+                "En": ""
+            },
+            "TotalSpaces": 184,
+            "AvailableSpaces": 13,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 184,
+                    "AvailableSpaces": 13
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 2,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "AD25",
+            "CarParkName": {
+                "Zh_tw": "光武國小地下立體停車場",
+                "En": ""
+            },
+            "TotalSpaces": 128,
+            "AvailableSpaces": 20,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 128,
+                    "AvailableSpaces": 20
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 2,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD26",
@@ -5003,7 +5003,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD27",
@@ -5028,7 +5028,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD28",
@@ -5053,7 +5053,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD3",
@@ -5078,7 +5078,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD5",
@@ -5087,12 +5087,12 @@
                 "En": ""
             },
             "TotalSpaces": 305,
-            "AvailableSpaces": 37,
+            "AvailableSpaces": 23,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 305,
-                    "AvailableSpaces": 37
+                    "AvailableSpaces": 23
                 }
             ],
             "ServiceStatus": 1,
@@ -5103,7 +5103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD6",
@@ -5128,7 +5128,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD7",
@@ -5153,7 +5153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD8",
@@ -5162,12 +5162,12 @@
                 "En": ""
             },
             "TotalSpaces": 559,
-            "AvailableSpaces": 56,
+            "AvailableSpaces": 7,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 559,
-                    "AvailableSpaces": 56
+                    "AvailableSpaces": 7
                 }
             ],
             "ServiceStatus": 1,
@@ -5178,7 +5178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "AD9",
@@ -5187,12 +5187,12 @@
                 "En": ""
             },
             "TotalSpaces": 131,
-            "AvailableSpaces": 59,
+            "AvailableSpaces": 53,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 131,
-                    "AvailableSpaces": 59
+                    "AvailableSpaces": 53
                 }
             ],
             "ServiceStatus": 1,
@@ -5203,7 +5203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B14",
@@ -5228,7 +5228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B38",
@@ -5253,7 +5253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B4",
@@ -5278,7 +5278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B40",
@@ -5303,7 +5303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B43",
@@ -5328,7 +5328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B46a",
@@ -5353,7 +5353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B46b",
@@ -5378,7 +5378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B46c",
@@ -5403,7 +5403,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B49",
@@ -5428,7 +5428,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B54",
@@ -5437,12 +5437,12 @@
                 "En": ""
             },
             "TotalSpaces": 11,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 3,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 11,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 3
                 }
             ],
             "ServiceStatus": 1,
@@ -5453,7 +5453,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B55",
@@ -5478,7 +5478,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B58",
@@ -5487,12 +5487,12 @@
                 "En": ""
             },
             "TotalSpaces": 110,
-            "AvailableSpaces": 48,
+            "AvailableSpaces": 41,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 110,
-                    "AvailableSpaces": 48
+                    "AvailableSpaces": 41
                 }
             ],
             "ServiceStatus": 1,
@@ -5503,7 +5503,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B59",
@@ -5528,7 +5528,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "B7",
@@ -5553,7 +5553,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C05",
@@ -5578,7 +5578,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C07",
@@ -5603,7 +5603,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "c08",
@@ -5628,7 +5628,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C09",
@@ -5653,7 +5653,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C38",
@@ -5662,12 +5662,12 @@
                 "En": ""
             },
             "TotalSpaces": 13,
-            "AvailableSpaces": 4,
+            "AvailableSpaces": 6,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 13,
-                    "AvailableSpaces": 4
+                    "AvailableSpaces": 6
                 }
             ],
             "ServiceStatus": 1,
@@ -5678,7 +5678,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C40",
@@ -5703,7 +5703,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C41",
@@ -5728,7 +5728,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C45",
@@ -5737,12 +5737,12 @@
                 "En": ""
             },
             "TotalSpaces": 99,
-            "AvailableSpaces": 60,
+            "AvailableSpaces": 65,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 99,
-                    "AvailableSpaces": 60
+                    "AvailableSpaces": 65
                 }
             ],
             "ServiceStatus": 1,
@@ -5753,7 +5753,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "c46",
@@ -5762,12 +5762,12 @@
                 "En": ""
             },
             "TotalSpaces": 45,
-            "AvailableSpaces": 20,
+            "AvailableSpaces": 16,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 45,
-                    "AvailableSpaces": 20
+                    "AvailableSpaces": 16
                 }
             ],
             "ServiceStatus": 1,
@@ -5778,7 +5778,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C47",
@@ -5803,7 +5803,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C49",
@@ -5812,12 +5812,12 @@
                 "En": ""
             },
             "TotalSpaces": 61,
-            "AvailableSpaces": 41,
+            "AvailableSpaces": 62,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 61,
-                    "AvailableSpaces": 41
+                    "AvailableSpaces": 62
                 }
             ],
             "ServiceStatus": 1,
@@ -5828,7 +5828,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "c50",
@@ -5853,7 +5853,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C92",
@@ -5862,12 +5862,12 @@
                 "En": ""
             },
             "TotalSpaces": 120,
-            "AvailableSpaces": 44,
+            "AvailableSpaces": 38,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 120,
-                    "AvailableSpaces": 44
+                    "AvailableSpaces": 38
                 }
             ],
             "ServiceStatus": 1,
@@ -5878,7 +5878,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C93",
@@ -5903,7 +5903,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "C96",
@@ -5912,37 +5912,12 @@
                 "En": ""
             },
             "TotalSpaces": 28,
-            "AvailableSpaces": 7,
+            "AvailableSpaces": 17,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 28,
-                    "AvailableSpaces": 7
-                }
-            ],
-            "ServiceStatus": 1,
-            "FullStatus": 1,
-            "ServiceAvailableLevel": "",
-            "AlmostFullLevel": "0",
-            "FullLevel": "",
-            "OverCrowdingLevel": "",
-            "ChargeStatus": 1,
-            "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
-        },
-        {
-            "CarParkID": "C98",
-            "CarParkName": {
-                "Zh_tw": "崗山仔公園",
-                "En": ""
-            },
-            "TotalSpaces": 98,
-            "AvailableSpaces": 50,
-            "Availabilities": [
-                {
-                    "SpaceType": 1,
-                    "NumberOfSpaces": 98,
-                    "AvailableSpaces": 50
+                    "AvailableSpaces": 17
                 }
             ],
             "ServiceStatus": 1,
@@ -5953,7 +5928,32 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
+        },
+        {
+            "CarParkID": "C98",
+            "CarParkName": {
+                "Zh_tw": "崗山仔公園",
+                "En": ""
+            },
+            "TotalSpaces": 98,
+            "AvailableSpaces": 45,
+            "Availabilities": [
+                {
+                    "SpaceType": 1,
+                    "NumberOfSpaces": 98,
+                    "AvailableSpaces": 45
+                }
+            ],
+            "ServiceStatus": 1,
+            "FullStatus": 1,
+            "ServiceAvailableLevel": "",
+            "AlmostFullLevel": "0",
+            "FullLevel": "",
+            "OverCrowdingLevel": "",
+            "ChargeStatus": 1,
+            "Remark": "",
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "D52",
@@ -5978,7 +5978,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "D91",
@@ -5987,12 +5987,12 @@
                 "En": ""
             },
             "TotalSpaces": 58,
-            "AvailableSpaces": 11,
+            "AvailableSpaces": 10,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 58,
-                    "AvailableSpaces": 11
+                    "AvailableSpaces": 10
                 }
             ],
             "ServiceStatus": 1,
@@ -6003,7 +6003,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "D93",
@@ -6012,12 +6012,12 @@
                 "En": ""
             },
             "TotalSpaces": 237,
-            "AvailableSpaces": 63,
+            "AvailableSpaces": 56,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 237,
-                    "AvailableSpaces": 63
+                    "AvailableSpaces": 56
                 }
             ],
             "ServiceStatus": 1,
@@ -6028,7 +6028,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "D95",
@@ -6037,12 +6037,12 @@
                 "En": ""
             },
             "TotalSpaces": 44,
-            "AvailableSpaces": 18,
+            "AvailableSpaces": 17,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 44,
-                    "AvailableSpaces": 18
+                    "AvailableSpaces": 17
                 }
             ],
             "ServiceStatus": 1,
@@ -6053,7 +6053,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "E34",
@@ -6062,12 +6062,12 @@
                 "En": ""
             },
             "TotalSpaces": 19,
-            "AvailableSpaces": 10,
+            "AvailableSpaces": 13,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 19,
-                    "AvailableSpaces": 10
+                    "AvailableSpaces": 13
                 }
             ],
             "ServiceStatus": 1,
@@ -6078,7 +6078,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "E35",
@@ -6103,7 +6103,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "E36",
@@ -6128,7 +6128,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "F04",
@@ -6153,7 +6153,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "F30",
@@ -6178,7 +6178,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "park0016",
@@ -6203,7 +6203,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "park0017",
@@ -6228,7 +6228,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "park0019",
@@ -6237,12 +6237,12 @@
                 "En": ""
             },
             "TotalSpaces": 78,
-            "AvailableSpaces": 30,
+            "AvailableSpaces": 27,
             "Availabilities": [
                 {
                     "SpaceType": 1,
                     "NumberOfSpaces": 78,
-                    "AvailableSpaces": 30
+                    "AvailableSpaces": 27
                 }
             ],
             "ServiceStatus": 1,
@@ -6253,7 +6253,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "R68",
@@ -6278,7 +6278,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "Z03a",
@@ -6303,7 +6303,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "Z05",
@@ -6328,7 +6328,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "Z08",
@@ -6353,7 +6353,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         },
         {
             "CarParkID": "ZZ3",
@@ -6378,7 +6378,7 @@
             "OverCrowdingLevel": "",
             "ChargeStatus": 1,
             "Remark": "",
-            "DataCollectTime": "2023-12-03T20:00:11+08:00"
+            "DataCollectTime": "2023-12-04T00:59:11+08:00"
         }
     ]
 }
