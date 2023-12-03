@@ -11,6 +11,12 @@ import sys
 
 #import MySQLdb
 
+class Colorfill:
+    OK = "\033[92m"  # GREEN
+    WARNING = "\033[93m"  # YELLOW
+    FAIL = "\033[91m"  # RED
+    RESET = "\033[0m"  # RESET COLOR
+
 proceeded_data = []
 num_list = open(f'{gd.data_attributes.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
@@ -73,7 +79,7 @@ if __name__ == '__main__':
 
         new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
         #sql_write(name,time,spaces)     # SQL command
-        print(f"Data {num_list[-1]} reconstruct successfully.")
+        print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.OK}")
     except:
         print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")
 
