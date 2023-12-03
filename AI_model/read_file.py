@@ -30,7 +30,7 @@ def read_file():
         
     for i in thread_list:
         i.join()
-        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have changed into {Colorfill.RESET}')
+        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have changed {Colorfill.RESET}')
             
     print(f"ALL execution are done")
             
