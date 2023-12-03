@@ -15,7 +15,7 @@ class Colorfill:
 def read_file():
     index_list = []
     thread_list = []
-    with open(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/_0.txt', encoding = 'utf-8', mode = 'r' ) as index:
+    with open(f'{os.getcwd()}\data/data_storage/Parklot_Available/_0.txt', encoding = 'utf-8', mode = 'r' ) as index:
          index_list = index.read().split()  #read 
 #### begin read data with line to line 
     for data_name  in index_list:
@@ -30,7 +30,7 @@ def read_file():
         
     for i in thread_list:
         i.join()
-        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have successfully loaded{Colorfill.RESET}')
+        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have changed into {Colorfill.RESET}')
             
     print(f"ALL execution are done")
             
@@ -38,7 +38,7 @@ def read_file():
 
 def json_append(i):
     try:
-        data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Avaliable/proceeded_data/{i}.json')
+        data = pd.read_json(f'{os.getcwd()}\data/data_storage/Parklot_Available/proceeded_data/{i}.json')
         # Writ down the read logic below
         
         for row in range(len(data)):
@@ -64,7 +64,7 @@ def txt_append(i):
         #print(f"{Colorfill.WARNING}Json file {i}.json not found, try to read .txt instead...{Colorfill.RESET}") #warning
                 
         data_dict = dict()
-        with open(f'{os.getcwd()}/data/data_storage/Parklot_Avaliable/proceeded_data/{i}.txt', encoding = 'utf-8', mode = 'r' ) as f:
+        with open(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{i}.txt', encoding = 'utf-8', mode = 'r' ) as f:
             data = f.read()
             spdata = data.split( '\'], [\'' )
             lens = len(spdata) #lens :

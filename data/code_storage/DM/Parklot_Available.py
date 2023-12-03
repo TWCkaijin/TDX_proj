@@ -1,15 +1,13 @@
 '''
-This program can only be used with get_data.py  
+This program can only be used with get_data.py
+And only use for simplifying the data structure of Parklot_Available 
 '''
-import get_data as gd
 import json 
 import os
 import time
-import re
 import pandas as pd
-import sys
-
-#import MySQLdb
+import threading as t
+import re
 
 class Colorfill:
     OK = "\033[92m"  # GREEN
@@ -17,47 +15,14 @@ class Colorfill:
     FAIL = "\033[91m"  # RED
     RESET = "\033[0m"  # RESET COLOR
 
-proceeded_data = []
-num_list = open(f'{gd.data_attributes.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
+num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
-
-'''
-def sql_write(table_name, time, spaces) :
-    db = MySQLdb.connect(
-        host='webserverdatabase.cmstfznt40ot.ap-southeast-2.rds.amazonaws.com',
-        port=3306,
-        user='AFD_Kai',
-        passwd='AFD_Kai_PythonMaster',
-        db='GDSC',
-    )
-
-    curs = db.cursor()
-
-    # Check if the table exists
-    curs.execute(f"SHOW TABLES LIKE '{table_name}'")
-    result = curs.fetchone()
-
-    if result:
-        # Table exists, insert data
-        for i in range(len(time)):
-            curs.execute(f"INSERT INTO {table_name} (time, spaces) VALUES ('{time[i]}', {spaces[i]})")
-    else:
-        # Table does not exist, create table and insert data
-        curs.execute(f"CREATE TABLE {table_name} (id INT, time VARCHAR(20), spaces INT)")
-        for i in range(len(time)):
-            curs.execute(f"INSERT INTO {table_name} (id, time, spaces) VALUES ({i+1}, '{time[i]}', {spaces[i]})")
-
-    curs.close()
-    db.commit()
-    db.close()
-'''
-
-
-
+thread_list = []
 
 if __name__ == '__main__':
+    T_S = time.time()
     try:#Datatype = .json
-        df = pd.read_json(f'{gd.data_attributes.dir_path}/{num_list[-1]}.json')
+        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{num_list[-1]}.json')
         new = pd.DataFrame()
 
         time = []
@@ -76,32 +41,26 @@ if __name__ == '__main__':
         new['UpdateTime'] = time
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
+        
+        for row in range(len(new)):
+            try : 
+               f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
+               k = pd.DataFrame(new.iloc[row,:]).T
+               result = pd.concat([f,k],axis=0,ignore_index=True)
+               result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')
+               #print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} reconstruct complete{Colorfill.RESET}')         
+            except Exception as e:
+               #print(f'{Colorfill.FAIL} {e} {Colorfill.RESET}')
+               f = pd.DataFrame()
+               f = new.iloc[row,:]
+               #f = pd.concat([f,f],axis=0,ignore_index=True)
+               f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
 
-        new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
-        #sql_write(name,time,spaces)     # SQL command
+
+        #new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
         print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.RESET}")
-    except:
+        print(f'time:{time.time()-T_S}')
+    except Exception  as e :
         print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")
+        print(f"Error message:{e}")
 
-
-
-
-'''
-
-'''
-
-''' #Datatype = .txt
-# try :
-#     raw = open(f'{gd.data_attributes.dir_path}/{num_list[-1]}',mode = 'r',encoding = 'utf-8').read()
-#     #print(raw)
-#     raw = json.loads(raw)
-#     for park_lot in raw['ParkingAvailabilities']:
-#         #print(f'{park_lot["CarParkName"]["Zh_tw"]}-剩餘停車位 : {str(park_lot["TotalSpaces"])}')  #Printing all the proceeded data on the prompt
-#         proceeded_data.append([f'{park_lot["CarParkName"]["Zh_tw"]}',f'Total space :{str(park_lot["TotalSpaces"])}',])
-    
-#     #print(proceeded_data)
-#     open(f'{gd.data_attributes.dir_path}/proceeded_data/{num_list[-1]}',mode = 'w',encoding = 'utf-8').write(str(proceeded_data))
-#     print(f'data {num_list[-1]} successfully loaded')
-# except:
-#     print("Error with finding the data with data_name in the '_0.txt'")
-'''
