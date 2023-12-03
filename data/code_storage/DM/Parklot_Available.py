@@ -59,7 +59,6 @@ if __name__ == '__main__':
 
         #new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
         print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.RESET}")
-        print(f'time:{time.time()-T_S}')
     except Exception  as e :
         print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")
         print(f"Error message:{e}")
