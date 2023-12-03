@@ -19,18 +19,8 @@ def read_file():
          index_list = index.read().split()  #read 
 #### begin read data with line to line 
     for data_name  in index_list:
-        AP = t.Thread(target=json_append,args=(data_name,))
-        thread_list.append(AP)
-        try: #read json as default 
-            print(f'Data {data_name:14} executing...')
-            AP.start()
-            
-        except Exception as e: # If json file not found , then try to read txt files
-            txt_append(data_name)
-        
-    for i in thread_list:
-        i.join()
-        print(f'{Colorfill.OK}Data {index_list[thread_list.index(i)]:14}.json have changed {Colorfill.RESET}')
+        json_append(data_name)
+        print(f'{Colorfill.OK}Data {data_name}.json have changed {Colorfill.RESET}')
             
     print(f"ALL execution are done")
             
