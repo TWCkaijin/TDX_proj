@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
         new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
         #sql_write(name,time,spaces)     # SQL command
-        print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.OK}")
+        print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.RESET}")
     except:
         print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")
 
