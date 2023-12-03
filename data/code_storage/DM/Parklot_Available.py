@@ -8,6 +8,7 @@ import time
 import pandas as pd
 import threading as t
 import re
+from firebase import firebase
 
 class Colorfill:
     OK = "\033[92m"  # GREEN
@@ -17,12 +18,11 @@ class Colorfill:
 
 num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
-thread_list = []
-
-if __name__ == '__main__':
-    T_S = time.time()
+firebase = firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
+print(num_list)
+def restruct(file_num):
     try:#Datatype = .json
-        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{num_list[-1]}.json')
+        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
         new = pd.DataFrame()
 
         time = []
@@ -47,20 +47,30 @@ if __name__ == '__main__':
                f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
                k = pd.DataFrame(new.iloc[row,:]).T
                result = pd.concat([f,k],axis=0,ignore_index=True)
-               result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')
-               #print(f'{Colorfill.OK}Data {Colorfill.WARNING}{data.iloc[row,1]}.json {Colorfill.OK} reconstruct complete{Colorfill.RESET}')         
+               #result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')       
             except Exception as e:
-               #print(f'{Colorfill.FAIL} {e} {Colorfill.RESET}')
                f = pd.DataFrame()
                f = new.iloc[row,:]
-               #f = pd.concat([f,f],axis=0,ignore_index=True)
-               f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
+               #f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
+            
+            try :  # Write data to Firebase Realtime Database
+                data = result.iloc[len(result)-1].to_dict()
+                firebase.put(f'/parklot_available/{data["ParklotName"]}', data['UpdateTime'],data['ParkingSpaces'][0])
+                print("Data written to Firebase Realtime Database successfully.")
+            except Exception as e:
+                print(f"Error writing data to Firebase Realtime Database: {e}")
 
 
-        #new.to_json(f'{os.getcwd()}/data/data_storage/Parklot_Available/proceeded_data/{num_list[-1]}.json') #write file
-        print(f"{Colorfill.OK}Data {num_list[-1]} reconstruct successfully.{Colorfill.RESET}")
-        print(f'time:{time.time()-T_S}')
+        print(f"{Colorfill.OK}Data {file_num} reconstruct successfully.{Colorfill.RESET}")
     except Exception  as e :
-        print(f"Error with restructing the file {num_list[-1]} into database which listed in _0.txt")
+        print(f"Error with restructing the file {file_num} into database which listed in _0.txt")
         print(f"Error message:{e}")
 
+
+
+if __name__ == '__main__':
+    for i in num_list:
+        restruct(i)
+        print(f"{Colorfill.OK}File {i} has been restructed.{Colorfill.RESET}")
+        time.sleep(1)
+    print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
