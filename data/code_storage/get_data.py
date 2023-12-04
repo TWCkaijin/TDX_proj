@@ -99,11 +99,11 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
-    exec(process.read())
-    
+    #process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
+    #exec(process.read())
+    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-    process.close()
+    #process.close()
     time.sleep(1200)
 
 
