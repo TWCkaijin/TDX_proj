@@ -4,7 +4,9 @@ import json
 import os
 import time
 import threading
-
+import pandas as pd 
+import re
+from firebase import firebase 
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
@@ -69,7 +71,7 @@ class data_attributes():
 
     def data_storage(self,rd): #rd = Raw Data
             try:
-                open(file = f'{self.dir_path}/{self.file_num}.json',mode = 'a+',encoding = 'utf-8').write(rd)
+                open(file = f'{self.dir_path}/{self.file_num}.json',mode = 'w',encoding = 'utf-8').write(rd)
                 self.storage_list()
             except Exception as e:
                 print(f"storaging error:{e}")
@@ -101,7 +103,7 @@ def late_preprocess():
     exec(process.read())
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     process.close()
-    time.sleep(61)
+    time.sleep(1200)
 
 
 
@@ -140,7 +142,7 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 late_preprocess()
         #print(da.file_num)
-        time.sleep(30)
+        time.sleep(10)
         
 
 

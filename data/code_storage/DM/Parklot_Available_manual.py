@@ -1,4 +1,5 @@
 '''
+This program can only be used with get_data.py
 And only use for simplifying the data structure of Parklot_Available 
 '''
 import json 
@@ -50,7 +51,6 @@ def restruct(file_num):
                f = pd.DataFrame()
                f = new.iloc[row,:]
                f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
-               print("build file")
             
             try :  # Write data to Firebase Realtime Database
                 data = result.iloc[len(result)-1].to_dict()
@@ -72,4 +72,8 @@ def restruct(file_num):
 
 
 if __name__ == '__main__':
-    restruct(num_list[-1])
+    for i in num_list[93:]:
+        restruct(num_list[-1])
+        print(f"{Colorfill.OK}File {i} has been restructed.{Colorfill.RESET}")
+        time.sleep(1)
+    print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
