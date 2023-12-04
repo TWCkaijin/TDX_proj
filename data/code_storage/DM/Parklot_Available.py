@@ -35,8 +35,7 @@ def restruct(file_num):
         new['UpdateTime'] = time
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
-        print("Working:",end = '')
-        count = 0
+
         for row in range(len(new)):
             try : 
                f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
@@ -53,10 +52,6 @@ def restruct(file_num):
                 data = result.iloc[len(result)-1].to_dict()
                 firebase.put(f'/parklot_available/{data["ParklotName"]}', data['UpdateTime'],data['ParkingSpaces'][0])
                 #print("Data written to Firebase Realtime Database successfully.")
-                if(count==25):
-                    print("#",end = "")
-                    count = 0
-                count +=1
             except Exception as e:
                 print(f"Error writing data to Firebase Realtime Database: {e}")
 
