@@ -15,10 +15,11 @@ class Colorfill:
     FAIL = "\033[91m"  # RED
     RESET = "\033[0m"  # RESET COLOR
 
+
 num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
 firebase = firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
-def restruct(file_num):
+def restruct(file_num)-> bool:
     try:#Datatype = .json
         df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
         new = pd.DataFrame()
@@ -39,27 +40,25 @@ def restruct(file_num):
         new['UpdateTime'] = time
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
-        print("Working:",end = '')
-        count = 0
         for row in range(len(new)):
             try : 
-               f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
-               k = pd.DataFrame(new.iloc[row,:]).T
-               result = pd.concat([f,k],axis=0,ignore_index=True)
-               #result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')       
+                f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
+                k = pd.DataFrame(new.iloc[row,:]).T
+                if(new.iloc[row,0] in f['UpdateTime'].values):
+                    print("data already exist!")
+                    break
+                result = pd.concat([f,k],axis=0,ignore_index=True)
+                result.to_json(f'{os.getcwd()}/data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')
             except Exception as e:
-               f = pd.DataFrame()
-               f = new.iloc[row,:]
-               #f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
-            
+                result = pd.DataFrame()
+                result = new.iloc[row,:]
+                result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
+                print("build file")
+
             try :  # Write data to Firebase Realtime Database
-                data = result.iloc[len(result)-1].to_dict()
-                firebase.put(f'/parklot_available/{data["ParklotName"]}', data['UpdateTime'],data['ParkingSpaces'][0])
+                print((f'/parklot_available/{result.iloc[1]}', result.iloc[0],result.iloc[2][0]))
+                #firebase.put(f'/parklot_available/{result.iloc[1]}', result.iloc[0],result.iloc[2][0])
                 #print("Data written to Firebase Realtime Database successfully.")
-                if(count==25):
-                    print("#",end = "")
-                    count = 0
-                count +=1
             except Exception as e:
                 print(f"Error writing data to Firebase Realtime Database: {e}")
 
@@ -72,8 +71,9 @@ def restruct(file_num):
 
 
 if __name__ == '__main__':
-    for i in num_list[93:]:
-        restruct(num_list[-1])
+    print("Working")
+    for i in num_list[:]:
+        restruct(i)
         print(f"{Colorfill.OK}File {i} has been restructed.{Colorfill.RESET}")
         time.sleep(1)
     print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
