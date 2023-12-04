@@ -46,11 +46,11 @@ def restruct(file_num):
                f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
                k = pd.DataFrame(new.iloc[row,:]).T
                result = pd.concat([f,k],axis=0,ignore_index=True)
-               result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')       
+               #result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')       
             except Exception as e:
                f = pd.DataFrame()
                f = new.iloc[row,:]
-               f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
+               #f.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
             
             try :  # Write data to Firebase Realtime Database
                 data = result.iloc[len(result)-1].to_dict()

@@ -1,6 +1,3 @@
-'''
-And only use for simplifying the data structure of Parklot_Available 
-'''
 import json 
 import os
 import time
