@@ -99,11 +99,8 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    #process = open(file = f'{os.getcwd()}/data/code_storage/DM/{model_name}.py',encoding='utf-8')
-    #exec(process.read())
-    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')
+    #os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')    # till 2023_12_04_31
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-    #process.close()
     time.sleep(1200)
 
 
@@ -135,14 +132,12 @@ if __name__ == '__main__':
                 late_preprocess()
 
             except Exception as e:
-                #print(f'{Colorfill.FAIL}Runtime error:{Colorfill.RESET}{e}')
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 late_preprocess()
-        #print(da.file_num)
         time.sleep(10)
         
 
