@@ -66,7 +66,7 @@ class data_attributes():
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.MODEL_NAME = model_name
-        self.hour = lambda x : (int(time.strftime("%H",time.localtime())))*2 if int(x)==0 or int(x)==59 or int(x)==1 else (int(time.strftime("%H",time.localtime())))*2+1
+        self.hour = lambda x : (int(time.strftime("%H",time.localtime())))*2 if int(x)==0  or int(x)==1 else (int(time.strftime("%H",time.localtime())))*2+1
         self.file_num = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(self.hour(time.strftime("%M",time.localtime())))
 
     def data_storage(self,rd): #rd = Raw Data
@@ -88,7 +88,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
     eurl = A
     for i in q_set:
         INDEX = q_set.index(i)
-        # q_args.append(input(f'Please enter the arguments that asks as follows:\n{i}({guid[INDEX-1]}):'))
+        #q_args.append(input(f'Please enter the arguments that asks as follows:\n{i}({guid[INDEX-1]}):'))
         q_args.append("")
     for i in q_set:
         if q_args[q_set.index(i)-1]!='':
@@ -99,7 +99,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    #os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')    # till 2023_12_04_31
+    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')    # till 2023_12_04_32
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     time.sleep(1200)
 
@@ -138,7 +138,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 late_preprocess()
-        time.sleep(10)
+        time.sleep(1)
         
 
 

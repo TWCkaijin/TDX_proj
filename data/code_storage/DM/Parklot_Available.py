@@ -53,11 +53,10 @@ def restruct(file_num)-> bool:
                 result = pd.DataFrame()
                 result = new.iloc[row,:]
                 result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
-                print("build file")
+                print(f"build file{new.iloc[row,1]}")
 
             try :  # Write data to Firebase Realtime Database
-                print((f'/parklot_available/{result.iloc[1]}', result.iloc[0],result.iloc[2][0]))
-                firebase.put(f'/parklot_available/{result.iloc[1]}', result.iloc[0],result.iloc[2][0])
+                firebase.put(f'/parklot_available/{new.iloc[row,1]}', new.iloc[row,0],new.iloc[row,2][0])
                 #print("Data written to Firebase Realtime Database successfully.")
             except Exception as e:
                 print(f"Error writing data to Firebase Realtime Database: {e}")
@@ -71,6 +70,6 @@ def restruct(file_num)-> bool:
 
 
 if __name__ == '__main__':
-   
+    print("Working")
     restruct(num_list[-1])
     print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
