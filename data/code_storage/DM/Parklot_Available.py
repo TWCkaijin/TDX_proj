@@ -19,7 +19,7 @@ class Colorfill:
 num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
 firebase = firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
-def restruct(file_num)-> bool:
+def restruct(file_num):
     try:#Datatype = .json
         df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
         new = pd.DataFrame()
@@ -70,6 +70,6 @@ def restruct(file_num)-> bool:
 
 
 if __name__ == '__main__':
-    print("Working")
+    print(f"{Colorfill.WARNING}reconstructing and uploading... {Colorfill.RESET}")
     restruct(num_list[-1])
     print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
