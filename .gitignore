@@ -6,7 +6,8 @@ tags
 *.db
 *.vs
 
+
 slnx.sqlite
 VSWorkspaceState.json
 .wsuo
-/data_storage/Parklot_Available/
+data/data_storage/Parklot_Available/
