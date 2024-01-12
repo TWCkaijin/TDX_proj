@@ -25,7 +25,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State {
         late GoogleMapController mapController;
       
-        final LatLng _center = const LatLng(-33.86, 151.20);
+        final LatLng _center = const LatLng(37.4219999, -122.0840575);
       
         void _onMapCreated(GoogleMapController controller) {
           mapController = controller;
@@ -37,7 +37,7 @@ class _MyAppState extends State {
             home: Scaffold(
               appBar: AppBar(
                 title: const Text('Maps Sample App'),
-                backgroundColor: Colors.green[700],
+                backgroundColor: Colors.blue[700],
               ),
               body: GoogleMap(
                 onMapCreated: _onMapCreated,
