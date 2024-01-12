@@ -5,7 +5,7 @@ tags
 *.vs
 *.db
 *.vs
-
+.DS_Store
 
 slnx.sqlite
 VSWorkspaceState.json
