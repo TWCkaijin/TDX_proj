@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name:"potent-result-406711",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
