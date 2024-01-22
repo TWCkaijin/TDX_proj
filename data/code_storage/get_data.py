@@ -71,14 +71,21 @@ class data_attributes():
 
     def data_storage(self,rd): #rd = Raw Data
             try:
-                open(file = f'{self.dir_path}/{self.file_num}.json',mode = 'w',encoding = 'utf-8').write(rd)
-                self.storage_list()
+                with open(file = f'{self.dir_path}/_0.txt',mode = 'r',encoding = 'utf-8') as f_list:
+                    list_token = f_list.read().split('\n')
+                    if(list_token[-2] != self.file_num):
+                        with open(file = f'{self.dir_path}/{self.file_num}.json',mode = 'w',encoding = 'utf-8') as f:
+                            f.write(rd)
+                            with open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8') as token:
+                                token.write(f'{self.file_num}\n')
+                                token.close()
+
+                    else:
+                        print(f'{Colorfill.WARNING}File already exists{Colorfill.RESET}')
+                    
+                
             except Exception as e:
                 print(f"storaging error:{e}")
-
-
-    def storage_list(self):
-         open(file = f'{self.dir_path}/_0.txt',mode = 'a',encoding = 'utf-8').write(f'{self.file_num}\n')
 
 
 def make_url(A): #simple function for arguememts that we need to collect for the urls
