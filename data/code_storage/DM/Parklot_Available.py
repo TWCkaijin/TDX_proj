@@ -1,13 +1,10 @@
-'''
-This program can only be used with get_data.py
-And only use for simplifying the data structure of Parklot_Available 
-'''
 import json 
 import os
 import time
 import pandas as pd
 import re
 from firebase import firebase
+import sys
 
 class Colorfill:
     OK = "\033[92m"  # GREEN
@@ -23,11 +20,16 @@ def restruct(file_num):
     try:#Datatype = .json
         df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
         new = pd.DataFrame()
+        
+        if(df.empty):
+            print(f"{Colorfill.FAIL}No data in file. Consider the source is down.(File name: {file_num}){Colorfill.RESET}")
+            return
+        
 
         time = []
         name = []
         spaces = []
-
+        
         for i in range(len(df['ParkingAvailabilities'])):
                 name.append(df['ParkingAvailabilities'][i]['CarParkName']['Zh_tw'].strip())
                 spaces.append([df['ParkingAvailabilities'][i]['AvailableSpaces']])
@@ -40,6 +42,9 @@ def restruct(file_num):
         new['UpdateTime'] = time
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
+
+        
+
         for row in range(len(new)):
             try : 
                 f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
@@ -63,13 +68,15 @@ def restruct(file_num):
 
 
         print(f"{Colorfill.OK}Data {file_num} reconstruct successfully.{Colorfill.RESET}")
+        return
     except Exception  as e :
-        print(f"Error with restructing the file {file_num} into database which listed in _0.txt")
-        print(f"Error message:{e}")
+        print(f"Error with restructing the file {file_num} into database which listed in _0.txt",end = "    ")
+        print(f"{Colorfill.FAIL}Error message:{e}{Colorfill.RESET}")
+
 
 
 
 if __name__ == '__main__':
     print(f"{Colorfill.WARNING}reconstructing and uploading... {Colorfill.RESET}")
     restruct(num_list[-1])
-    print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
+    

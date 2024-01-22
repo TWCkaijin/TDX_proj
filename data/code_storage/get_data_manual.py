@@ -102,7 +102,6 @@ def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
     os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py') 
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
-    time.sleep(1200)
 
 
 
@@ -122,7 +121,7 @@ if __name__ == '__main__':
         d = data(app_id, app_key, auth_response)
         data_response = requests.get(url, headers=d.get_data_header())
         da.data_storage(data_response.text)
-        #late_preprocess()
+        late_preprocess()
         print(data_response.text)
     except Exception as e:
         print(f'{Colorfill.FAIL}error:{Colorfill.RESET}{e}')
