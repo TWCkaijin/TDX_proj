@@ -29,8 +29,7 @@ def construct(data,files):
 
 
 def fit_func(x,a,b,c):
-    return a * np.exp(-b * x) + c
-    return func
+    return a * np.sqrt(x)*(b*np.square(x)+c) 
 
 
 
