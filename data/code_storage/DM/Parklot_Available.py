@@ -50,6 +50,7 @@ def restruct(file_num):
                 f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
                 k = pd.DataFrame(new.iloc[row,:]).T
                 if(new.iloc[row,0] in f['UpdateTime'].values):
+                    print(new.iloc[row,0])
                     print("data already exist!")
                     break
                 result = pd.concat([f,k],axis=0,ignore_index=True)
