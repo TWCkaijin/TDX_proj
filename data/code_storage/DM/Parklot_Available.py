@@ -15,7 +15,7 @@ class Colorfill:
 
 num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
-firebase = firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
+fb= firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
 def restruct(file_num):
     try:#Datatype = .json
         df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
@@ -61,7 +61,7 @@ def restruct(file_num):
                 print(f"build file{new.iloc[row,1]}")
 
             try :  # Write data to Firebase Realtime Database
-                firebase.put(f'/parklot_available/{new.iloc[row,1]}', new.iloc[row,0],new.iloc[row,2][0])
+                fb.put(f'/parklot_available/{new.iloc[row,1]}', new.iloc[row,0],new.iloc[row,2][0])
                 #print("Data written to Firebase Realtime Database successfully.")
             except Exception as e:
                 print(f"Error writing data to Firebase Realtime Database: {e}")
@@ -79,4 +79,3 @@ def restruct(file_num):
 if __name__ == '__main__':
     print(f"{Colorfill.WARNING}reconstructing and uploading... {Colorfill.RESET}")
     restruct(num_list[-1])
-    

@@ -130,7 +130,7 @@ if __name__ == '__main__':
                 da.data_storage(data_response.text)
                 late_preprocess()
             except Exception as e:
-                print(f'{Colorfill.FAIL}Hourly error:{Colorfill.RESET}{e}')
+                print(f'{Colorfill.FAIL}Four-hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
             try:
                 d = data(app_id, app_key, auth_response)
@@ -144,6 +144,7 @@ if __name__ == '__main__':
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
+                print(f'{Colorfill.FAIL}Half-hourly error:{Colorfill.RESET}{e}')
                 late_preprocess()
         time.sleep(1)
         
