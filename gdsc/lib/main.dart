@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +10,9 @@ void main() async {
     name: "potent-result-406711",
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   runApp(const MyApp());
 }
 
@@ -18,8 +22,9 @@ class ParkingStation extends StatelessWidget {
   final String pricing;
   final LatLng location;
 
-  ParkingStation(
-      {required this.stationName,
+  const ParkingStation(
+      {super.key,
+      required this.stationName,
       required this.availableLots,
       required this.location,
       required this.pricing});
@@ -50,9 +55,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State {
   late GoogleMapController mapController;
-
+  bool _showAppBar = true;
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
-
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -60,62 +64,120 @@ class _MyAppState extends State {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            centerTitle: true,
-            title: Container(
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Text(
-                'Charsiu',
-                style: TextStyle(color: Colors.grey[800], fontSize: 20),
-              ),
-            ),
-          ),
-          body: Stack(
-            children: <Widget>[
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: _center,
-                  zoom: 12.5,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: _showAppBar
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(50.0),
+                child: SafeArea(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 25.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: AppBar(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      centerTitle: true,
+                      title: const Text(
+                        'Charsiu Parking',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 2.0,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: false,
+              )
+            : null,
+        body: Stack(
+          children: <Widget>[
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 12.5,
               ),
-              DraggableScrollableSheet(
+              //myLocationButtonEnabled: false,
+              zoomControlsEnabled: false,
+            ),
+            NotificationListener<ScrollUpdateNotification>(
+              onNotification: (notification) {
+                if (notification.metrics.extentBefore == 0 &&
+                    notification.metrics.extentAfter > 50) {
+                  setState(() {
+                    _showAppBar = true;
+                  });
+                } else {
+                  setState(() {
+                    _showAppBar = false;
+                  });
+                }
+                return true;
+              },
+              child: DraggableScrollableSheet(
                 initialChildSize: 0.3,
-                minChildSize: 0.05,
-                maxChildSize: 0.9,
+                minChildSize: 0.1,
+                maxChildSize: 1,
                 builder:
                     (BuildContext context, ScrollController scrollController) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: Colors.blue[100],
+                      color: Colors.grey[200],
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(20.0)),
                     ),
                     child: ListView.builder(
-                      //modify the listview builder to display the parking stations
-                      controller: scrollController,
-                      itemCount: 25,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(title: Text('Item $index'));
-                      },
-                      padding: EdgeInsets.zero,
-                    ),
+                        controller: scrollController,
+                        itemCount: 25,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ListTile(title: Text('Item $index'));
+                        },
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 20.0,
+                        )),
                   );
+                },
+              ),
+            ),
+          ],
+        ),
+        drawer: Drawer(
+          backgroundColor: Colors.grey[200],
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const SizedBox(
+                height: 100,
+              ),
+              ListTile(
+                title: const Text('Settings'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Bug Report'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('About'),
+                onTap: () {
+                  Navigator.pop(context);
                 },
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
