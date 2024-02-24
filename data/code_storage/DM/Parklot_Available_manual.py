@@ -19,7 +19,7 @@ class Colorfill:
 num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
 firebase = firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
-def restruct(file_num)-> bool:
+def restruct(file_num):
     try:#Datatype = .json
         df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
         new = pd.DataFrame()
@@ -31,12 +31,17 @@ def restruct(file_num)-> bool:
         for i in range(len(df['ParkingAvailabilities'])):
                 name.append(df['ParkingAvailabilities'][i]['CarParkName']['Zh_tw'].strip())
                 spaces.append([df['ParkingAvailabilities'][i]['AvailableSpaces']])
-
+        
         for i in range(len(df['UpdateTime'])):
             k = re.split('[T/+]',df.loc[i,'UpdateTime'])
             k.pop()
+            print(k)
             time.append('_'.join(k))
+        #print(time)
+    except :
+        None
 
+        '''
         new['UpdateTime'] = time
         new['ParklotName'] = name
         new['ParkingSpaces'] = spaces
@@ -66,12 +71,12 @@ def restruct(file_num)-> bool:
     except Exception  as e :
         print(f"Error with restructing the file {file_num} into database which listed in _0.txt")
         print(f"Error message:{e}")
-
+'''
 
 
 if __name__ == '__main__':
     print("Working")
-    for i in num_list[106:]:
+    for i in num_list:
         restruct(i)
         #print(f"{Colorfill.OK}File {i} has been restructed.{Colorfill.RESET}")
         time.sleep(1)

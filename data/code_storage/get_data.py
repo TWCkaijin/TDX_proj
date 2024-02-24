@@ -61,7 +61,7 @@ class data():
 
 
 class data_attributes():
-    dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
+    dir_path = f'{os.getcwd()}/data/data_storage/{model_name}/raw_data'
     
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
@@ -106,7 +106,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py') 
+    #os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py') 
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     time.sleep(1200)
 
@@ -127,25 +127,25 @@ if __name__ == '__main__':
                 auth_response = requests.post(auth_url, a.get_auth_header())
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
-                da.data_storage(data_response.text)
-                late_preprocess()
+                #da.data_storage(data_response.text)
+                #late_preprocess()
             except Exception as e:
                 print(f'{Colorfill.FAIL}Four-hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
             try:
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
-                da.data_storage(data_response.text)
-                late_preprocess()
+                #da.data_storage(data_response.text)
+                #late_preprocess()
 
             except Exception as e:
                 a = Auth(app_id, app_key)
                 auth_response = requests.post(auth_url, a.get_auth_header())
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
-                da.data_storage(data_response.text)
+                #da.data_storage(data_response.text)
                 print(f'{Colorfill.FAIL}Half-hourly error:{Colorfill.RESET}{e}')
-                late_preprocess()
+                #late_preprocess()
         time.sleep(1)
         
 

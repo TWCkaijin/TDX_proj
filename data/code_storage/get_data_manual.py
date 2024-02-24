@@ -62,7 +62,7 @@ class data():
 
 
 class data_attributes():
-    dir_path = f'{os.getcwd()}/data/data_storage/{model_name}'
+    dir_path = f'{os.getcwd()}/data/data_storage/{model_name}//raw_data'
     
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form

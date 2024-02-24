@@ -18,7 +18,7 @@ num_list.remove('')
 fb= firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
 def restruct(file_num):
     try:#Datatype = .json
-        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//{file_num}.json')
+        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//raw_data//{file_num}.json')
         new = pd.DataFrame()
         
         if(df.empty):
