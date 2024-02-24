@@ -4,7 +4,7 @@ import time
 import pandas as pd
 import re
 from firebase import firebase
-import sys
+import datetime
 
 class Colorfill:
     OK = "\033[92m"  # GREEN
@@ -13,70 +13,82 @@ class Colorfill:
     RESET = "\033[0m"  # RESET COLOR
 
 
-num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
+num_list = open(f'{os.getcwd()}//data//data_storage//Parklot_Available//raw_data//_0.txt',mode = 'r',encoding = 'utf-8').read().split('\n') 
 num_list.remove('')
-fb= firebase.FirebaseApplication('https://potent-result-406711.firebaseio.com', None)
+fb = firebase.FirebaseApplication('https://potent-result-406711-48d96.firebaseio.com', None)
 def restruct(file_num):
-    try:#Datatype = .json
-        df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//raw_data//{file_num}.json')
-        new = pd.DataFrame()
-        
-        if(df.empty):
-            print(f"{Colorfill.FAIL}No data in file. Consider the source is down.(File name: {file_num}){Colorfill.RESET}")
-            return
-        
+    df = pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//raw_data//{file_num}.json')
+    name = []
+    spaces = []
 
-        time = []
-        name = []
-        spaces = []
-        
-        for i in range(len(df['ParkingAvailabilities'])):
-                name.append(df['ParkingAvailabilities'][i]['CarParkName']['Zh_tw'].strip())
-                spaces.append([df['ParkingAvailabilities'][i]['AvailableSpaces']])
+    for i in range(len(df['ParkingAvailabilities'])):
+            name.append(df['ParkingAvailabilities'][i]['CarParkName']['Zh_tw'].strip())
+            spaces.append(df['ParkingAvailabilities'][i]['AvailableSpaces'])
 
-        for i in range(len(df['UpdateTime'])):
-            k = re.split('[T/+]',df.loc[i,'UpdateTime'])
-            k.pop()
-            time.append('_'.join(k))
+    date = re.split('[T/+]',df.loc[i,'UpdateTime'])[0]
+    week = datetime.datetime.strptime(date, '%Y-%m-%d').weekday()+1
+    clock = file_num.split('_')[3]
+    #print(date)
+    
+    ############################################################################################################
+    
 
-        new['UpdateTime'] = time
-        new['ParklotName'] = name
-        new['ParkingSpaces'] = spaces
+    for location,lot_num in zip(name,spaces):
+        #print(f"{location}:{week}_{clock}")
+        #print(f"{location} {lot_num}")
+        if(lot_num==-1):
+            try: 
+                fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json'))
+                base_file[f'{week}-{clock}']['current_space']= -1
+                base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
 
-        
-
-        for row in range(len(new)):
-            try : 
-                f = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json'))
-                k = pd.DataFrame(new.iloc[row,:]).T
-                if(new.iloc[row,0] in f['UpdateTime'].values):
-                    print(new.iloc[row,0])
-                    print("data already exist!")
-                    break
-                result = pd.concat([f,k],axis=0,ignore_index=True)
-                result.to_json(f'{os.getcwd()}/data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json')
             except Exception as e:
-                result = pd.DataFrame()
-                result = new.iloc[row,:]
-                result.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{new.iloc[row,1]}.json',index = [0])
-                print(f"build file{new.iloc[row,1]}")
-
-            try :  # Write data to Firebase Realtime Database
-                fb.put(f'/parklot_available/{new.iloc[row,1]}', new.iloc[row,0],new.iloc[row,2][0])
-                #print("Data written to Firebase Realtime Database successfully.")
+                print(f"{Colorfill.OK}New file_tick added: {Colorfill.WARNING}{location}|{week}-{clock}{Colorfill.RESET}")
+                try:
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                    base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json'))
+                    base_file[f'{week}-{clock}'] = {'current_space': -1, 'avg_space': 0, 'dataset_quantity': 0}
+                    base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
+                except Exception as e :
+                    print(f"{Colorfill.OK}New location added: {Colorfill.WARNING}{location}{Colorfill.RESET}")
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                    base_file = pd.DataFrame()
+                    base_file[f'{week}-{clock}'] = {'current_space': -1, 'avg_space': 0, 'dataset_quantity': 0}
+                    base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
+        
+        else:
+            try:
+                base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json'))
+                base_file[f'{week}-{clock}']['current_space']= int(lot_num)
+                base_file[f'{week}-{clock}']['avg_space'] = ((base_file[f'{week}-{clock}']['dataset_quantity'].value()*base_file[f'{week}-{clock}']['avg_space'])+lot_num)/(base_file[f'{week}-{clock}']['dataset_quantity']+1) 
+                base_file[f'{week}-{clock}']['dataset_quantity'] += 1
+                fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
             except Exception as e:
-                print(f"Error writing data to Firebase Realtime Database: {e}")
-
-
-        print(f"{Colorfill.OK}Data {file_num} reconstruct successfully.{Colorfill.RESET}")
-        return
-    except Exception  as e :
-        print(f"Error with restructing the file {file_num} into database which listed in _0.txt",end = "    ")
-        print(f"{Colorfill.FAIL}Error message:{e}{Colorfill.RESET}")
-
-
-
+                print(f"{Colorfill.OK}New file_tick added: {Colorfill.WARNING}{location}|{week}-{clock}{Colorfill.RESET}")
+                try:
+                    base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json'))
+                    base_file[f'{week}-{clock}'] = {'current_space': int(lot_num), 'avg_space': int(lot_num), 'dataset_quantity': 1}
+                    base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                except Exception as e :
+                    print(f"{Colorfill.OK}New location added: {Colorfill.WARNING}{location}{Colorfill.RESET}")
+                    base_file = pd.DataFrame()
+                    base_file[f'{week}-{clock}'] = {'current_space': int(lot_num), 'avg_space': int(lot_num), 'dataset_quantity': 1}
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                    fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                    base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json')
+    ############################################################################################################
+    
 
 if __name__ == '__main__':
-    print(f"{Colorfill.WARNING}reconstructing and uploading... {Colorfill.RESET}")
+    print(f"{Colorfill.FAIL}Working{Colorfill.RESET}")
     restruct(num_list[-1])
+    print(f"{Colorfill.OK}File {num_list[-1]} has been restructed.{Colorfill.RESET}")
+    print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
