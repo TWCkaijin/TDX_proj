@@ -38,7 +38,7 @@ def restruct(file_num):
         #print(f"{location} {lot_num}")
         if(lot_num==-1):
             try: 
-                fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
                 base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json'))
                 base_file[f'{week}-{clock}']['current_space']= -1
                 base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
@@ -46,13 +46,13 @@ def restruct(file_num):
             except Exception as e:
                 print(f"{Colorfill.OK}New file_tick added{Colorfill.RESET}")
                 try:
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
                     base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json'))
                     base_file[f'{week}-{clock}'] = {'current_space': -1, 'avg_space': 0, 'dataset_quantity': 0}
                     base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
                 except Exception as e :
                     print(f"{Colorfill.WARNING}New location added{Colorfill.RESET}")
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
                     base_file = pd.DataFrame()
                     base_file[f'{week}-{clock}'] = {'current_space': -1, 'avg_space': 0, 'dataset_quantity': 0}
                     base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
@@ -63,9 +63,9 @@ def restruct(file_num):
                 base_file[f'{week}-{clock}']['current_space']= int(lot_num)
                 base_file[f'{week}-{clock}']['avg_space'] = ((base_file[f'{week}-{clock}']['dataset_quantity'].value()*base_file[f'{week}-{clock}']['avg_space'])+lot_num)/(base_file[f'{week}-{clock}']['dataset_quantity']+1) 
                 base_file[f'{week}-{clock}']['dataset_quantity'] += 1
-                fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
-                fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
-                fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                #fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                #fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
                 base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
             except Exception as e:
                 print(f"{Colorfill.OK}New file_tick added{Colorfill.RESET}")
@@ -73,16 +73,16 @@ def restruct(file_num):
                     base_file = pd.DataFrame(pd.read_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json'))
                     base_file[f'{week}-{clock}'] = {'current_space': int(lot_num), 'avg_space': int(lot_num), 'dataset_quantity': 1}
                     base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
                 except Exception as e :
                     print(f"{Colorfill.WARNING}New location added{Colorfill.RESET}")
                     base_file = pd.DataFrame()
                     base_file[f'{week}-{clock}'] = {'current_space': int(lot_num), 'avg_space': int(lot_num), 'dataset_quantity': 1}
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
-                    fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', int(lot_num))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','avg_space',int(base_file[f'{week}-{clock}']['avg_space']))
+                    #fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
                     base_file.to_json(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//X{location}.json')
     ############################################################################################################
     
