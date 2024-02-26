@@ -48,12 +48,13 @@ class ParkingStation extends StatelessWidget {
 }
 
 class MyApp extends StatefulWidget {
+  /*
   final DatabaseReference databaseReference = FirebaseDatabase.instanceFor(
           app: Firebase.app(),
           databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/')
       .ref();
   MyApp({super.key});
-  
+  */
   @override
   State createState() => _MyAppState();
 
@@ -204,11 +205,12 @@ class _MyAppState extends State {
   }
 }
 
-
 void readDatabase() {
-  DatabaseReference databaseReference = FirebaseDatabase.instance.refFromURL('https://potent-result-406711-48d96.firebaseio.com/');
+  DatabaseReference databaseReference = FirebaseDatabase.instance
+      .refFromURL('https://potent-result-406711-48d96.firebaseio.com/');
   databaseReference.once().then((DatabaseEvent event) {
-    Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
+    Map<dynamic, dynamic> values =
+        event.snapshot.value as Map<dynamic, dynamic>;
     values.forEach((key, value) {
       print('Key: $key, Value: $value');
       // Store the data in your program as needed
