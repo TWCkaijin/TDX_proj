@@ -68,6 +68,28 @@ class _MyAppState extends State {
     });
   }
 
+
+  String readDatabase() {
+
+    FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
+    final rtdb = FirebaseDatabase.instanceFor(app: secondaryApp,databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/');
+    
+    rtdb.ref('parklot_available').once().then((DatabaseEvent event) {
+      Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
+      print('Data: ${values.keys}');
+      
+  //return 'Data: fetch failed';
+  /*
+  
+  rtdb.ref('parklot_available').onValue.listen((event) {
+    print('Data: ${event.snapshot.value}');
+  });
+  */
+
+    });
+    return 'Data: fetch failed';
+  }
+
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
     if (_mapStyle != null) {
@@ -79,6 +101,7 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
+    print('read database ${readDatabase()}');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -198,15 +221,4 @@ class _MyAppState extends State {
   }
 }
 
-void readDatabase() {
-  DatabaseReference databaseReference = FirebaseDatabase.instance
-      .refFromURL('https://potent-result-406711-48d96.firebaseio.com/');
-  databaseReference.once().then((DatabaseEvent event) {
-    Map<dynamic, dynamic> values =
-        event.snapshot.value as Map<dynamic, dynamic>;
-    values.forEach((key, value) {
-      print('Key: $key, Value: $value');
-      // Store the data in your program as needed
-    });
-  });
-}
+
