@@ -48,13 +48,6 @@ class ParkingStation extends StatelessWidget {
 }
 
 class MyApp extends StatefulWidget {
-  /*
-  final DatabaseReference databaseReference = FirebaseDatabase.instanceFor(
-          app: Firebase.app(),
-          databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/')
-      .ref();
-  MyApp({super.key});
-  */
   @override
   State createState() => _MyAppState();
 
