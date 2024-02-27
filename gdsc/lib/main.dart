@@ -19,15 +19,16 @@ void main() async {
 
 class ParkingStation extends StatelessWidget {
   final String stationName;
-  final int availableLots;
+  final Map? availableLots;
+  final LatLng location;
   //final String pricing;
-  //final LatLng location;
+  
 
   const ParkingStation({
     super.key,
     required this.stationName,
     required this.availableLots,
-    //required this.location,
+    required this.location,
     //required this.pricing
   });
 
@@ -77,19 +78,11 @@ class _MyAppState extends State {
     rtdb.ref('parklot_available').once().then((DatabaseEvent event) {
       Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
       var lockey = values.keys;
-      lockey.forEach ((var key ) {
-        print('key: $key');
-        //ParkingStation station = new ParkingStation(stationName: key, availableLots: values[key]);
+      lockey.forEach ((var loc ) {
+        //print('key: $key');
+        ParkingStation $loc = new ParkingStation(stationName: loc, availableLots: values[loc],location:_center);
+        print('${loc}:${$loc.location}');
       });
-      
-  //return 'Data: fetch failed';
-  /*
-  
-  rtdb.ref('parklot_available').onValue.listen((event) {
-    print('Data: ${event.snapshot.value}');
-  });
-  */
-
     });
     return 'Data: fetch failed';
   }
