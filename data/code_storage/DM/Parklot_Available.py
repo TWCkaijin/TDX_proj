@@ -64,7 +64,7 @@ def restruct(file_num):
                 except Exception as e :
                     print(f"{Colorfill.OK}New location added: {Colorfill.WARNING}{location}{Colorfill.RESET}//problem: {e}")
                     fb.put(f'parklot_available/{location}/{week}-{clock}','current_space', -1)
-                    with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json','r+',encoding='utf-8') as f:
+                    with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json','w+',encoding='utf-8') as f:
                         base_file=dict()
                         base_file[f'{week}-{clock}']={"current_space": -1, "avg_space": 0, "dataset_quantity": 0}
                         f.truncate(0)
@@ -103,7 +103,7 @@ def restruct(file_num):
                     fb.put(f'parklot_available/{location}/{week}-{clock}','dataset_quantity', int(base_file[f'{week}-{clock}']['dataset_quantity']))
                 except Exception as e :
                     print(f"{Colorfill.OK}New location added: {Colorfill.WARNING}{location}{Colorfill.RESET}//problem: {e}")
-                    with open (f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json','r+',encoding='utf-8') as f:
+                    with open (f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{location}.json','w+',encoding='utf-8') as f:
                         base_file=dict()
                         base_file[f"{week}-{clock}"]={"current_space": int(lot_num), "avg_space": int(lot_num), "dataset_quantity": 1}
                         json.dump(base_file,f)
@@ -115,7 +115,6 @@ def restruct(file_num):
 
 if __name__ == '__main__':
     print(f"{Colorfill.FAIL}Working{Colorfill.RESET}")
-    for i in num_list[0:3]:
-        restruct(i)
+    restruct(num_list[-1])
     print(f"{Colorfill.OK}File {num_list[-1]} has been restructed.{Colorfill.RESET}")
     print(f"{Colorfill.OK}All files has been restructed.{Colorfill.RESET}")
