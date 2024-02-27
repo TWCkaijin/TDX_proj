@@ -1,17 +1,14 @@
 import json 
 import os
 
-with open (f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//龍華.json',mode ='r+') as f:
-        #base_file = json.load(f)
-        #base_file["6-31"]["current_space"]= -1
-        #json.dump(base_file,f)
+with open (f'{os.getcwd()}//info.json',mode ='r+',encoding='utf-8') as f1:
+        with open (f'{os.getcwd()}//2024_02_27_24.json',mode ='r+',encoding='utf-8') as f2:
+                b1 = json.load(f1)
+                b2 = json.load(f2)
+                for i in range(len(b2['ParkingAvailabilities'])):
+                        print(b2['ParkingAvailabilities'][i]['CarParkID'])
+
+
+
 
         
-
-        base_file = json.load(f)
-        print(base_file['6-31'])
-        base_file['6-31'].update({"current_space": -1})
-        print(base_file['6-31'])
-        print(base_file)
-        f.seek(0)
-        json.dump(base_file,f)
