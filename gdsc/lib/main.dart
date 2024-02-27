@@ -76,7 +76,11 @@ class _MyAppState extends State {
     
     rtdb.ref('parklot_available').once().then((DatabaseEvent event) {
       Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
-      print('Data: ${values.keys}');
+      var lockey = values.keys;
+      lockey.forEach ((var key ) {
+        print('key: $key');
+        //ParkingStation station = new ParkingStation(stationName: key, availableLots: values[key]);
+      });
       
   //return 'Data: fetch failed';
   /*
