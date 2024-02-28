@@ -22,7 +22,6 @@ class ParkingStation extends StatelessWidget {
   final Map? availableLots;
   final LatLng location;
   //final String pricing;
-  
 
   const ParkingStation({
     super.key,
@@ -40,9 +39,10 @@ class ParkingStation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       child: ListTile(
         title: Text(stationName),
-        subtitle: Text('Available lots: $availableLots'),
+//        subtitle: Text('Available lots: $availableLots'),
       ),
     );
   }
@@ -59,6 +59,7 @@ class _MyAppState extends State {
   late GoogleMapController mapController;
   bool _showAppBar = true;
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
+  List<ParkingStation> parkingStations = [];
 
   String? _mapStyle;
   @override
@@ -69,22 +70,23 @@ class _MyAppState extends State {
     });
   }
 
-
-  String readDatabase() {
-
+  Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
-    final rtdb = FirebaseDatabase.instanceFor(app: secondaryApp,databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/');
-    
-    rtdb.ref('parklot_available').once().then((DatabaseEvent event) {
-      Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
-      var lockey = values.keys;
-      lockey.forEach ((var loc ) {
-        //print('key: $key');
-        ParkingStation $loc = new ParkingStation(stationName: loc, availableLots: values[loc],location:_center);
-        print('${loc}:${$loc.location}');
-      });
+    final rtdb = FirebaseDatabase.instanceFor(
+        app: secondaryApp,
+        databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/');
+
+    DatabaseEvent event = await rtdb.ref('parklot_available').once();
+    DataSnapshot snapshot = event.snapshot;
+    Map<dynamic, dynamic> values = snapshot.value as Map<dynamic, dynamic>;
+    var lockey = values.keys;
+    lockey.forEach((var loc) {
+      ParkingStation $loc = ParkingStation(
+          stationName: loc, availableLots: values[loc], location: _center);
+      parkingStations.add($loc);
     });
-    return 'Data: fetch failed';
+
+    return parkingStations;
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -98,7 +100,6 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
-    print('read database ${readDatabase()}');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -168,16 +169,30 @@ class _MyAppState extends State {
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(20.0)),
                     ),
-                    child: ListView.builder(
-                        controller: scrollController,
-                        itemCount: 25,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListTile(title: Text('Item $index'));
-                        },
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0,
-                          vertical: 20.0,
-                        )),
+                    child: FutureBuilder(
+                      future: readDatabase(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<ParkingStation>> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          print("UPDATING");
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else {
+                          return ListView.builder(
+                            controller: scrollController,
+                            itemCount: snapshot.data?.length ?? 0,
+                            itemBuilder: (BuildContext context, int index) {
+                              return snapshot.data![index];
+                            },
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 20.0,
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   );
                 },
               ),
@@ -217,5 +232,3 @@ class _MyAppState extends State {
     );
   }
 }
-
-
