@@ -4,9 +4,9 @@ import json
 import os
 import time
 import threading
-import pandas as pd 
+import pandas as pd
 import re
-from firebase import firebase 
+from firebase import firebase
 app_id = 'B123245005-ec65d34e-4947-4265'
 app_key = '146df24e-2808-496d-a50e-4602a1d8dfb2'
 
@@ -62,7 +62,7 @@ class data():
 
 class data_attributes():
     dir_path = f'{os.getcwd()}/data/data_storage/{model_name}/raw_data'
-    
+
     def __init__(self):
         self.f_time = time.strftime("%Y_%m_%d", time.localtime())  # Initialize machine time and format to specific form
         self.MODEL_NAME = model_name
@@ -82,8 +82,8 @@ class data_attributes():
 
                     else:
                         print(f'{Colorfill.WARNING}File already exists{Colorfill.RESET}')
-                    
-                
+
+
             except Exception as e:
                 print(f"storaging error:{e}")
 
@@ -106,7 +106,7 @@ def make_url(A): #simple function for arguememts that we need to collect for the
 
 def late_preprocess():
     print(f'main<location>:{os.getcwd()}\nGetting data from {make_url(url)}')
-    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py') 
+    os.system(f'python {os.getcwd()}/data/code_storage/DM/{model_name}.py')
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     time.sleep(1200)
 
@@ -135,7 +135,7 @@ if __name__ == '__main__':
             try:
                 d = data(app_id, app_key, auth_response)
                 data_response = requests.get(url, headers=d.get_data_header())
-                
+
                 da.data_storage(data_response.text)
                 late_preprocess()
                 print(f"{Colorfill.OK}data get!{Colorfill.RESET}")
@@ -149,7 +149,12 @@ if __name__ == '__main__':
                 print(f'{Colorfill.FAIL}Half-hourly error:{Colorfill.RESET}{e}')
                 late_preprocess()
         time.sleep(1)
-        
+
+
+        if hour == '00' and minute == '00':
+            print(f'{Colorfill.OK}New day!{Colorfill.RESET}')
+            os.system(f'python {os.getcwd()}/data/code_storage/DM/Parklot_name.py')
+
 
 
 
