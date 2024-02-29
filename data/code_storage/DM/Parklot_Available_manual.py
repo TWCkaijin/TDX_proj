@@ -48,6 +48,7 @@ def restruct(file_num):
                     f.truncate(0)
                     f.seek(0)
                     json.dump(base_file,f)
+                print(f"{Colorfill.OK}Finish {Colorfill.WARNING}{location}({id})|{week}-{clock}{Colorfill.RESET}")
                 
                 
             except Exception as e:
@@ -68,7 +69,7 @@ def restruct(file_num):
                     with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','w+',encoding='utf-8') as f:
                         base_file=dict()
                         base_file[f'{week}-{clock}']={"current_space": -1, "avg_space": 0, "dataset_quantity": 0}
-                        base_file.update({'name':location})
+                        base_file.update({"name":location})
                         f.truncate(0)
                         f.seek(0)
                         json.dump(base_file,f)
@@ -87,13 +88,18 @@ def restruct(file_num):
                     f.seek(0)
                     json.dump(base_file,f)
                 fb.put(f'parklot_available/{id}/',f'{week}-{clock}',{'current_space':lot_num,'avg_space':int(base_file[f'{week}-{clock}']['avg_space']),'dataset_quantity':int(base_file[f'{week}-{clock}']['dataset_quantity'])})
+                print(f"{Colorfill.OK}Finish {Colorfill.WARNING}{location}({id})|{week}-{clock}{Colorfill.RESET}")
+            
+
             except Exception as e:
                 print(f"{Colorfill.OK}New file_tick added: {Colorfill.WARNING}{location}({id})|{week}-{clock}{Colorfill.RESET}//problem: {e}")
+            
+            
                 try:
                     fb.put(f'parklot_available/{id}/',f'{week}-{clock}',{'current_space':int(lot_num),'avg_space':int(base_file[f'{week}-{clock}']['avg_space']),'dataset_quantity':int(base_file[f'{week}-{clock}']['dataset_quantity'])})
                     with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','r+',encoding='utf-8') as f:
                         base_file = json.load(f)
-                        base_file[f"{week}-{clock}"]={"current_space": int(lot_num), "avg_space": int(lot_num), "dataset_quantity": 1}
+                        base_file[f'{week}-{clock}'].update({"current_space": lot_num, "avg_space": lot_num, "dataset_quantity": 1})
                         f.truncate(0)
                         f.seek(0)
                         json.dump(base_file,f)
@@ -105,8 +111,8 @@ def restruct(file_num):
                     fb.put(f'parklot_available/{id}/','name', location)
                     with open (f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','w+',encoding='utf-8') as f:
                         base_file=dict()
-                        base_file[f"{week}-{clock}"]={"current_space": int(lot_num), "avg_space": int(lot_num), "dataset_quantity": 1}
-                        base_file.update({'name':location})
+                        base_file[f'{week}-{clock}']={"current_space": int(lot_num), "avg_space": int(lot_num), "dataset_quantity": 1}
+                        base_file.update({"name":location})
                         json.dump(base_file,f)
                     
     ############################################################################################################
