@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -14,7 +15,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class ParkingStation extends StatelessWidget {
@@ -42,13 +43,15 @@ class ParkingStation extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         title: Text(stationName),
-//        subtitle: Text('Available lots: $availableLots'),
+        subtitle: Text('Available lots: $availableLots'),
       ),
     );
   }
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State createState() => _MyAppState();
 
@@ -60,6 +63,7 @@ class _MyAppState extends State {
   bool _showAppBar = true;
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
+  Completer<List<ParkingStation>> _completer = Completer();
 
   String? _mapStyle;
   @override
@@ -68,13 +72,15 @@ class _MyAppState extends State {
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
       _mapStyle = string;
     });
+    readDatabase();
   }
 
   Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
     final rtdb = FirebaseDatabase.instanceFor(
         app: secondaryApp,
-        databaseURL: 'https://potent-result-406711-48d96.firebaseio.com/');
+        databaseURL:
+            'https://potent-result-406711-ebf47.asia-southeast1.firebasedatabase.app/');
 
     DatabaseEvent event = await rtdb.ref('parklot_available').once();
     DataSnapshot snapshot = event.snapshot;
@@ -85,7 +91,7 @@ class _MyAppState extends State {
           stationName: loc, availableLots: values[loc], location: _center);
       parkingStations.add($loc);
     });
-
+    _completer.complete(parkingStations);
     return parkingStations;
   }
 
@@ -170,12 +176,12 @@ class _MyAppState extends State {
                           top: Radius.circular(20.0)),
                     ),
                     child: FutureBuilder(
-                      future: readDatabase(),
+                      future: _completer.future,
                       builder: (BuildContext context,
                           AsyncSnapshot<List<ParkingStation>> snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          print("UPDATING");
+                          //print("UPDATING");
                           return const Center(
                               child: CircularProgressIndicator());
                         } else {
