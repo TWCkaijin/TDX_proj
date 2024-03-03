@@ -40,7 +40,15 @@ class ParkingStation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0.0,
       color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        side: BorderSide(
+          color: availableLots > 0 ? Colors.green : Colors.red,
+          width: 1.0,
+        ),
+      ),
       child: Stack(
         children: <Widget>[
           ListTile(
