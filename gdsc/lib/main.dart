@@ -47,7 +47,7 @@ class ParkingStation extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(stationName),
+                Flexible(child: Text(stationName)),
                 Text('$availableLots Spaces Left'),
               ],
             ),
@@ -112,17 +112,15 @@ class _MyAppState extends State {
     Map<dynamic, dynamic> values = snapshot.value as Map<dynamic, dynamic>;
     var lockey = values.keys;
     for (var loc in lockey) {
-      try{
-          ParkingStation $loc = ParkingStation(
-          stationName: values[loc]['name'],
-          availableLots: (values[loc][formattedDateTime()])['current_space'],
-          location: _center);
-          parkingStations.add($loc);
-      }catch(e){
+      try {
+        ParkingStation $loc = ParkingStation(
+            stationName: values[loc]['name'],
+            availableLots: (values[loc][formattedDateTime()])['current_space'],
+            location: _center);
+        parkingStations.add($loc);
+      } catch (e) {
         print(e);
-
       }
-      
     }
     _completer.complete(parkingStations);
     return parkingStations;
