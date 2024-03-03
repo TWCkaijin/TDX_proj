@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:location/location.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -97,11 +99,14 @@ class _MyAppState extends State {
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
+  Location _LocationController = Location();
+  LatLng? _currentPositon = null;
 
   String? _mapStyle;
   @override
   void initState() {
     super.initState();
+    getLocationUpdates();
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
       _mapStyle = string;
     });
@@ -139,7 +144,7 @@ class _MyAppState extends State {
     if (_mapStyle != null) {
       controller.setMapStyle(_mapStyle);
     } else {
-      print('Failed to load map style');
+      debugPrint('Failed to load map style');
     }
   }
 
@@ -276,5 +281,39 @@ class _MyAppState extends State {
         ),
       ),
     );
+  }
+
+  Future<void> getLocationUpdates() async {
+    bool _service_Enable;
+    PermissionStatus _permissionGranted;
+
+    _service_Enable = await _LocationController.serviceEnabled();
+
+    if (_service_Enable) {
+      _service_Enable = await _LocationController.requestService();
+    } else {
+      return;
+    }
+
+    _permissionGranted = await _LocationController.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await _LocationController.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    _LocationController.onLocationChanged
+        .listen((LocationData currentLocation) {
+      if (currentLocation.latitude != null &&
+          currentLocation.longitude != null) {
+        setState(() {
+          _currentPositon =
+              LatLng(currentLocation.latitude!, currentLocation.longitude!);
+          //_currentPositon =LatLng(22.632820, 120.300487);
+        });
+      }
+      log("current_pos : $_currentPositon");
+    });
   }
 }

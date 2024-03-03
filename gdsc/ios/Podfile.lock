@@ -39,6 +39,8 @@ PODS:
     - GoogleUtilities/Environment
   - "GoogleUtilities/NSData+zlib (7.12.0)"
   - leveldb-library (1.22.3)
+  - location (0.0.1):
+    - Flutter
   - PromisesObjC (2.4.0)
 
 DEPENDENCIES:
@@ -46,6 +48,7 @@ DEPENDENCIES:
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - Flutter (from `Flutter`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
 
 SPEC REPOS:
   trunk:
@@ -69,6 +72,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   google_maps_flutter_ios:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
 
 SPEC CHECKSUMS:
   Firebase: 10c8cb12fb7ad2ae0c09ffc86cd9c1ab392a0031
@@ -84,6 +89,7 @@ SPEC CHECKSUMS:
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   leveldb-library: e74c27d8fbd22854db7cb467968a0b8aa1db7126
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
