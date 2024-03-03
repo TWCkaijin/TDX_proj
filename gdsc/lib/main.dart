@@ -20,7 +20,7 @@ void main() async {
 
 class ParkingStation extends StatelessWidget {
   final String stationName;
-  final Map? availableLots;
+  final int availableLots;
   final LatLng location;
   //final String pricing;
 
@@ -112,11 +112,17 @@ class _MyAppState extends State {
     Map<dynamic, dynamic> values = snapshot.value as Map<dynamic, dynamic>;
     var lockey = values.keys;
     for (var loc in lockey) {
-      ParkingStation $loc = ParkingStation(
+      try{
+          ParkingStation $loc = ParkingStation(
           stationName: values[loc]['name'],
-          availableLots: values[loc][formattedDateTime()]['current_space'],
+          availableLots: (values[loc][formattedDateTime()])['current_space'],
           location: _center);
-      parkingStations.add($loc);
+          parkingStations.add($loc);
+      }catch(e){
+        print(e);
+
+      }
+      
     }
     _completer.complete(parkingStations);
     return parkingStations;
