@@ -41,9 +41,25 @@ class ParkingStation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      child: ListTile(
-        title: Text(stationName),
-        subtitle: Text('Available lots: $availableLots'),
+      child: Stack(
+        children: <Widget>[
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(stationName),
+                Text('$availableLots Spaces Left'),
+              ],
+            ),
+            subtitle: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('DISTANCE km'),
+                Text('MONEY/hr'),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -58,12 +74,21 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
 }
 
+String formattedDateTime() {
+  DateTime now = DateTime.now().subtract(const Duration(minutes: 2));
+  int dayOfWeek = now.weekday;
+  int timeInMinutes = now.hour * 60 + now.minute;
+  int choppedTime = (timeInMinutes * 48) ~/ (24 * 60);
+  String formattedDateTime = '$dayOfWeek-$choppedTime';
+  return formattedDateTime;
+}
+
 class _MyAppState extends State {
   late GoogleMapController mapController;
   bool _showAppBar = true;
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
-  Completer<List<ParkingStation>> _completer = Completer();
+  final Completer<List<ParkingStation>> _completer = Completer();
 
   String? _mapStyle;
   @override
@@ -86,11 +111,13 @@ class _MyAppState extends State {
     DataSnapshot snapshot = event.snapshot;
     Map<dynamic, dynamic> values = snapshot.value as Map<dynamic, dynamic>;
     var lockey = values.keys;
-    lockey.forEach((var loc) {
+    for (var loc in lockey) {
       ParkingStation $loc = ParkingStation(
-          stationName: loc, availableLots: values[loc], location: _center);
+          stationName: values[loc]['name'],
+          availableLots: values[loc][formattedDateTime()]['current_space'],
+          location: _center);
       parkingStations.add($loc);
-    });
+    }
     _completer.complete(parkingStations);
     return parkingStations;
   }
@@ -106,6 +133,7 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
+//    print(formattedDateTime());
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
