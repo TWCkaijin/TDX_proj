@@ -10,5 +10,6 @@ tags
 slnx.sqlite
 VSWorkspaceState.json
 .wsuo
-
+/.vscode
+/.vs
 /gdsc
