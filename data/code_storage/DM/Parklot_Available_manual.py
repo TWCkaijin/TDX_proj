@@ -48,6 +48,7 @@ def restruct(file_num):
         if(lot_num==-1):  # case with bad data
             try: 
                 #fb.put(f'parklot_available/{id}/{week}-{clock}','current_space', -1)
+                #fb.put(f'parklot_available/{id}/{week}-{clock}','current_space', -1)
                 with open (f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','r+',encoding='utf-8') as f:
                     base_file = json.load(f)
                     base_file[f'{week}-{clock}'].update({'current_space':-1})
@@ -61,6 +62,7 @@ def restruct(file_num):
                 print(f"{Colorfill.OK}New file_tick added: {Colorfill.WARNING}{location}({id})|{week}-{clock}{Colorfill.RESET}//problem: {e}")
                 try:
                     #fb.put(f'parklot_available/{id}/{week}-{clock}','current_space', -1)
+                    #fb.put(f'parklot_available/{id}/{week}-{clock}','current_space', -1)
                     with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','r+',encoding='utf-8') as f:
                         base_file = json.load(f)
                         base_file[f'{week}-{clock}']={"current_space": -1, "avg_space": 0, "dataset_quantity": 0}
@@ -70,6 +72,8 @@ def restruct(file_num):
                     
                 except Exception as e :
                     print(f"{Colorfill.OK}New location added: {Colorfill.WARNING}{location}({id}){Colorfill.RESET}//problem: {e}")
+                    #fb.put(f'parklot_available/{id}/',f'{week}-{clock}',{'current_space':-1,"avg_space": 0, "dataset_quantity": 0})
+                    #fb.put(f'parklot_available/{id}/','name', location)
                     #fb.put(f'parklot_available/{id}/',f'{week}-{clock}',{'current_space':-1,"avg_space": 0, "dataset_quantity": 0})
                     #fb.put(f'parklot_available/{id}/','name', location)
                     with open(f'{os.getcwd()}//data//data_storage//Parklot_Available//proceeded_data//{id}.json','w+',encoding='utf-8') as f:
