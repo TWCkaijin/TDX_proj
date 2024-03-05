@@ -99,7 +99,7 @@ class _MyAppState extends State {
   final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
-  Location _LocationController = Location();
+  final _LocationController = Location();
   LatLng? _currentPositon = null;
 
   String? _mapStyle;
@@ -188,11 +188,18 @@ class _MyAppState extends State {
             GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: _center,
+                target: _currentPositon ?? _center,
                 zoom: 12.5,
               ),
+              markers: {
+                Marker(
+                  markerId: MarkerId('current_position'),
+                  position: _currentPositon!,
+                  icon: BitmapDescriptor.defaultMarker,
+                ),
+              },
               //myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
+              zoomControlsEnabled: true,
             ),
             NotificationListener<ScrollUpdateNotification>(
               onNotification: (notification) {
