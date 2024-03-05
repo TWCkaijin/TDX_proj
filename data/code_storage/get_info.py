@@ -52,7 +52,7 @@ def uplod_to_firebase(data):
         #print(f"{data['CarParks'][i]['CarParkID']}: ({data['CarParks'][i]['CarParkPosition']['PositionLat']},{data['CarParks'][i]['CarParkPosition']['PositionLon']})")
         #print(f"/parklot_available/{data['CarParks'][i]['CarParkID']}--Money: {data['CarParks'][i]['FareDescription']}")
         fb.put(f"/parklot_available/{data['CarParks'][i]['CarParkID']}", "LatLon",f"({data['CarParks'][i]['CarParkPosition']['PositionLat']},{data['CarParks'][i]['CarParkPosition']['PositionLon']})")
-        fb.put(f"/parklot_available/{data['CarParks'][i]['CarParkID']}","Money",f"data['CarParks'][i]['FareDescription']")
+        fb.put(f"/parklot_available/{data['CarParks'][i]['CarParkID']}","Money",data['CarParks'][i]['FareDescription'])
 
     
 
