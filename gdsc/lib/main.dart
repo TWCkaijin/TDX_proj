@@ -23,15 +23,15 @@ void main() async {
 class ParkingStation extends StatelessWidget {
   final String stationName;
   final int availableLots;
-  final LatLng location;
-  //final String pricing;
+  final LatLng? location;
+  final String? pricing;
 
   const ParkingStation({
     super.key,
     required this.stationName,
     required this.availableLots,
     required this.location,
-    //required this.pricing
+    required this.pricing
   });
 
   /*TO DO:
@@ -47,8 +47,8 @@ class ParkingStation extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
         side: BorderSide(
-          color: availableLots > 0 ? Colors.green : Colors.red,
-          width: 1.0,
+          color: availableLots > 0 ? (availableLots>10?Colors.green:Colors.yellow) : Colors.red,
+          width: 3.0,
         ),
       ),
       child: Stack(
@@ -58,14 +58,14 @@ class ParkingStation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Flexible(child: Text(stationName)),
-                Text('$availableLots Spaces Left'),
+                Text('${availableLots==-1?"No info":"$availableLots spaces"} '),
               ],
             ),
-            subtitle: const Row(
+            subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text('DISTANCE km'),
-                Text('MONEY/hr'),
+                Text('$location'),
+                Flexible(child:Text('$pricing')),
               ],
             ),
           ),
@@ -129,7 +129,8 @@ class _MyAppState extends State {
         ParkingStation $loc = ParkingStation(
             stationName: values[loc]['name'],
             availableLots: (values[loc][formattedDateTime()])['current_space'],
-            location: _center);
+            location: LatLng(double.parse(values[loc]['LatLng']['Lat']), double.parse(values[loc]['LatLng']['Lng'])),
+            pricing: values[loc]['Money']);//values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
         parkingStations.add($loc);
       } catch (e) {
         print(e);
