@@ -9,6 +9,14 @@ import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:location/location.dart';
 
+const LatLng _center = LatLng(22.6239974, 120.2981408);
+//TODO:
+// 1. Put the button of location to somewhere reachable
+// 2. Implement pages for settings, bug report, about
+// 3. Put marks for every parking station
+// 4. Put a little pull up mark on the sheet
+// 5. Fix the issue that scares me with red screen when opening the app
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -36,9 +44,6 @@ class ParkingStation extends StatelessWidget {
       required this.pricing,
       required this.distance});
 
-  /*TO DO:
-  Distance from user's location to the parking station needs to be generated
-  The widget must be adapted to the width of device screen*/
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -99,11 +104,11 @@ String formattedDateTime() {
 class _MyAppState extends State {
   late GoogleMapController mapController;
   bool _showAppBar = true;
-  final LatLng _center = const LatLng(22.6239974, 120.2981408);
+  //final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
-  final _LocationController = Location();
-  LatLng? _currentPositon = null;
+  final locationController = Location();
+  LatLng? _currentPositon;
 
   String? _mapStyle;
   @override
@@ -146,13 +151,13 @@ class _MyAppState extends State {
             distance: (calculateDistance(
                 double.parse(values[loc]['LatLng']['Lat']),
                 double.parse(values[loc]['LatLng']['Lng']),
-                _currentPositon!.latitude,
-                _currentPositon!.longitude)),
+                _currentPositon?.latitude ?? 0.0,
+                _currentPositon?.longitude ?? 0.0)),
             pricing: values[loc][
                 'Money']); //values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
         parkingStations.add($loc);
       } catch (e) {
-        print(e);
+        print('Err: ${values[loc]}-->$e');
       }
     }
     parkingStations.sort((a, b) => a.distance.compareTo(b.distance));
@@ -214,8 +219,8 @@ class _MyAppState extends State {
               ),
               markers: {
                 Marker(
-                  markerId: MarkerId('current_position'),
-                  position: _currentPositon!,
+                  markerId: const MarkerId('current_position'),
+                  position: _currentPositon ?? _center,
                   icon: BitmapDescriptor.defaultMarker,
                 ),
               },
@@ -312,27 +317,26 @@ class _MyAppState extends State {
   }
 
   Future<void> getLocationUpdates() async {
-    bool _service_Enable;
-    PermissionStatus _permissionGranted;
+    bool serviceEnable;
+    PermissionStatus permissionGranted;
 
-    _service_Enable = await _LocationController.serviceEnabled();
+    serviceEnable = await locationController.serviceEnabled();
 
-    if (_service_Enable) {
-      _service_Enable = await _LocationController.requestService();
+    if (serviceEnable) {
+      serviceEnable = await locationController.requestService();
     } else {
       return;
     }
 
-    _permissionGranted = await _LocationController.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await _LocationController.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await locationController.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await locationController.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         return;
       }
     }
 
-    _LocationController.onLocationChanged
-        .listen((LocationData currentLocation) {
+    locationController.onLocationChanged.listen((LocationData currentLocation) {
       if (currentLocation.latitude != null &&
           currentLocation.longitude != null) {
         setState(() {
@@ -341,7 +345,7 @@ class _MyAppState extends State {
           //_currentPositon =LatLng(22.632820, 120.300487);
         });
       }
-      dev.log("current_pos : $_currentPositon");
+      dev.log("current_pos : ${_currentPositon ?? _center}");
     });
   }
 }
