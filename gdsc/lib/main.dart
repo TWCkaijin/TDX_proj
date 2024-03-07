@@ -11,11 +11,9 @@ import 'package:location/location.dart';
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
 //TODO:
-// 1. Put the button of location to somewhere reachable
+// 1. Ontap for markers
 // 2. Implement pages for settings, bug report, about
-// 3. Put marks for every parking station
-// 4. Put a little pull up mark on the sheet
-// 5. Fix the issue that scares me with red screen when opening the app
+// 3. Splash screen or solve the loading issue again
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -223,9 +221,37 @@ class _MyAppState extends State {
                   position: _currentPositon ?? _center,
                   icon: BitmapDescriptor.defaultMarker,
                 ),
+                for (var station in parkingStations.sublist(0, 10))
+                  Marker(
+                      markerId: MarkerId(station.stationName),
+                      position: station.location!,
+                      icon: BitmapDescriptor.defaultMarkerWithHue(
+                          BitmapDescriptor.hueCyan)),
               },
-              //myLocationButtonEnabled: false,
+              myLocationButtonEnabled: false,
               zoomControlsEnabled: true,
+              compassEnabled: false,
+            ),
+            Positioned(
+              right: 15,
+              bottom: 100,
+              child: FloatingActionButton(
+                backgroundColor: const Color.fromRGBO(217, 221, 208, 1),
+                elevation: 0.0,
+                onPressed: () {
+                  if (_currentPositon != null) {
+                    mapController.animateCamera(
+                      CameraUpdate.newCameraPosition(
+                        CameraPosition(
+                          target: _currentPositon!,
+                          zoom: 15.0,
+                        ),
+                      ),
+                    );
+                  }
+                },
+                child: const Icon(Icons.location_searching),
+              ),
             ),
             NotificationListener<ScrollUpdateNotification>(
               onNotification: (notification) {
@@ -263,16 +289,29 @@ class _MyAppState extends State {
                           return const Center(
                               child: CircularProgressIndicator());
                         } else {
-                          return ListView.builder(
-                            controller: scrollController,
-                            itemCount: snapshot.data?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              return snapshot.data![index];
-                            },
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                              vertical: 20.0,
-                            ),
+                          return Column(
+                            children: [
+                              Transform(
+                                transform:
+                                    Matrix4.diagonal3Values(2.0, 1.0, 1.0),
+                                alignment: Alignment.center,
+                                child: const Icon(Icons.expand_less),
+                              ),
+                              Expanded(
+                                child: ListView.builder(
+                                  controller: scrollController,
+                                  itemCount: snapshot.data?.length ?? 0,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return snapshot.data![index];
+                                  },
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0,
+                                    vertical: 20.0,
+                                  ),
+                                ),
+                              ),
+                            ],
                           );
                         }
                       },
