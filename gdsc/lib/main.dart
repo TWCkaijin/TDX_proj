@@ -33,6 +33,7 @@ class ParkingStation extends StatelessWidget {
   final LatLng? location;
   final String? pricing;
   final double distance;
+  final Function(LatLng) onTap;
 
   const ParkingStation(
       {super.key,
@@ -40,44 +41,47 @@ class ParkingStation extends StatelessWidget {
       required this.availableLots,
       required this.location,
       required this.pricing,
-      required this.distance});
+      required this.distance,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.0,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-        side: BorderSide(
-          color: availableLots > 0
-              ? (availableLots > 10 ? Colors.green : Colors.yellow)
-              : Colors.red,
-          width: 2.0,
-        ),
-      ),
-      child: Stack(
-        children: <Widget>[
-          ListTile(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Flexible(child: Text(stationName)),
-                Text(
-                    '${availableLots == -1 ? "No info" : "$availableLots spaces"} '),
-              ],
-            ),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Flexible(child: Text('${distance.toStringAsFixed(2)} km')),
-                Flexible(child: Text('$pricing')),
-              ],
+    return GestureDetector(
+        onTap: () => onTap(location!),
+        child: Card(
+          elevation: 0.0,
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            side: BorderSide(
+              color: availableLots > 0
+                  ? (availableLots > 10 ? Colors.green : Colors.yellow)
+                  : Colors.red,
+              width: 2.0,
             ),
           ),
-        ],
-      ),
-    );
+          child: Stack(
+            children: <Widget>[
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Flexible(child: Text(stationName)),
+                    Text(
+                        '${availableLots == -1 ? "No info" : "$availableLots spaces"} '),
+                  ],
+                ),
+                subtitle: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Flexible(child: Text('${distance.toStringAsFixed(2)} km')),
+                    Flexible(child: Text('$pricing')),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
 
@@ -128,6 +132,26 @@ class _MyAppState extends State {
     return 12742 * asin(sqrt(a));
   }
 
+  void _onStationTap(LatLng stationLocation) {
+    LatLng southwest;
+    LatLng northeast;
+
+    if (_currentPositon!.latitude < stationLocation.latitude) {
+      southwest = _currentPositon!;
+      northeast = stationLocation;
+    } else {
+      southwest = stationLocation;
+      northeast = _currentPositon!;
+    }
+
+    LatLngBounds bounds =
+        LatLngBounds(southwest: southwest, northeast: northeast);
+
+    CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 150);
+
+    mapController.animateCamera(cameraUpdate);
+  }
+
   Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
     final rtdb = FirebaseDatabase.instanceFor(
@@ -151,8 +175,9 @@ class _MyAppState extends State {
                 double.parse(values[loc]['LatLng']['Lng']),
                 _currentPositon?.latitude ?? 0.0,
                 _currentPositon?.longitude ?? 0.0)),
-            pricing: values[loc][
-                'Money']); //values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
+            pricing: values[loc]['Money'],
+            onTap:
+                _onStationTap); //values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
         parkingStations.add($loc);
       } catch (e) {
         print('Err: ${values[loc]}-->$e');
