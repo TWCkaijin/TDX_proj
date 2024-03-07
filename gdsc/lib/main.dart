@@ -11,9 +11,8 @@ import 'package:location/location.dart';
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
 //TODO:
-// 1. Ontap for markers
-// 2. Implement pages for settings, bug report, about
-// 3. Splash screen or solve the loading issue again
+// 1. Implement pages for settings, bug report, about
+// 2. Splash screen or solve the loading issue again
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -110,13 +109,17 @@ class _MyAppState extends State {
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
   final locationController = Location();
-  LatLng? _currentPositon;
+  LatLng? _currentPosition;
 
   String? _mapStyle;
   @override
   void initState() {
     super.initState();
-    getLocationUpdates();
+    initialize();
+  }
+
+  Future<void> initialize() async {
+    await getLocationUpdates();
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
       _mapStyle = string;
     });
@@ -133,16 +136,16 @@ class _MyAppState extends State {
   }
 
   void _onStationTap(LatLng stationLocation) {
-    LatLng southwest;
-    LatLng northeast;
+    double southLat = min(_currentPosition!.latitude, stationLocation.latitude);
+    double northLat = max(_currentPosition!.latitude, stationLocation.latitude);
 
-    if (_currentPositon!.latitude < stationLocation.latitude) {
-      southwest = _currentPositon!;
-      northeast = stationLocation;
-    } else {
-      southwest = stationLocation;
-      northeast = _currentPositon!;
-    }
+    double westLng =
+        min(_currentPosition!.longitude, stationLocation.longitude);
+    double eastLng =
+        max(_currentPosition!.longitude, stationLocation.longitude);
+
+    LatLng southwest = LatLng(southLat, westLng);
+    LatLng northeast = LatLng(northLat, eastLng);
 
     LatLngBounds bounds =
         LatLngBounds(southwest: southwest, northeast: northeast);
@@ -173,8 +176,8 @@ class _MyAppState extends State {
             distance: (calculateDistance(
                 double.parse(values[loc]['LatLng']['Lat']),
                 double.parse(values[loc]['LatLng']['Lng']),
-                _currentPositon?.latitude ?? 0.0,
-                _currentPositon?.longitude ?? 0.0)),
+                _currentPosition?.latitude,
+                _currentPosition?.longitude)),
             pricing: values[loc]['Money'],
             onTap:
                 _onStationTap); //values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
@@ -237,13 +240,13 @@ class _MyAppState extends State {
             GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: _currentPositon ?? _center,
+                target: _currentPosition ?? _center,
                 zoom: 12.5,
               ),
               markers: {
                 Marker(
                   markerId: const MarkerId('current_position'),
-                  position: _currentPositon ?? _center,
+                  position: _currentPosition ?? _center,
                   icon: BitmapDescriptor.defaultMarker,
                 ),
                 for (var station in parkingStations.sublist(0, 10))
@@ -254,7 +257,7 @@ class _MyAppState extends State {
                           BitmapDescriptor.hueCyan)),
               },
               myLocationButtonEnabled: false,
-              zoomControlsEnabled: true,
+              zoomControlsEnabled: false,
               compassEnabled: false,
             ),
             Positioned(
@@ -264,11 +267,11 @@ class _MyAppState extends State {
                 backgroundColor: const Color.fromRGBO(217, 221, 208, 1),
                 elevation: 0.0,
                 onPressed: () {
-                  if (_currentPositon != null) {
+                  if (_currentPosition != null) {
                     mapController.animateCamera(
                       CameraUpdate.newCameraPosition(
                         CameraPosition(
-                          target: _currentPositon!,
+                          target: _currentPosition!,
                           zoom: 15.0,
                         ),
                       ),
@@ -404,12 +407,12 @@ class _MyAppState extends State {
       if (currentLocation.latitude != null &&
           currentLocation.longitude != null) {
         setState(() {
-          _currentPositon =
+          _currentPosition =
               LatLng(currentLocation.latitude!, currentLocation.longitude!);
-          //_currentPositon =LatLng(22.632820, 120.300487);
+          //_currentPosition =LatLng(22.632820, 120.300487);
         });
       }
-      dev.log("current_pos : ${_currentPositon ?? _center}");
+      dev.log("current_pos : ${_currentPosition ?? _center}");
     });
   }
 }
