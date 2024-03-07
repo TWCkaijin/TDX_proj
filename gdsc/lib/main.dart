@@ -1,21 +1,33 @@
 import 'dart:async';
 import 'dart:developer' as dev;
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_maps_webservice/places.dart' as mws;
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:location/location.dart';
+import 'package:location/location.dart' as alloc;
+import 'package:google_maps_webservice/directions.dart' as gmap;
+import 'package:flutter_polyline_points/flutter_polyline_points.dart' as polyline;
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
+String? apikey;
+polyline.PolylinePoints _polylinePoints = polyline.PolylinePoints();
+mws.GoogleMapsPlaces? _places ;
+
 //TODO:
 // 1. Implement pages for settings, bug report, about
-// 2. Splash screen or solve the loading issue again
-
+// 2. draw route
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if(Platform.isAndroid){
+    _places = mws.GoogleMapsPlaces(apiKey: "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0");
+  }else if(Platform.isIOS){
+    _places = mws.GoogleMapsPlaces(apiKey: "AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY");
+  }
   await Firebase.initializeApp(
     name: "potent-result-406711",
     options: DefaultFirebaseOptions.currentPlatform,
@@ -32,7 +44,7 @@ class ParkingStation extends StatelessWidget {
   final LatLng? location;
   final String? pricing;
   final double distance;
-  final Function(LatLng) onTap;
+  final Function(LatLng,String) onTap;
 
   const ParkingStation(
       {super.key,
@@ -46,7 +58,7 @@ class ParkingStation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => onTap(location!),
+        onTap: () => onTap(location!,stationName),
         child: Card(
           elevation: 0.0,
           color: Colors.white,
@@ -108,7 +120,7 @@ class _MyAppState extends State {
   //final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
-  final locationController = Location();
+  final locationController = alloc.Location();
   LatLng? _currentPosition;
 
   String? _mapStyle;
@@ -135,7 +147,7 @@ class _MyAppState extends State {
     return 12742 * asin(sqrt(a));
   }
 
-  void _onStationTap(LatLng stationLocation) {
+  void _onStationTap(LatLng stationLocation, String stationName) {
     double southLat = min(_currentPosition!.latitude, stationLocation.latitude);
     double northLat = max(_currentPosition!.latitude, stationLocation.latitude);
 
@@ -153,7 +165,35 @@ class _MyAppState extends State {
     CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 150);
 
     mapController.animateCamera(cameraUpdate);
+    mapController.showMarkerInfoWindow(MarkerId(stationName));
   }
+
+  void _onMarkerTapped(MarkerId markerId ,LatLng markerpos) async {
+    var destination = markerpos;
+    LatLng? origin = _currentPosition;
+    Set<Polyline> _polyLines = {};
+    polyline.PolylineResult result = await _polylinePoints.getRouteBetweenCoordinates(
+      "$apikey",
+      polyline.PointLatLng(origin!.latitude, origin.longitude),
+      polyline.PointLatLng(destination.latitude, destination.longitude),
+      travelMode: polyline.TravelMode.driving,
+    );
+
+    if (result.status == 'OK') {
+      setState(() {
+        _polyLines.add(Polyline(
+          polylineId: PolylineId("route"),
+          visible: true,
+          points: result.points.map((point) => LatLng(point.latitude, point.longitude)).toList(),
+          color: Colors.blue,
+        ));
+      });
+      print('Polyline added');
+    } else {
+      print('Failed to get directions');
+    }
+  }
+
 
   Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
@@ -195,9 +235,11 @@ class _MyAppState extends State {
     mapController = controller;
     if (_mapStyle != null) {
       controller.setMapStyle(_mapStyle);
+       mapController.showMarkerInfoWindow(const MarkerId('current_position'));
     } else {
       debugPrint('Failed to load map style');
     }
+
   }
 
   @override
@@ -249,12 +291,18 @@ class _MyAppState extends State {
                   position: _currentPosition ?? _center,
                   icon: BitmapDescriptor.defaultMarker,
                 ),
-                for (var station in parkingStations.sublist(0, 10))
-                  Marker(
-                      markerId: MarkerId(station.stationName),
-                      position: station.location!,
-                      icon: BitmapDescriptor.defaultMarkerWithHue(
-                          BitmapDescriptor.hueCyan)),
+                for (var station in (parkingStations.length >= 5?parkingStations.sublist(0,5):parkingStations))
+                Marker(
+                    markerId: MarkerId(station.stationName),
+                    position: station.location!,
+                    icon: BitmapDescriptor.defaultMarkerWithHue(
+                        BitmapDescriptor.hueCyan),
+                    infoWindow: InfoWindow(
+                      title: station.stationName,
+                    ),
+                    onTap:() => _onMarkerTapped(MarkerId(station.stationName),station.location!),
+                    anchor: const Offset(0.5, 0) //center of the marker
+                ),
               },
               myLocationButtonEnabled: false,
               zoomControlsEnabled: false,
@@ -385,7 +433,7 @@ class _MyAppState extends State {
 
   Future<void> getLocationUpdates() async {
     bool serviceEnable;
-    PermissionStatus permissionGranted;
+    alloc.PermissionStatus permissionGranted;
 
     serviceEnable = await locationController.serviceEnabled();
 
@@ -396,14 +444,14 @@ class _MyAppState extends State {
     }
 
     permissionGranted = await locationController.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
+    if (permissionGranted == alloc.PermissionStatus.denied) {
       permissionGranted = await locationController.requestPermission();
-      if (permissionGranted != PermissionStatus.granted) {
+      if (permissionGranted != alloc.PermissionStatus.granted) {
         return;
       }
     }
 
-    locationController.onLocationChanged.listen((LocationData currentLocation) {
+    locationController.onLocationChanged.listen((alloc.LocationData currentLocation) {
       if (currentLocation.latitude != null &&
           currentLocation.longitude != null) {
         setState(() {
