@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'main.dart' as mc;
 
-final LatLng? selectedLocation = mc.CurrentPosition;
+final LatLng? selectedLocation = mc.currentPosition;
 
 
 class SetLocation extends StatefulWidget{
@@ -16,7 +16,7 @@ class SetLocation extends StatefulWidget{
 class _SetLocationState extends State<SetLocation>{
   void _setLocation(LatLng location) {
     setState(() {
-      mc.CurrentPosition = location;
+      mc.currentPosition = location;
       print("location_set: $location");
       mc.mode = 1;
       Navigator.push(context, MaterialPageRoute(builder: (context) => const mc.MyApp()));
