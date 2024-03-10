@@ -17,7 +17,7 @@ class _SetLocationState extends State<SetLocation>{
   void _setLocation(LatLng location) {
     setState(() {
       mc.currentPosition = location;
-      print("location_set: $location");
+      //print("location_set: $location");
       mc.mode = 1;
       Navigator.push(context, MaterialPageRoute(builder: (context) => const mc.MyApp()));
     });

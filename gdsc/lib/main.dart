@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:location/location.dart' as ploc;
 import 'package:google_maps_routes/google_maps_routes.dart' as gmr;
-import 'SetLocation.dart' as sl;
+import 'set_location.dart' as sl;
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
 final String apikey = Platform.isAndroid? "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0": Platform.isIOS?"AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY":"Unsupport Platform";
@@ -24,7 +24,6 @@ Set<Marker> markerset = {};
 
 //TODO:
 // 1. Implement pages for settings, bug report, about
-// 2. draw route
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
