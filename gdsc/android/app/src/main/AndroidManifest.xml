@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <application
-        android:label="gdsc"
+        android:label="Charsiu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -17,7 +17,6 @@
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,7 +28,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0" />
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0"/>
     </application>
 </manifest>
