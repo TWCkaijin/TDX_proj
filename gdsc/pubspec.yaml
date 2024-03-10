@@ -45,6 +45,7 @@ dependencies:
   firebase_database: ^10.4.6
   intl: ^0.17.0
   flutter_polyline_points: ^1.0.0
+  google_maps_routes: ^1.0.0
 
 dev_dependencies:
   flutter_test:

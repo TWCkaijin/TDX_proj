@@ -4,29 +4,29 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_maps_webservice/places.dart' as mws;
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:location/location.dart' as alloc;
-import 'package:google_maps_webservice/directions.dart' as gmap;
-import 'package:flutter_polyline_points/flutter_polyline_points.dart' as polyline;
+import 'package:location/location.dart' as LOC;
+import 'package:flutter_polyline_points/flutter_polyline_points.dart'
+    as polyline;
+import 'package:google_maps_routes/google_maps_routes.dart' as gmr;
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
-String? apikey;
+String? ApiKey;
 polyline.PolylinePoints _polylinePoints = polyline.PolylinePoints();
-mws.GoogleMapsPlaces? _places ;
+gmr.MapsRoutes route = gmr.MapsRoutes();
 
 //TODO:
 // 1. Implement pages for settings, bug report, about
 // 2. draw route
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if(Platform.isAndroid){
-    _places = mws.GoogleMapsPlaces(apiKey: "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0");
-  }else if(Platform.isIOS){
-    _places = mws.GoogleMapsPlaces(apiKey: "AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY");
+  if (Platform.isAndroid) {
+    ApiKey = "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0";
+  } else if (Platform.isIOS) {
+    ApiKey = "AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY";
   }
   await Firebase.initializeApp(
     name: "potent-result-406711",
@@ -44,7 +44,7 @@ class ParkingStation extends StatelessWidget {
   final LatLng? location;
   final String? pricing;
   final double distance;
-  final Function(LatLng,String) onTap;
+  final Function(LatLng, String) onTap;
 
   const ParkingStation(
       {super.key,
@@ -58,7 +58,7 @@ class ParkingStation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => onTap(location!,stationName),
+        onTap: () => onTap(location!, stationName),
         child: Card(
           elevation: 0.0,
           color: Colors.white,
@@ -120,7 +120,7 @@ class _MyAppState extends State {
   //final LatLng _center = const LatLng(22.6239974, 120.2981408);
   List<ParkingStation> parkingStations = [];
   final Completer<List<ParkingStation>> _completer = Completer();
-  final locationController = alloc.Location();
+  final locationController = LOC.Location();
   LatLng? _currentPosition;
 
   String? _mapStyle;
@@ -168,32 +168,20 @@ class _MyAppState extends State {
     mapController.showMarkerInfoWindow(MarkerId(stationName));
   }
 
-  void _onMarkerTapped(MarkerId markerId ,LatLng markerpos) async {
-    var destination = markerpos;
-    LatLng? origin = _currentPosition;
-    Set<Polyline> _polyLines = {};
-    polyline.PolylineResult result = await _polylinePoints.getRouteBetweenCoordinates(
-      "$apikey",
-      polyline.PointLatLng(origin!.latitude, origin.longitude),
-      polyline.PointLatLng(destination.latitude, destination.longitude),
-      travelMode: polyline.TravelMode.driving,
-    );
-
-    if (result.status == 'OK') {
-      setState(() {
-        _polyLines.add(Polyline(
-          polylineId: PolylineId("route"),
-          visible: true,
-          points: result.points.map((point) => LatLng(point.latitude, point.longitude)).toList(),
-          color: Colors.blue,
-        ));
-      });
-      print('Polyline added');
-    } else {
-      print('Failed to get directions');
-    }
+  void _onMarkerTap(LatLng targetPos, String name) async {
+    route.routes.clear();
+    List<LatLng> points = [
+      LatLng(_currentPosition!.latitude, _currentPosition!.longitude),
+      LatLng(targetPos.latitude, targetPos.longitude)
+    ];
+    
+    await route.drawRoute(
+        points, 
+        name, 
+        const Color.fromRGBO(130, 78, 210, 1.0), 
+        ApiKey!,
+        travelMode: gmr.TravelModes.driving);
   }
-
 
   Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
@@ -223,7 +211,7 @@ class _MyAppState extends State {
                 _onStationTap); //values[loc]['LatLng']['Lat'], values[loc]['LatLng']['Lng']
         parkingStations.add($loc);
       } catch (e) {
-        print('Err: ${values[loc]}-->$e');
+        //print('Err: ${values[loc]}-->$e');
       }
     }
     parkingStations.sort((a, b) => a.distance.compareTo(b.distance));
@@ -235,11 +223,10 @@ class _MyAppState extends State {
     mapController = controller;
     if (_mapStyle != null) {
       controller.setMapStyle(_mapStyle);
-       mapController.showMarkerInfoWindow(const MarkerId('current_position'));
+      mapController.showMarkerInfoWindow(const MarkerId('current_position'));
     } else {
       debugPrint('Failed to load map style');
     }
-
   }
 
   @override
@@ -291,19 +278,22 @@ class _MyAppState extends State {
                   position: _currentPosition ?? _center,
                   icon: BitmapDescriptor.defaultMarker,
                 ),
-                for (var station in (parkingStations.length >= 5?parkingStations.sublist(0,5):parkingStations))
-                Marker(
-                    markerId: MarkerId(station.stationName),
-                    position: station.location!,
-                    icon: BitmapDescriptor.defaultMarkerWithHue(
-                        BitmapDescriptor.hueCyan),
-                    infoWindow: InfoWindow(
-                      title: station.stationName,
-                    ),
-                    onTap:() => _onMarkerTapped(MarkerId(station.stationName),station.location!),
-                    anchor: const Offset(0.5, 0) //center of the marker
-                ),
+                for (var station in (parkingStations.length >= 5
+                    ? parkingStations.sublist(0, 5)
+                    : parkingStations))
+                  Marker(
+                      markerId: MarkerId(station.stationName),
+                      position: station.location!,
+                      icon: BitmapDescriptor.defaultMarkerWithHue(
+                          BitmapDescriptor.hueCyan),
+                      infoWindow: InfoWindow(
+                        title: station.stationName,
+                      ),
+                      onTap:() => _onMarkerTap(station.location!, station.stationName),
+                      anchor: const Offset(0.5, 0) //center of the marker
+                      ),
               },
+              polylines: route.routes,
               myLocationButtonEnabled: false,
               zoomControlsEnabled: false,
               compassEnabled: false,
@@ -433,7 +423,7 @@ class _MyAppState extends State {
 
   Future<void> getLocationUpdates() async {
     bool serviceEnable;
-    alloc.PermissionStatus permissionGranted;
+    LOC.PermissionStatus permissionGranted;
 
     serviceEnable = await locationController.serviceEnabled();
 
@@ -444,14 +434,15 @@ class _MyAppState extends State {
     }
 
     permissionGranted = await locationController.hasPermission();
-    if (permissionGranted == alloc.PermissionStatus.denied) {
+    if (permissionGranted == LOC.PermissionStatus.denied) {
       permissionGranted = await locationController.requestPermission();
-      if (permissionGranted != alloc.PermissionStatus.granted) {
+      if (permissionGranted != LOC.PermissionStatus.granted) {
         return;
       }
     }
 
-    locationController.onLocationChanged.listen((alloc.LocationData currentLocation) {
+    locationController.onLocationChanged
+        .listen((LOC.LocationData currentLocation) {
       if (currentLocation.latitude != null &&
           currentLocation.longitude != null) {
         setState(() {
