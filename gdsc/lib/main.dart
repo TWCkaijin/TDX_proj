@@ -15,7 +15,7 @@ const LatLng _center = LatLng(22.6239974, 120.2981408);
 final String apikey = Platform.isAndroid? "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0": Platform.isIOS?"AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY":"Unsupport Platform";
 gmr.MapsRoutes route = gmr.MapsRoutes();
 int mode = 0;
-LatLng? CurrentPosition;
+LatLng? currentPosition;
 
 final locationController = ploc.Location();
 Stream<ploc.LocationData> locationSubscription = locationController.onLocationChanged;
@@ -136,13 +136,13 @@ class _MyAppState extends State {
   
 
   void _onStationTap(LatLng stationLocation, String stationName) {
-    double southLat = min(CurrentPosition!.latitude, stationLocation.latitude);
-    double northLat = max(CurrentPosition!.latitude, stationLocation.latitude);
+    double southLat = min(currentPosition!.latitude, stationLocation.latitude);
+    double northLat = max(currentPosition!.latitude, stationLocation.latitude);
 
     double westLng =
-        min(CurrentPosition!.longitude, stationLocation.longitude);
+        min(currentPosition!.longitude, stationLocation.longitude);
     double eastLng =
-        max(CurrentPosition!.longitude, stationLocation.longitude);
+        max(currentPosition!.longitude, stationLocation.longitude);
 
     LatLng southwest = LatLng(southLat, westLng);
     LatLng northeast = LatLng(northLat, eastLng);
@@ -163,7 +163,7 @@ class _MyAppState extends State {
     });
     route.routes.clear();
     List<LatLng> points = [
-      LatLng(CurrentPosition!.latitude, CurrentPosition!.longitude),
+      LatLng(currentPosition!.latitude, currentPosition!.longitude),
       LatLng(targetPos.latitude, targetPos.longitude)
     ];
     
@@ -208,14 +208,14 @@ class _MyAppState extends State {
             distance: (calculateDistance(
                 double.parse(values[loc]['LatLng']['Lat']),
                 double.parse(values[loc]['LatLng']['Lng']),
-                CurrentPosition?.latitude,
-                CurrentPosition?.longitude)),
+                currentPosition?.latitude,
+                currentPosition?.longitude)),
             pricing: values[loc]['Money'],
             onTap:
                 _onStationTap);
         parkingStations.add($loc);
       } catch (e) {
-        print('Err: ${values[loc]}-->$e');
+        //print('Err: ${values[loc]}-->$e');
       }
     }
     parkingStations.sort((a, b) => a.distance.compareTo(b.distance));
@@ -233,7 +233,7 @@ class _MyAppState extends State {
     newmarker.add(
       Marker(
         markerId: const MarkerId('current_position'),
-        position: CurrentPosition ?? _center,
+        position: currentPosition ?? _center,
         icon: BitmapDescriptor.defaultMarker,
       )
     );
@@ -254,7 +254,7 @@ class _MyAppState extends State {
         )
       );
     }
-    print("Marker refreshed!");
+    //print("Marker refreshed!");
     // 通過 setState 觸發 UI 的重繪
     setState(() {
       markerset = newmarker;
@@ -323,7 +323,7 @@ class _MyAppState extends State {
             GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: CurrentPosition ?? _center,
+                target: currentPosition ?? _center,
                 zoom: 12.5,
               ),
               markers: markerset,
@@ -345,11 +345,11 @@ class _MyAppState extends State {
                 backgroundColor: const Color.fromRGBO(217, 221, 208, 1),
                 elevation: 0.0,
                 onPressed: () {
-                  if (CurrentPosition != null) {
+                  if (currentPosition != null) {
                     mapController.animateCamera(
                       CameraUpdate.newCameraPosition(
                         CameraPosition(
-                          target: CurrentPosition!,
+                          target: currentPosition!,
                           zoom: 15.0,
                         ),
                       ),
@@ -516,11 +516,11 @@ class _MyAppState extends State {
     locationSubscription.listen((ploc.LocationData currentLocation) {
       if (currentLocation.latitude != null &&currentLocation.longitude != null&&mode==0) {
         setState(() {
-          CurrentPosition =
+          currentPosition =
               LatLng(currentLocation.latitude!, currentLocation.longitude!);
         });
       }
-      print("Loc :${CurrentPosition!},mode=$mode");
+      //print("Loc :${currentPosition!},mode=$mode");
     });
     
   }
