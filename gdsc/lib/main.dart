@@ -114,7 +114,8 @@ class _MyAppState extends State {
   late GoogleMapController mapController;
   bool _showAppBar = true;
   List<ParkingStation> parkingStations = [];
-  Completer<List<ParkingStation>> _completer = Completer();
+  Completer<List<ParkingStation>> parkingStationCompleter = Completer();
+  bool drawingroute = false;
   
 
   String? _mapStyle;
@@ -157,6 +158,9 @@ class _MyAppState extends State {
   }
 
   void _onMarkerTap(LatLng targetPos, String name) async {
+    setState(() {
+      drawingroute = true;
+    });
     route.routes.clear();
     List<LatLng> points = [
       LatLng(CurrentPosition!.latitude, CurrentPosition!.longitude),
@@ -168,7 +172,11 @@ class _MyAppState extends State {
         name, 
         const Color.fromRGBO(130, 78, 210, 1.0), 
         apikey,
-        travelMode: gmr.TravelModes.driving);
+        travelMode: gmr.TravelModes.driving
+      );
+    setState(() {
+      drawingroute =false;
+    });
   }
 
   String formattedDateTime() {
@@ -211,8 +219,8 @@ class _MyAppState extends State {
       }
     }
     parkingStations.sort((a, b) => a.distance.compareTo(b.distance));
-    _completer.complete(parkingStations);
-    _completer.future.then((value) {
+    parkingStationCompleter.complete(parkingStations);
+    parkingStationCompleter.future.then((value) {
       refreshMarkers();
     });
     return parkingStations;
@@ -271,7 +279,7 @@ class _MyAppState extends State {
       parkingStations.clear();
       readDatabase();
     });
-    _completer = Completer();
+    parkingStationCompleter = Completer();
     await Future.delayed(const Duration(seconds: 3));
   }
   
@@ -324,6 +332,12 @@ class _MyAppState extends State {
               zoomControlsEnabled: false,
               compassEnabled: false,
             ),
+            if(drawingroute)
+              const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                ),
+              ),
             Positioned(
               right: 15,
               bottom: 100,
@@ -384,7 +398,7 @@ class _MyAppState extends State {
                           top: Radius.circular(20.0)),
                     ),
                     child: FutureBuilder(
-                      future: _completer.future,
+                      future: parkingStationCompleter.future,
                       builder: (BuildContext context,
                           AsyncSnapshot<List<ParkingStation>> snapshot) {
                         if (snapshot.connectionState ==
