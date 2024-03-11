@@ -280,6 +280,15 @@ class _MyAppState extends State {
     });
     parkingStationCompleter = Completer();
     await Future.delayed(const Duration(seconds: 3));
+    refreshMarkers();
+    mapController.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: currentPosition!,
+          zoom: 15.0,
+        ),
+      ),
+    );
   }
   
   @override
@@ -457,12 +466,12 @@ class _MyAppState extends State {
                                         refreshMarkers(),
                                         refresh(),
                                         }
-                                    :{getLocationUpdates(),
-                                        refresh(),
-                                        refreshMarkers(),
+                                      :{route.routes.clear(),
+                                        mode=0,
                                         Navigator.popUntil(context,ModalRoute.withName('/')),
-                                        mode=0
-                                        };
+                                        getLocationUpdates(),
+                                        refresh(),
+                                      };
                   }
                 ),
                 ListTile(
