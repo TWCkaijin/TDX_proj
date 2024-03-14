@@ -10,20 +10,26 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:location/location.dart' as ploc;
 import 'package:google_maps_routes/google_maps_routes.dart' as gmr;
 import 'set_location.dart' as sl;
+import 'pages.dart' as pages;
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
-final String apikey = Platform.isAndroid? "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0": Platform.isIOS?"AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY":"Unsupport Platform";
+final String apikey = Platform.isAndroid
+    ? "AIzaSyAQPK06XXobbJbvzNA07AJKxBbPfu0pST0"
+    : Platform.isIOS
+        ? "AIzaSyANhrh7_1BgTMYur-9AzLugKB5eE26KnGY"
+        : "Unsupport Platform";
 gmr.MapsRoutes route = gmr.MapsRoutes();
 int mode = 0;
 LatLng? currentPosition;
 
 final locationController = ploc.Location();
-Stream<ploc.LocationData> locationSubscription = locationController.onLocationChanged;
+Stream<ploc.LocationData> locationSubscription =
+    locationController.onLocationChanged;
 Set<Marker> markerset = {};
-
 
 //TODO:
 // 1. Implement pages for settings, bug report, about
+// 2. Add additional marker when ontap of item over 5 items
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -97,10 +103,6 @@ class ParkingStation extends StatelessWidget {
   }
 }
 
-
-
-
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -115,9 +117,8 @@ class _MyAppState extends State {
   List<ParkingStation> parkingStations = [];
   Completer<List<ParkingStation>> parkingStationCompleter = Completer();
   bool drawingroute = false;
-  
-
   String? _mapStyle;
+
   @override
   void initState() {
     super.initState();
@@ -126,22 +127,15 @@ class _MyAppState extends State {
 
   Future<void> initialize() async {
     await getLocationUpdates();
-    rootBundle.loadString('assets/mapstyle.txt').then((string) {
-      _mapStyle = string;
-    });
     readDatabase();
   }
-
-  
 
   void _onStationTap(LatLng stationLocation, String stationName) {
     double southLat = min(currentPosition!.latitude, stationLocation.latitude);
     double northLat = max(currentPosition!.latitude, stationLocation.latitude);
 
-    double westLng =
-        min(currentPosition!.longitude, stationLocation.longitude);
-    double eastLng =
-        max(currentPosition!.longitude, stationLocation.longitude);
+    double westLng = min(currentPosition!.longitude, stationLocation.longitude);
+    double eastLng = max(currentPosition!.longitude, stationLocation.longitude);
 
     LatLng southwest = LatLng(southLat, westLng);
     LatLng northeast = LatLng(northLat, eastLng);
@@ -153,7 +147,7 @@ class _MyAppState extends State {
 
     mapController.animateCamera(cameraUpdate);
     mapController.showMarkerInfoWindow(MarkerId(stationName));
-    _onMarkerTap(stationLocation,stationName);
+    _onMarkerTap(stationLocation, stationName);
   }
 
   void _onMarkerTap(LatLng targetPos, String name) async {
@@ -165,16 +159,12 @@ class _MyAppState extends State {
       LatLng(currentPosition!.latitude, currentPosition!.longitude),
       LatLng(targetPos.latitude, targetPos.longitude)
     ];
-    
+
     await route.drawRoute(
-        points, 
-        name, 
-        const Color.fromRGBO(130, 78, 210, 1.0), 
-        apikey,
-        travelMode: gmr.TravelModes.driving
-      );
+        points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
+        travelMode: gmr.TravelModes.driving);
     setState(() {
-      drawingroute =false;
+      drawingroute = false;
     });
   }
 
@@ -185,7 +175,7 @@ class _MyAppState extends State {
     int choppedTime = (timeInMinutes * 48) ~/ (24 * 60);
     String formattedDateTime = '$dayOfWeek-$choppedTime';
     return formattedDateTime;
-  } 
+  }
 
   Future<List<ParkingStation>> readDatabase() async {
     FirebaseApp secondaryApp = Firebase.app('potent-result-406711');
@@ -193,25 +183,24 @@ class _MyAppState extends State {
         app: secondaryApp,
         databaseURL:
             'https://potent-result-406711-ebf47.asia-southeast1.firebasedatabase.app/');
-    DatabaseEvent event = await rtdb.ref('parklot_available').once();
+    DatabaseEvent event = await rtdb.ref('PA').once();
     DataSnapshot snapshot = event.snapshot;
     Map<dynamic, dynamic> values = snapshot.value as Map<dynamic, dynamic>;
     var lockey = values.keys;
     for (var loc in lockey) {
       try {
         ParkingStation $loc = ParkingStation(
-            stationName: values[loc]['name'],
-            availableLots: (values[loc][formattedDateTime()])['current_space'],
-            location: LatLng(double.parse(values[loc]['LatLng']['Lat']),
-                double.parse(values[loc]['LatLng']['Lng'])),
+            stationName: values[loc]['N'],
+            availableLots: (values[loc][formattedDateTime()])['CS'],
+            location: LatLng(double.parse(values[loc]['LL']['Lat']),
+                double.parse(values[loc]['LL']['Lng'])),
             distance: (calculateDistance(
-                double.parse(values[loc]['LatLng']['Lat']),
-                double.parse(values[loc]['LatLng']['Lng']),
+                double.parse(values[loc]['LL']['Lat']),
+                double.parse(values[loc]['LL']['Lng']),
                 currentPosition?.latitude,
                 currentPosition?.longitude)),
-            pricing: values[loc]['Money'],
-            onTap:
-                _onStationTap);
+            pricing: values[loc]['M'],
+            onTap: _onStationTap);
         parkingStations.add($loc);
       } catch (e) {
         //print('Err: ${values[loc]}-->$e');
@@ -229,29 +218,25 @@ class _MyAppState extends State {
     // 更新你的標記集合
     Set<Marker> newmarker = {};
     markerset.clear();
-    newmarker.add(
-      Marker(
-        markerId: const MarkerId('current_position'),
-        position: currentPosition ?? _center,
-        icon: BitmapDescriptor.defaultMarker,
-      )
-    );
-    
-    for (var station in 
-    (parkingStations.length >= 5? parkingStations.sublist(0, 5): parkingStations)){
-      newmarker.add(
-        Marker(
+    newmarker.add(Marker(
+      markerId: const MarkerId('current_position'),
+      position: currentPosition ?? _center,
+      icon: BitmapDescriptor.defaultMarker,
+    ));
+
+    for (var station in (parkingStations.length >= 5
+        ? parkingStations.sublist(0, 5)
+        : parkingStations)) {
+      newmarker.add(Marker(
           markerId: MarkerId(station.stationName),
           position: station.location!,
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-              BitmapDescriptor.hueCyan),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
           infoWindow: InfoWindow(
             title: station.stationName,
           ),
-          onTap:() => _onMarkerTap(station.location!, station.stationName),
+          onTap: () => _onMarkerTap(station.location!, station.stationName),
           anchor: const Offset(0.5, 0) //center of the marker
-        )
-      );
+          ));
     }
     //print("Marker refreshed!");
     // 通過 setState 觸發 UI 的重繪
@@ -260,20 +245,13 @@ class _MyAppState extends State {
     });
   }
 
-
-
-
-  void _onMapCreated(GoogleMapController controller) {
+  void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
-    if (_mapStyle != null) {
-      controller.setMapStyle(_mapStyle);
-      mapController.showMarkerInfoWindow(const MarkerId('current_position'));
-    } else {
-      debugPrint('Failed to load map style');
-    }
+    _mapStyle = await rootBundle.loadString('assets/mapstyle.txt');
+    controller.setMapStyle(_mapStyle);
   }
 
-  Future<void> refresh()async{
+  Future<void> refresh() async {
     setState(() {
       parkingStations.clear();
       readDatabase();
@@ -290,7 +268,7 @@ class _MyAppState extends State {
       ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     //print(formattedDateTime());
@@ -340,7 +318,7 @@ class _MyAppState extends State {
               zoomControlsEnabled: false,
               compassEnabled: false,
             ),
-            if(drawingroute)
+            if (drawingroute)
               const Center(
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
@@ -395,7 +373,7 @@ class _MyAppState extends State {
               },
               child: DraggableScrollableSheet(
                 initialChildSize: 0.1,
-                minChildSize: 0.05,
+                minChildSize: 0.1,
                 maxChildSize: 1,
                 builder:
                     (BuildContext context, ScrollController scrollController) {
@@ -451,33 +429,48 @@ class _MyAppState extends State {
         drawer: Drawer(
           backgroundColor: Colors.blueGrey[100],
           child: Builder(
-            builder: (context)=>ListView(
+            builder: (context) => ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
                 const SizedBox(
                   height: 100,
                 ),
                 ListTile(
-                  title:  mode==0? const Text('Set currrent location'):const Text("Use GPS location"),
-                  onTap: (){mode ==0 ? {mode = 1,
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const sl.SetLocation())),
-                                        locationController.onLocationChanged.listen((event) { }).cancel(),
-                                        route.routes.clear(),
-                                        refreshMarkers(),
-                                        refresh(),
-                                        }
-                                      :{route.routes.clear(),
-                                        mode=0,
-                                        Navigator.popUntil(context,ModalRoute.withName('/')),
-                                        getLocationUpdates(),
-                                        refresh(),
-                                      };
-                  }
-                ),
+                    title: mode == 0
+                        ? const Text('Set currrent location')
+                        : const Text("Use GPS location"),
+                    onTap: () {
+                      mode == 0
+                          ? {
+                              mode = 1,
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const sl.SetLocation())),
+                              locationController.onLocationChanged
+                                  .listen((event) {})
+                                  .cancel(),
+                              route.routes.clear(),
+                              refreshMarkers(),
+                              refresh(),
+                            }
+                          : {
+                              route.routes.clear(),
+                              mode = 0,
+                              Navigator.popUntil(
+                                  context, ModalRoute.withName('/')),
+                              getLocationUpdates(),
+                              refresh(),
+                            };
+                    }),
                 ListTile(
                   title: const Text('Settings'),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const pages.SettingsPage()));
                   },
                 ),
                 ListTile(
@@ -489,7 +482,10 @@ class _MyAppState extends State {
                 ListTile(
                   title: const Text('About'),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const pages.AboutPage()));
                   },
                 ),
               ],
@@ -520,9 +516,10 @@ class _MyAppState extends State {
       }
     }
 
-
     locationSubscription.listen((ploc.LocationData currentLocation) {
-      if (currentLocation.latitude != null &&currentLocation.longitude != null&&mode==0) {
+      if (currentLocation.latitude != null &&
+          currentLocation.longitude != null &&
+          mode == 0) {
         setState(() {
           currentPosition =
               LatLng(currentLocation.latitude!, currentLocation.longitude!);
@@ -530,15 +527,14 @@ class _MyAppState extends State {
       }
       //print("Loc :${currentPosition!},mode=$mode");
     });
-    
   }
 }
 
 double calculateDistance(lat1, lon1, lat2, lon2) {
-    var p = 0.017453292519943295;
-    var c = cos;
-    var a = 0.5 -
-        c((lat2 - lat1) * p) / 2 +
-        c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
-    return 12742 * asin(sqrt(a));
-  }
+  var p = 0.017453292519943295;
+  var c = cos;
+  var a = 0.5 -
+      c((lat2 - lat1) * p) / 2 +
+      c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+  return 12742 * asin(sqrt(a));
+}
