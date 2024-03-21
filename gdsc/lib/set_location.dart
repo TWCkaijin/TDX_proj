@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
+import 'pages.dart' as pages;
 import 'main.dart' as mc;
 
 final LatLng? selectedLocation = mc.currentPosition;
@@ -24,6 +26,7 @@ class _SetLocationState extends State<SetLocation> {
 
   @override
   Widget build(BuildContext context) {
+    final themeModel = Provider.of<pages.ThemeModel>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -32,7 +35,9 @@ class _SetLocationState extends State<SetLocation> {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 25.0),
             decoration: BoxDecoration(
-              color: Colors.blueGrey[100],
+              color: themeModel.isDarkMode
+                  ? Colors.blueGrey[800]
+                  : Colors.blueGrey[100],
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: AppBar(
@@ -42,7 +47,6 @@ class _SetLocationState extends State<SetLocation> {
               title: const Text(
                 'Set Location',
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                   letterSpacing: 3.0,

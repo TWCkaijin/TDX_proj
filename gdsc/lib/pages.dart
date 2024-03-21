@@ -1,10 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SettingsPage extends StatelessWidget {
+class ThemeModel extends ChangeNotifier {
+  bool _isDarkMode = false;
+  bool _mapStyleChanged = false;
+
+  bool get isDarkMode => _isDarkMode;
+  bool get mapStyleChanged => _mapStyleChanged;
+
+  set mapStyleChanged(bool value) {
+    _mapStyleChanged = value;
+    notifyListeners();
+  }
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    _mapStyleChanged = true;
+    notifyListeners();
+  }
+}
+
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  final MaterialStateProperty<Icon?> thumbIcon =
+      MaterialStateProperty.resolveWith<Icon?>(
+    (Set<MaterialState> states) {
+      if (states.contains(MaterialState.selected)) {
+        return const Icon(Icons.lightbulb_outline);
+      }
+      return const Icon(Icons.lightbulb);
+    },
+  );
+  final MaterialStateProperty<Color?> thumbColor =
+      MaterialStateProperty.resolveWith<Color?>(
+    (Set<MaterialState> states) {
+      if (states.contains(MaterialState.selected)) {
+        return Colors
+            .transparent; // Change this to your desired color for dark mode
+      }
+      return null; // Change this to your desired color for light mode
+    },
+  );
+  final MaterialStateProperty<Color?> trackColor =
+      MaterialStateProperty.resolveWith<Color?>(
+    (Set<MaterialState> states) {
+      // Track color when the switch is selected.
+      if (states.contains(MaterialState.selected)) {
+        return Colors.blueGrey[600];
+      }
+      return null;
+    },
+  );
+
   Widget build(BuildContext context) {
+    final themeModel = Provider.of<ThemeModel>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
@@ -12,7 +67,9 @@ class SettingsPage extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 25.0),
             decoration: BoxDecoration(
-              color: Colors.blueGrey[100],
+              color: themeModel.isDarkMode
+                  ? Colors.blueGrey[800]
+                  : Colors.blueGrey[100],
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: AppBar(
@@ -22,7 +79,6 @@ class SettingsPage extends StatelessWidget {
               title: const Text(
                 'Settings',
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                   letterSpacing: 3.0,
@@ -33,7 +89,17 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('這是設置頁面'),
+        child: Switch(
+          thumbColor: thumbColor,
+          thumbIcon: thumbIcon,
+          trackColor: trackColor,
+          value: themeModel.isDarkMode,
+          onChanged: (value) {
+            setState(() {
+              themeModel.toggleTheme();
+            });
+          },
+        ),
       ),
     );
   }
@@ -44,6 +110,7 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeModel = Provider.of<ThemeModel>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
@@ -51,7 +118,9 @@ class AboutPage extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 25.0),
             decoration: BoxDecoration(
-              color: Colors.blueGrey[100],
+              color: themeModel.isDarkMode
+                  ? Colors.blueGrey[800]
+                  : Colors.blueGrey[100],
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: AppBar(
@@ -61,7 +130,6 @@ class AboutPage extends StatelessWidget {
               title: const Text(
                 'About',
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                   letterSpacing: 3.0,

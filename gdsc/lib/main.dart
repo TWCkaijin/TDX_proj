@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +43,8 @@ void main() async {
   if (apikey == "Unsupport Platform") {
     throw Exception("Unsupport Platform");
   }
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => pages.ThemeModel(), child: const MyApp()));
 }
 
 class ParkingStation extends StatelessWidget {
@@ -68,7 +70,9 @@ class ParkingStation extends StatelessWidget {
         onTap: () => onTap(location!, stationName),
         child: Card(
           elevation: 0.0,
-          color: Colors.white,
+          color: Provider.of<pages.ThemeModel>(context).isDarkMode
+              ? Colors.grey[600]
+              : Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
             side: BorderSide(
@@ -247,8 +251,14 @@ class _MyAppState extends State {
 
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
-    _mapStyle = await rootBundle.loadString('assets/mapstyle.txt');
+    final themeModel = Provider.of<pages.ThemeModel>(context, listen: false);
+    if (themeModel.isDarkMode) {
+      _mapStyle = await rootBundle.loadString('assets/darkmapstyle.txt');
+    } else {
+      _mapStyle = await rootBundle.loadString('assets/mapstyle.txt');
+    }
     controller.setMapStyle(_mapStyle);
+    themeModel.mapStyleChanged = false;
   }
 
   Future<void> refresh() async {
@@ -271,229 +281,241 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
-    //print(formattedDateTime());
+    //print(formattedDateTime())
+    final themeModel = Provider.of<pages.ThemeModel>(context);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: _showAppBar
-            ? PreferredSize(
-                preferredSize: const Size.fromHeight(50.0),
-                child: SafeArea(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 25.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey[100],
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    child: AppBar(
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      centerTitle: true,
-                      title: const Text(
-                        'Charsiu Parking',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: 3.0,
+        theme: ThemeData.light().copyWith(
+            primaryColor: Colors.blueGrey[100],
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: Colors.blueGrey[200],
+                foregroundColor: Colors.black)),
+        darkTheme: ThemeData.dark().copyWith(
+            primaryColor: Colors.blueGrey[800],
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: Colors.blueGrey[600],
+                foregroundColor: Colors.white)),
+        themeMode: themeModel.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        home: Builder(
+          builder: (context) => Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: _showAppBar
+                ? PreferredSize(
+                    preferredSize: const Size.fromHeight(50.0),
+                    child: SafeArea(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 25.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: AppBar(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          centerTitle: true,
+                          title: const Text(
+                            'Charsiu Parking',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: 3.0,
+                            ),
+                          ),
                         ),
                       ),
+                    ),
+                  )
+                : null,
+            body: Stack(
+              children: <Widget>[
+                GoogleMap(
+                  key: ValueKey(themeModel.isDarkMode),
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: currentPosition ?? _center,
+                    zoom: 12.5,
+                  ),
+                  markers: markerset,
+                  polylines: route.routes,
+                  myLocationButtonEnabled: false,
+                  zoomControlsEnabled: false,
+                  compassEnabled: false,
+                ),
+                if (drawingroute)
+                  const Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                     ),
                   ),
+                Positioned(
+                  right: 15,
+                  bottom: 100,
+                  child: FloatingActionButton(
+                    elevation: 0.0,
+                    onPressed: () {
+                      if (currentPosition != null) {
+                        mapController.animateCamera(
+                          CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                              target: currentPosition!,
+                              zoom: 15.0,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Icon(Icons.location_searching),
+                  ),
                 ),
-              )
-            : null,
-        body: Stack(
-          children: <Widget>[
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: currentPosition ?? _center,
-                zoom: 12.5,
-              ),
-              markers: markerset,
-              polylines: route.routes,
-              myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
-              compassEnabled: false,
-            ),
-            if (drawingroute)
-              const Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                Positioned(
+                  right: 15,
+                  bottom: 160,
+                  child: FloatingActionButton(
+                    elevation: 0.0,
+                    onPressed: () {
+                      refresh();
+                    },
+                    child: const Icon(Icons.refresh),
+                  ),
                 ),
-              ),
-            Positioned(
-              right: 15,
-              bottom: 100,
-              child: FloatingActionButton(
-                backgroundColor: const Color.fromRGBO(217, 221, 208, 1),
-                elevation: 0.0,
-                onPressed: () {
-                  if (currentPosition != null) {
-                    mapController.animateCamera(
-                      CameraUpdate.newCameraPosition(
-                        CameraPosition(
-                          target: currentPosition!,
-                          zoom: 15.0,
+                NotificationListener<ScrollUpdateNotification>(
+                  onNotification: (notification) {
+                    if (notification.metrics.extentBefore == 0 &&
+                        notification.metrics.extentAfter > 50) {
+                      setState(() {
+                        _showAppBar = true;
+                      });
+                    } else {
+                      setState(() {
+                        _showAppBar = false;
+                      });
+                    }
+                    return true;
+                  },
+                  child: DraggableScrollableSheet(
+                    initialChildSize: 0.1,
+                    minChildSize: 0.1,
+                    maxChildSize: 1,
+                    builder: (BuildContext context,
+                        ScrollController scrollController) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(20.0)),
                         ),
-                      ),
-                    );
-                  }
-                },
-                child: const Icon(Icons.location_searching),
-              ),
-            ),
-            Positioned(
-              right: 15,
-              bottom: 160,
-              child: FloatingActionButton(
-                backgroundColor: const Color.fromRGBO(217, 221, 208, 1),
-                elevation: 0.0,
-                onPressed: () {
-                  refresh();
-                },
-                child: const Icon(Icons.refresh),
-              ),
-            ),
-            NotificationListener<ScrollUpdateNotification>(
-              onNotification: (notification) {
-                if (notification.metrics.extentBefore == 0 &&
-                    notification.metrics.extentAfter > 50) {
-                  setState(() {
-                    _showAppBar = true;
-                  });
-                } else {
-                  setState(() {
-                    _showAppBar = false;
-                  });
-                }
-                return true;
-              },
-              child: DraggableScrollableSheet(
-                initialChildSize: 0.1,
-                minChildSize: 0.1,
-                maxChildSize: 1,
-                builder:
-                    (BuildContext context, ScrollController scrollController) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey[100],
-                      borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(20.0)),
-                    ),
-                    child: FutureBuilder(
-                      future: parkingStationCompleter.future,
-                      builder: (BuildContext context,
-                          AsyncSnapshot<List<ParkingStation>> snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          //print("UPDATING");
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        } else {
-                          return Column(
-                            children: [
-                              Transform(
-                                transform:
-                                    Matrix4.diagonal3Values(3.0, 1.0, 1.0),
-                                alignment: Alignment.center,
-                                child: const Icon(Icons.expand_less),
-                              ),
-                              Expanded(
-                                child: ListView.builder(
-                                  controller: scrollController,
-                                  itemCount: snapshot.data?.length ?? 0,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return snapshot.data![index];
-                                  },
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0,
-                                    vertical: 20.0,
+                        child: FutureBuilder(
+                          future: parkingStationCompleter.future,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<ParkingStation>> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              //print("UPDATING");
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            } else {
+                              return Column(
+                                children: [
+                                  Transform(
+                                    transform:
+                                        Matrix4.diagonal3Values(3.0, 1.0, 1.0),
+                                    alignment: Alignment.center,
+                                    child: const Icon(Icons.expand_less),
                                   ),
-                                ),
-                              ),
-                            ],
-                          );
-                        }
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-        drawer: Drawer(
-          backgroundColor: Colors.blueGrey[100],
-          child: Builder(
-            builder: (context) => ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                const SizedBox(
-                  height: 100,
-                ),
-                ListTile(
-                    title: mode == 0
-                        ? const Text('Set currrent location')
-                        : const Text("Use GPS location"),
-                    onTap: () {
-                      mode == 0
-                          ? {
-                              mode = 1,
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const sl.SetLocation())),
-                              locationController.onLocationChanged
-                                  .listen((event) {})
-                                  .cancel(),
-                              route.routes.clear(),
-                              refreshMarkers(),
-                              refresh(),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      controller: scrollController,
+                                      itemCount: snapshot.data?.length ?? 0,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return snapshot.data![index];
+                                      },
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0,
+                                        vertical: 20.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
                             }
-                          : {
-                              route.routes.clear(),
-                              mode = 0,
-                              Navigator.popUntil(
-                                  context, ModalRoute.withName('/')),
-                              getLocationUpdates(),
-                              refresh(),
-                            };
-                    }),
-                ListTile(
-                  title: const Text('Settings'),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const pages.SettingsPage()));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Bug Report'),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  title: const Text('About'),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const pages.AboutPage()));
-                  },
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
+            drawer: Drawer(
+              backgroundColor: Theme.of(context).primaryColor,
+              child: Builder(
+                builder: (context) => ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    ListTile(
+                        title: mode == 0
+                            ? const Text('Set currrent location')
+                            : const Text("Use GPS location"),
+                        onTap: () {
+                          mode == 0
+                              ? {
+                                  mode = 1,
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const sl.SetLocation())),
+                                  locationController.onLocationChanged
+                                      .listen((event) {})
+                                      .cancel(),
+                                  route.routes.clear(),
+                                  refreshMarkers(),
+                                  refresh(),
+                                }
+                              : {
+                                  route.routes.clear(),
+                                  mode = 0,
+                                  Navigator.popUntil(
+                                      context, ModalRoute.withName('/')),
+                                  getLocationUpdates(),
+                                  refresh(),
+                                };
+                        }),
+                    ListTile(
+                      title: const Text('Settings'),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const pages.SettingsPage()));
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('Bug Report'),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('About'),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const pages.AboutPage()));
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   Future<void> getLocationUpdates() async {
