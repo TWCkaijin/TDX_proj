@@ -56,10 +56,58 @@
     "elementType": "geometry",
     "stylers": [
       {
+        "lightness": 10
+      }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "lightness": -80
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
         "color": "#242f3e"
       },
       {
         "lightness": 10
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#242f3e"
+      },
+      {
+        "lightness": 10
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural.landcover",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#456d72"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural.terrain",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#467175"
       }
     ]
   },
@@ -71,7 +119,16 @@
         "color": "#222222"
       },
       {
-        "lightness": 21
+        "lightness": 20
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "lightness": 20
       }
     ]
   },
@@ -94,22 +151,14 @@
     ]
   },
   {
-    "featureType": "poi.business",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
     "featureType": "poi.park",
-    "elementType": "geometry",
+    "elementType": "geometry.fill",
     "stylers": [
       {
         "color": "#263c3f"
       },
       {
-        "lightness": 21
+        "lightness": 20
       }
     ]
   },
@@ -119,6 +168,14 @@
     "stylers": [
       {
         "color": "#6b9a76"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.school",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -261,6 +318,15 @@
     "stylers": [
       {
         "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station.airport",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#334258"
       }
     ]
   },
