@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,6 +12,7 @@ import 'package:location/location.dart' as ploc;
 import 'package:google_maps_routes/google_maps_routes.dart' as gmr;
 import 'set_location.dart' as sl;
 import 'pages.dart' as pages;
+//import 'package:flutter/rendering.dart';
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
 final String apikey = Platform.isAndroid
@@ -71,7 +71,7 @@ class ParkingStation extends StatelessWidget {
         child: Card(
           elevation: 0.0,
           color: Provider.of<pages.ThemeModel>(context).isDarkMode
-              ? Colors.grey[600]
+              ? Colors.grey[800]
               : Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -124,7 +124,7 @@ class _MyAppState extends State {
   String? _mapStyle;
   final DraggableScrollableController _sheetcontroller =
       DraggableScrollableController();
-  final ScrollController _listscrollcontroller = ScrollController();
+  final ScrollController listscrollcontroller = ScrollController();
 
   @override
   void initState() {
@@ -192,7 +192,7 @@ class _MyAppState extends State {
     // _sheetcontroller.animateTo(0.0,
     //     duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
 
-    //_listscrollcontroller.jumpTo(0.0);
+    //listscrollcontroller.jumpTo(0.0);
 
     await route.drawRoute(
         points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
@@ -303,7 +303,7 @@ class _MyAppState extends State {
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: currentPosition!,
-          zoom: 15.0,
+          zoom: 10.0,
         ),
       ),
     );
@@ -428,7 +428,7 @@ class _MyAppState extends State {
                     minChildSize: 0.1,
                     maxChildSize: 1,
                     builder: (BuildContext context,
-                        ScrollController _listscrollcontroller) {
+                        ScrollController listscrollcontroller) {
                       return Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
@@ -455,7 +455,7 @@ class _MyAppState extends State {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                      controller: _listscrollcontroller,
+                                      controller: listscrollcontroller,
                                       itemCount: snapshot.data?.length ?? 0,
                                       itemBuilder:
                                           (BuildContext context, int index) {
@@ -529,7 +529,10 @@ class _MyAppState extends State {
                     ListTile(
                       title: const Text('Bug Report'),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const pages.BugPage()));
                       },
                     ),
                     ListTile(
