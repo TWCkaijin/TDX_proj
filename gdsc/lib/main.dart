@@ -29,8 +29,6 @@ Stream<ploc.LocationData> locationSubscription =
     locationController.onLocationChanged;
 Set<Marker> markerset = {};
 
-//TODO:
-// 1. Implement pages for settings, bug report, about
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -314,12 +312,16 @@ class _MyAppState extends State {
             primaryColor: Colors.blueGrey[100],
             floatingActionButtonTheme: FloatingActionButtonThemeData(
                 backgroundColor: Colors.blueGrey[200],
-                foregroundColor: Colors.black)),
+                foregroundColor: Colors.black),
+            progressIndicatorTheme:
+                ProgressIndicatorThemeData(color: Colors.blueGrey[600])),
         darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.blueGrey[800],
             floatingActionButtonTheme: FloatingActionButtonThemeData(
                 backgroundColor: Colors.blueGrey[600],
-                foregroundColor: Colors.white)),
+                foregroundColor: Colors.white),
+            progressIndicatorTheme:
+                ProgressIndicatorThemeData(color: Colors.blueGrey[200])),
         themeMode: themeModel.isDarkMode ? ThemeMode.dark : ThemeMode.light,
         debugShowCheckedModeBanner: false,
         home: Builder(
@@ -369,9 +371,7 @@ class _MyAppState extends State {
                 ),
                 if (drawingroute)
                   const Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                    ),
+                    child: CircularProgressIndicator(),
                   ),
                 Positioned(
                   right: 15,
@@ -440,31 +440,32 @@ class _MyAppState extends State {
                                 ConnectionState.waiting) {
                               //print("UPDATING");
                               return const Center(
-                                  child: CircularProgressIndicator());
+                                child: CircularProgressIndicator(),
+                              );
                             } else {
-                              return Column(
-                                children: [
-                                  Transform(
-                                    transform:
-                                        Matrix4.diagonal3Values(3.0, 1.0, 1.0),
-                                    alignment: Alignment.center,
-                                    child: const Icon(Icons.expand_less),
-                                  ),
-                                  Expanded(
-                                    child: ListView.builder(
-                                      controller: sheetcontroller,
-                                      itemCount: snapshot.data?.length ?? 0,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return snapshot.data![index];
-                                      },
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0,
-                                        vertical: 20.0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              return ListView.builder(
+                                controller: sheetcontroller,
+                                itemCount: (snapshot.data?.length ?? 0) +
+                                    1, // Add one for the Icon
+                                itemBuilder: (BuildContext context, int index) {
+                                  if (index == 0) {
+                                    // The first item is the Icon
+                                    return Transform(
+                                      transform: Matrix4.diagonal3Values(
+                                          3.0, 1.0, 1.0),
+                                      alignment: Alignment.center,
+                                      child: const Icon(Icons.expand_less),
+                                    );
+                                  } else {
+                                    // The other items are from the snapshot data
+                                    return snapshot.data![index - 1];
+                                  }
+                                },
+                                padding: const EdgeInsets.only(
+                                  left: 20.0,
+                                  right: 20.0,
+                                  bottom: 20.0,
+                                ),
                               );
                             }
                           },
