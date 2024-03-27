@@ -17,9 +17,9 @@ import 'key.dart' as key;
 
 const LatLng _center = LatLng(22.6239974, 120.2981408);
 final String apikey = Platform.isAndroid
-    ? key.key().androidKey
+    ? key.Key().androidKey
     : Platform.isIOS
-        ? key.key().iosKey
+        ? key.Key().iosKey
         : "Unsupport Platform";
 gmr.MapsRoutes route = gmr.MapsRoutes();
 int mode = 0;
