@@ -58,6 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
     },
   );
 
+  @override
   Widget build(BuildContext context) {
     final themeModel = Provider.of<ThemeModel>(context);
     return Scaffold(

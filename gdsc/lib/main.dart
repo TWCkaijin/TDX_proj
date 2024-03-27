@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -30,7 +31,6 @@ Set<Marker> markerset = {};
 
 //TODO:
 // 1. Implement pages for settings, bug report, about
-// 2. Add additional marker when ontap of item over 5 items
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -122,6 +122,9 @@ class _MyAppState extends State {
   Completer<List<ParkingStation>> parkingStationCompleter = Completer();
   bool drawingroute = false;
   String? _mapStyle;
+  final DraggableScrollableController _sheetcontroller =
+      DraggableScrollableController();
+  final ScrollController _listscrollcontroller = ScrollController();
 
   @override
   void initState() {
@@ -150,7 +153,7 @@ class _MyAppState extends State {
     CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 150);
 
     mapController.animateCamera(cameraUpdate);
-    mapController.showMarkerInfoWindow(MarkerId(stationName));
+    //mapController.showMarkerInfoWindow(MarkerId(stationName));
     _onMarkerTap(stationLocation, stationName);
   }
 
@@ -158,11 +161,38 @@ class _MyAppState extends State {
     setState(() {
       drawingroute = true;
     });
+    bool newStation = true;
+
     route.routes.clear();
     List<LatLng> points = [
       LatLng(currentPosition!.latitude, currentPosition!.longitude),
       LatLng(targetPos.latitude, targetPos.longitude)
     ];
+
+    for (var station in parkingStations.sublist(0, 5)) {
+      if (station.location == targetPos) {
+        newStation = false;
+      }
+    }
+
+    if (newStation) {
+      refreshMarkers();
+      markerset.add(Marker(
+        markerId: MarkerId(name),
+        position: targetPos,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+        infoWindow: InfoWindow(
+          title: name,
+        ),
+        onTap: () => _onMarkerTap(targetPos, name),
+        //anchor: const Offset(0.5, 0) //center of the marker
+      ));
+    }
+
+    // _sheetcontroller.animateTo(0.0,
+    //     duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
+
+    //_listscrollcontroller.jumpTo(0.0);
 
     await route.drawRoute(
         points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
@@ -232,15 +262,15 @@ class _MyAppState extends State {
         ? parkingStations.sublist(0, 5)
         : parkingStations)) {
       newmarker.add(Marker(
-          markerId: MarkerId(station.stationName),
-          position: station.location!,
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
-          infoWindow: InfoWindow(
-            title: station.stationName,
-          ),
-          onTap: () => _onMarkerTap(station.location!, station.stationName),
-          anchor: const Offset(0.5, 0) //center of the marker
-          ));
+        markerId: MarkerId(station.stationName),
+        position: station.location!,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),
+        infoWindow: InfoWindow(
+          title: station.stationName,
+        ),
+        onTap: () => _onMarkerTap(station.location!, station.stationName),
+        //anchor: const Offset(0.5, 0)
+      ));
     }
     //print("Marker refreshed!");
     // 通過 setState 觸發 UI 的重繪
@@ -393,11 +423,12 @@ class _MyAppState extends State {
                     return true;
                   },
                   child: DraggableScrollableSheet(
+                    controller: _sheetcontroller,
                     initialChildSize: 0.1,
                     minChildSize: 0.1,
                     maxChildSize: 1,
                     builder: (BuildContext context,
-                        ScrollController scrollController) {
+                        ScrollController _listscrollcontroller) {
                       return Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
@@ -424,7 +455,7 @@ class _MyAppState extends State {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                      controller: scrollController,
+                                      controller: _listscrollcontroller,
                                       itemCount: snapshot.data?.length ?? 0,
                                       itemBuilder:
                                           (BuildContext context, int index) {
