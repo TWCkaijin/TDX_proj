@@ -143,13 +143,13 @@ class _MyAppState extends State {
     double westLng = min(currentPosition!.longitude, stationLocation.longitude);
     double eastLng = max(currentPosition!.longitude, stationLocation.longitude);
 
-    LatLng southwest = LatLng(southLat, westLng);
-    LatLng northeast = LatLng(northLat, eastLng);
+    LatLng southwest = LatLng(southLat*0.999999999999, westLng);
+    LatLng northeast = LatLng(northLat*0.999999999999, eastLng);
 
     LatLngBounds bounds =
         LatLngBounds(southwest: southwest, northeast: northeast);
 
-    CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 150);
+    CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 100);
 
     mapController.animateCamera(cameraUpdate);
     //mapController.showMarkerInfoWindow(MarkerId(stationName));
