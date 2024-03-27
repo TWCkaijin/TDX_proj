@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ThemeModel extends ChangeNotifier {
   bool _isDarkMode = false;
@@ -162,14 +163,24 @@ Github is provided below.''',
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin:
-                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-              child: const Text(
-                'empty',
+            InkWell(
+              onTap: () async {
+                Uri url = Uri.parse('https://github.com/TWCkaijin/TDX_proj');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.symmetric(
+                    horizontal: 25.0, vertical: 10.0),
+                child: const Text(
+                  'Go to our Github',
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),
@@ -248,14 +259,25 @@ Also a screenshot would be helpful''',
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin:
-                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-              child: const Text(
-                'empty',
+            InkWell(
+              onTap: () async {
+                Uri url =
+                    Uri.parse('https://github.com/TWCkaijin/TDX_proj/issues');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.symmetric(
+                    horizontal: 25.0, vertical: 10.0),
+                child: const Text(
+                  'Report Bug',
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),

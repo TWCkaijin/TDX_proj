@@ -122,7 +122,7 @@ class _MyAppState extends State {
   Completer<List<ParkingStation>> parkingStationCompleter = Completer();
   bool drawingroute = false;
   String? _mapStyle;
-  final DraggableScrollableController _sheetcontroller =
+  final DraggableScrollableController sheetcontroller =
       DraggableScrollableController();
 
   @override
@@ -143,8 +143,8 @@ class _MyAppState extends State {
     double westLng = min(currentPosition!.longitude, stationLocation.longitude);
     double eastLng = max(currentPosition!.longitude, stationLocation.longitude);
 
-    LatLng southwest = LatLng(southLat*0.999999999999, westLng);
-    LatLng northeast = LatLng(northLat*0.999999999999, eastLng);
+    LatLng southwest = LatLng(southLat * 0.999999999999, westLng);
+    LatLng northeast = LatLng(northLat * 0.999999999999, eastLng);
 
     LatLngBounds bounds =
         LatLngBounds(southwest: southwest, northeast: northeast);
@@ -153,8 +153,8 @@ class _MyAppState extends State {
 
     mapController.animateCamera(cameraUpdate);
     //mapController.showMarkerInfoWindow(MarkerId(stationName));
-    _sheetcontroller.reset();
-    
+    sheetcontroller.reset();
+
     _onMarkerTap(stationLocation, stationName);
   }
 
@@ -189,7 +189,6 @@ class _MyAppState extends State {
         //anchor: const Offset(0.5, 0) //center of the marker
       ));
     }
-
 
     await route.drawRoute(
         points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
@@ -421,12 +420,12 @@ class _MyAppState extends State {
                     return true;
                   },
                   child: DraggableScrollableSheet(
-                    controller: _sheetcontroller,
+                    controller: sheetcontroller,
                     initialChildSize: 0.1,
                     minChildSize: 0.1,
                     maxChildSize: 1,
                     builder: (BuildContext context,
-                        ScrollController _sheetcontroller) {
+                        ScrollController sheetcontroller) {
                       return Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
@@ -453,7 +452,7 @@ class _MyAppState extends State {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                      controller: _sheetcontroller,
+                                      controller: sheetcontroller,
                                       itemCount: snapshot.data?.length ?? 0,
                                       itemBuilder:
                                           (BuildContext context, int index) {
