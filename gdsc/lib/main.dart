@@ -124,7 +124,6 @@ class _MyAppState extends State {
   String? _mapStyle;
   final DraggableScrollableController _sheetcontroller =
       DraggableScrollableController();
-  final ScrollController listscrollcontroller = ScrollController();
 
   @override
   void initState() {
@@ -154,6 +153,8 @@ class _MyAppState extends State {
 
     mapController.animateCamera(cameraUpdate);
     //mapController.showMarkerInfoWindow(MarkerId(stationName));
+    _sheetcontroller.reset();
+    
     _onMarkerTap(stationLocation, stationName);
   }
 
@@ -189,10 +190,6 @@ class _MyAppState extends State {
       ));
     }
 
-    // _sheetcontroller.animateTo(0.0,
-    //     duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
-
-    //listscrollcontroller.jumpTo(0.0);
 
     await route.drawRoute(
         points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
@@ -381,6 +378,7 @@ class _MyAppState extends State {
                   right: 15,
                   bottom: 100,
                   child: FloatingActionButton(
+                    heroTag: 'locate',
                     elevation: 0.0,
                     onPressed: () {
                       if (currentPosition != null) {
@@ -401,6 +399,7 @@ class _MyAppState extends State {
                   right: 15,
                   bottom: 160,
                   child: FloatingActionButton(
+                    heroTag: 'refresh',
                     elevation: 0.0,
                     onPressed: () {
                       refresh();
@@ -410,8 +409,7 @@ class _MyAppState extends State {
                 ),
                 NotificationListener<ScrollUpdateNotification>(
                   onNotification: (notification) {
-                    if (notification.metrics.extentBefore == 0 &&
-                        notification.metrics.extentAfter > 50) {
+                    if (notification.metrics.extentBefore == 0) {
                       setState(() {
                         _showAppBar = true;
                       });
@@ -428,7 +426,7 @@ class _MyAppState extends State {
                     minChildSize: 0.1,
                     maxChildSize: 1,
                     builder: (BuildContext context,
-                        ScrollController listscrollcontroller) {
+                        ScrollController _sheetcontroller) {
                       return Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
@@ -455,7 +453,7 @@ class _MyAppState extends State {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                      controller: listscrollcontroller,
+                                      controller: _sheetcontroller,
                                       itemCount: snapshot.data?.length ?? 0,
                                       itemBuilder:
                                           (BuildContext context, int index) {
