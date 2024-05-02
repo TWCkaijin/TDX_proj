@@ -129,6 +129,7 @@ if __name__ == '__main__':
                 data_response = requests.get(url, headers=d.get_data_header())
                 da.data_storage(data_response.text)
                 late_preprocess()
+                os.system(f'python {os.getcwd()}/data/code_storage/get_info.py')
             except Exception as e:
                 print(f'{Colorfill.FAIL}Four-hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
