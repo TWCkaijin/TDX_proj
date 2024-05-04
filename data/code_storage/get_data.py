@@ -132,6 +132,7 @@ if __name__ == '__main__':
             try:
                 DA.data_storage(token_trade_to_data('AG'))
                 late_preprocess()
+                os.system(f'python {os.getcwd()}/data/code_storage/get_info.py')
             except Exception as e:
                 print(f'{Colorfill.FAIL}Four-hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
