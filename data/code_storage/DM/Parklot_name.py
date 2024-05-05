@@ -9,5 +9,12 @@ if __name__ == "__main__":
         file = json.load(f)
         i=0
         while(True):
-            fb.put(f'parklot_name/{file["CarParks"][i]["CarParkID"]}','name',file["CarParks"][i]["CarParkName"]["Zh_tw"])
-            i+=1
+            try:
+                fb.put(f'PA/{file["CarParks"][i]["CarParkID"]}','name',file["CarParks"][i]["CarParkName"]["Zh_tw"])
+                i+=1
+            except IndexError:
+                print('done')
+                break
+            except Exception as e:
+                print(e)
+                break
