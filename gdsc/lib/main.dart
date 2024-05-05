@@ -168,13 +168,11 @@ class _MyAppState extends State {
       LatLng(currentPosition!.latitude, currentPosition!.longitude),
       LatLng(targetPos.latitude, targetPos.longitude)
     ];
-
     for (var station in parkingStations.sublist(0, 5)) {
       if (station.location == targetPos) {
         newStation = false;
       }
     }
-
     if (newStation) {
       refreshMarkers();
       markerset.add(Marker(
@@ -188,7 +186,6 @@ class _MyAppState extends State {
         //anchor: const Offset(0.5, 0) //center of the marker
       ));
     }
-
     await route.drawRoute(
         points, name, const Color.fromRGBO(130, 78, 210, 1.0), apikey,
         travelMode: gmr.TravelModes.driving);

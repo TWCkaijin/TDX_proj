@@ -110,43 +110,39 @@ def late_preprocess():
     print(time.strftime("%Y_%m_%d,%H:%M:%S", time.localtime()))
     time.sleep(60)
 
-
+def token_trade_to_data(mode):
+    if 'A' in mode:
+        a = Auth(app_id, app_key)
+        auth_response = requests.post(auth_url, a.get_auth_header())
+    if 'G' in mode:
+        d = data(app_id, app_key, auth_response)
+        data_response = requests.get(url, headers=d.get_data_header())
+    return data_response.text
 
 
 if __name__ == '__main__':
     print(f'{Colorfill.FAIL}Start sever time {Colorfill.RESET}{time.strftime("%Y_%m_%d,%H:%M:%S",time.localtime())}')
     print(f'{Colorfill.FAIL}Intepreter Directory: {Colorfill.OK}{os.getcwd()}{Colorfill.RESET}')
-    da = data_attributes()
+    DA = data_attributes()
     while (True):
         minute = time.strftime("%M", time.localtime())
         hour = time.strftime("%H", time.localtime())
-        da.file_num  = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(da.hour(minute))
+        DA.file_num  = time.strftime("%Y_%m_%d",time.localtime())+"_"+ str(DA.hour(minute))
         if(int(hour)%4==0 and int(minute)%30==0):
             try:
-                a = Auth(app_id, app_key)
-                auth_response = requests.post(auth_url, a.get_auth_header())
-                d = data(app_id, app_key, auth_response)
-                data_response = requests.get(url, headers=d.get_data_header())
-                da.data_storage(data_response.text)
+                DA.data_storage(token_trade_to_data('AG'))
                 late_preprocess()
                 os.system(f'python {os.getcwd()}/data/code_storage/get_info.py')
             except Exception as e:
                 print(f'{Colorfill.FAIL}Four-hourly error:{Colorfill.RESET}{e}')
         elif(int(minute)%30==0):
             try:
-                d = data(app_id, app_key, auth_response)
-                data_response = requests.get(url, headers=d.get_data_header())
-
-                da.data_storage(data_response.text)
+                DA.data_storage(token_trade_to_data('G'))
                 late_preprocess()
                 print(f"{Colorfill.OK}data get!{Colorfill.RESET}")
 
             except Exception as e:
-                a = Auth(app_id, app_key)
-                auth_response = requests.post(auth_url, a.get_auth_header())
-                d = data(app_id, app_key, auth_response)
-                data_response = requests.get(url, headers=d.get_data_header())
-                da.data_storage(data_response.text)
+                DA.data_storage(token_trade_to_data('AG'))
                 print(f'{Colorfill.FAIL}Half-hourly error:{Colorfill.RESET}{e}')
                 late_preprocess()
         time.sleep(1)
