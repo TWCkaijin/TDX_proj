@@ -295,7 +295,7 @@ class _MyAppState extends State {
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: currentPosition!,
-          zoom: 10.0,
+          zoom: 13.0,
         ),
       ),
     );
