@@ -65,44 +65,44 @@ class ParkingStation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () => onTap(location!, stationName),
-        child: Card(
-          elevation: 0.0,
-          color: Provider.of<pages.ThemeModel>(context).isDarkMode
-              ? Colors.grey[800]
-              : Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            side: BorderSide(
-              color: availableLots > 0
-                  ? (availableLots > 10 ? Colors.green : Colors.yellow)
-                  : Colors.red,
-              width: 2.0,
+    return Card(
+      elevation: 0.0,
+      color: Provider.of<pages.ThemeModel>(context).isDarkMode
+          ? Colors.grey[800]
+          : Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        side: BorderSide(
+          color: availableLots > 0
+              ? (availableLots > 10 ? Colors.green : Colors.yellow)
+              : Colors.red,
+          width: 2.0,
+        ),
+      ),
+      child: Stack(
+        children: <Widget>[
+          ListTile(
+            onTap:
+                location != null ? () => onTap(location!, stationName) : null,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Flexible(child: Text(stationName)),
+                Text(
+                    '${availableLots == -1 ? "No info" : "$availableLots spaces"} '),
+              ],
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Flexible(child: Text('${distance.toStringAsFixed(2)} km')),
+                Flexible(child: Text('$pricing')),
+              ],
             ),
           ),
-          child: Stack(
-            children: <Widget>[
-              ListTile(
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Flexible(child: Text(stationName)),
-                    Text(
-                        '${availableLots == -1 ? "No info" : "$availableLots spaces"} '),
-                  ],
-                ),
-                subtitle: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Flexible(child: Text('${distance.toStringAsFixed(2)} km')),
-                    Flexible(child: Text('$pricing')),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+        ],
+      ),
+    );
   }
 }
 
@@ -120,7 +120,7 @@ class _MyAppState extends State {
   List<ParkingStation> parkingStations = [];
   Completer<List<ParkingStation>> parkingStationCompleter = Completer();
   bool drawingroute = false;
-  String? _mapStyle;
+  // String? _mapStyle;
   final DraggableScrollableController sheetcontroller =
       DraggableScrollableController();
 
@@ -271,18 +271,6 @@ class _MyAppState extends State {
     });
   }
 
-  void _onMapCreated(GoogleMapController controller) async {
-    mapController = controller;
-    final themeModel = Provider.of<pages.ThemeModel>(context, listen: false);
-    if (themeModel.isDarkMode) {
-      _mapStyle = await rootBundle.loadString('assets/darkmapstyle.txt');
-    } else {
-      _mapStyle = await rootBundle.loadString('assets/mapstyle.txt');
-    }
-    controller.setMapStyle(_mapStyle);
-    themeModel.mapStyleChanged = false;
-  }
-
   Future<void> refresh() async {
     setState(() {
       parkingStations.clear();
@@ -356,7 +344,23 @@ class _MyAppState extends State {
               children: <Widget>[
                 GoogleMap(
                   key: ValueKey(themeModel.isDarkMode),
-                  onMapCreated: _onMapCreated,
+                  cloudMapId: (() {
+                    final themeModel = Provider.of<pages.ThemeModel>(context);
+                    if (Platform.isAndroid) {
+                      return themeModel.isDarkMode
+                          ? 'e5ab4c2bb5bd724c287afbad' // Android dark mode MapID
+                          : 'e5ab4c2bb5bd724ce7ff84e8'; // Android light mode MapID
+                    } else if (Platform.isIOS) {
+                      return themeModel.isDarkMode
+                          ? 'e5ab4c2bb5bd724c8cd48e59' // iOS dark mode MapID
+                          : 'e5ab4c2bb5bd724cabef6f84'; // iOS light mode MapID
+                    } else {
+                      return '';
+                    }
+                  })(),
+                  onMapCreated: (GoogleMapController controller) {
+                    mapController = controller;
+                  },
                   initialCameraPosition: CameraPosition(
                     target: currentPosition ?? _center,
                     zoom: 12.5,
@@ -443,23 +447,12 @@ class _MyAppState extends State {
                             } else {
                               return ListView.builder(
                                 controller: sheetcontroller,
-                                itemCount: (snapshot.data?.length ?? 0) +
-                                    1, // Add one for the Icon
+                                itemCount: (snapshot.data?.length ?? 0),
                                 itemBuilder: (BuildContext context, int index) {
-                                  if (index == 0) {
-                                    // The first item is the Icon
-                                    return Transform(
-                                      transform: Matrix4.diagonal3Values(
-                                          3.0, 1.0, 1.0),
-                                      alignment: Alignment.center,
-                                      child: const Icon(Icons.expand_less),
-                                    );
-                                  } else {
-                                    // The other items are from the snapshot data
-                                    return snapshot.data![index - 1];
-                                  }
+                                  return snapshot.data![index];
                                 },
                                 padding: const EdgeInsets.only(
+                                  top: 30.0,
                                   left: 20.0,
                                   right: 20.0,
                                   bottom: 20.0,

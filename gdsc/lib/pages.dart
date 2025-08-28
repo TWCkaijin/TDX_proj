@@ -29,30 +29,30 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends State<SettingsPage> {
-  final MaterialStateProperty<Icon?> thumbIcon =
-      MaterialStateProperty.resolveWith<Icon?>(
-    (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  final WidgetStateProperty<Icon?> thumbIcon =
+      WidgetStateProperty.resolveWith<Icon?>(
+    (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return const Icon(Icons.lightbulb_outline);
       }
       return const Icon(Icons.lightbulb);
     },
   );
-  final MaterialStateProperty<Color?> thumbColor =
-      MaterialStateProperty.resolveWith<Color?>(
-    (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  final WidgetStateProperty<Color?> thumbColor =
+      WidgetStateProperty.resolveWith<Color?>(
+    (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors
             .transparent; // Change this to your desired color for dark mode
       }
       return null; // Change this to your desired color for light mode
     },
   );
-  final MaterialStateProperty<Color?> trackColor =
-      MaterialStateProperty.resolveWith<Color?>(
-    (Set<MaterialState> states) {
+  final WidgetStateProperty<Color?> trackColor =
+      WidgetStateProperty.resolveWith<Color?>(
+    (Set<WidgetState> states) {
       // Track color when the switch is selected.
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.blueGrey[600];
       }
       return null;

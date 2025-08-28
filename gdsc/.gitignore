@@ -43,6 +43,11 @@ app.*.map.json
 /android/app/profiles
 /android/app/release
 
-
 # key ignored 
 /lib/key.dart
+
+# FVM Version Cache
+.fvm/
+
+# Android
+.cxx/
